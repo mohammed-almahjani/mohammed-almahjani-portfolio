@@ -1,0 +1,116 @@
+/* =============================================================
+   responsive.css
+   Purpose : All media queries and responsive layout overrides.
+             This file handles every breakpoint and ensures the
+             portfolio looks perfect on all screen sizes.
+   Author  : Mohammed Al-Mahjani Portfolio
+   Phase   : 1 — Scaffolding (comments only, no rules yet)
+   Strategy: Mobile-first — base styles in style.css target
+             mobile, media queries here add tablet/desktop styles.
+   ============================================================= */
+
+
+/* -------------------------------------------------------------
+   BREAKPOINT REFERENCE
+   These match the breakpoints used throughout this file.
+
+   --bp-xs  : 320px  — Small mobile (iPhone SE etc.)
+   --bp-sm  : 480px  — Large mobile
+   --bp-md  : 768px  — Tablet portrait
+   --bp-lg  : 1024px — Tablet landscape / small laptop
+   --bp-xl  : 1280px — Desktop
+   --bp-2xl : 1536px — Large desktop / wide monitor
+   ------------------------------------------------------------- */
+
+
+/* -------------------------------------------------------------
+   1. SMALL MOBILE  (max-width: 480px)
+      Adjustments for very small screens — font scaling,
+      single-column layouts, condensed spacing.
+   ------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  /* To be built in Phase 9 */
+}
+
+
+/* -------------------------------------------------------------
+   2. TABLET PORTRAIT  (min-width: 481px) and (max-width: 768px)
+      2-column grids begin, nav adjustments.
+   ------------------------------------------------------------- */
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* To be built in Phase 9 */
+}
+
+
+/* -------------------------------------------------------------
+   3. TABLET LANDSCAPE / SMALL LAPTOP  (min-width: 769px)
+      Skills grid goes to 3 columns, projects to 2 columns.
+   ------------------------------------------------------------- */
+
+@media (min-width: 769px) {
+  /* To be built in Phase 9 */
+}
+
+
+/* -------------------------------------------------------------
+   4. DESKTOP  (min-width: 1024px)
+      Full-width navigation, multi-column grids, larger hero text.
+   ------------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  /* To be built in Phase 9 */
+}
+
+
+/* -------------------------------------------------------------
+   5. LARGE DESKTOP  (min-width: 1280px)
+      Wider container, larger font sizes, optimized whitespace.
+   ------------------------------------------------------------- */
+
+@media (min-width: 1280px) {
+  /* To be built in Phase 9 */
+}
+
+
+/* -------------------------------------------------------------
+   6. ULTRA-WIDE  (min-width: 1536px)
+      Max container enforced; no layout changes, just visual tuning.
+   ------------------------------------------------------------- */
+
+@media (min-width: 1536px) {
+  /* To be built in Phase 9 */
+}
+
+
+/* -------------------------------------------------------------
+   7. REDUCED MOTION
+      Respect users who prefer reduced animations.
+      Override all transitions and animations for accessibility.
+   ------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  /* To be built alongside animations in Phase 4 */
+  /* All animations/transitions will be disabled or minimized here */
+}
+
+
+/* -------------------------------------------------------------
+   8. HIGH CONTRAST MODE
+      Accessibility override for users with high-contrast needs.
+   ------------------------------------------------------------- */
+
+@media (forced-colors: active) {
+  /* To be built in Phase 9 */
+}
+
+
+/* -------------------------------------------------------------
+   9. PRINT STYLES
+      Clean, readable print layout if user prints the portfolio.
+   ------------------------------------------------------------- */
+
+@media print {
+  /* To be built in Phase 10 (optimization phase) */
+}

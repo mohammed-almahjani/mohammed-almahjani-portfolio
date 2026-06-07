@@ -1,0 +1,201 @@
+/* =============================================================
+   animations.css
+   Purpose : All CSS keyframe animations, transitions, and
+             scroll-reveal utility classes used across the site.
+   Author  : Mohammed Al-Mahjani Portfolio
+   Phase   : 3A — Navbar + Hero Animations (COMPLETE)
+   ============================================================= */
+
+
+/* -------------------------------------------------------------
+   1. KEYFRAMES
+   ------------------------------------------------------------- */
+
+/* Logo blinking underscore */
+@keyframes flash {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Green status indicator pulsing */
+@keyframes glowPulseGreen {
+  from {
+    box-shadow: 0 0 10px rgba(0, 255, 157, 0.4), 0 0 20px rgba(0, 255, 157, 0.2);
+  }
+  to {
+    box-shadow: 0 0 18px rgba(0, 255, 157, 0.8), 0 0 30px rgba(0, 255, 157, 0.4);
+  }
+}
+
+/* Float visual elements slowly (Node A/C) — smooth sinusoidal loop */
+@keyframes floatSlowA {
+  0%   { transform: translate(0px,    0px);  }
+  25%  { transform: translate(8px,  -12px);  }
+  50%  { transform: translate(14px,   4px);  }
+  75%  { transform: translate(4px,   14px);  }
+  100% { transform: translate(0px,    0px);  }
+}
+
+/* Float visual elements slowly (Node B/D) — offset phase */
+@keyframes floatSlowB {
+  0%   { transform: translate(0px,    0px);  }
+  25%  { transform: translate(-10px, 10px);  }
+  50%  { transform: translate(-6px, -12px);  }
+  75%  { transform: translate(8px,  -6px);   }
+  100% { transform: translate(0px,   0px);   }
+}
+
+/* Floating effect for Network Operations Panel — smooth sinusoidal float */
+@keyframes floatUpDownCard {
+  0%   {
+    transform: translateY(0px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 212, 255, 0.06);
+  }
+  50%  {
+    transform: translateY(-10px);
+    box-shadow: 0 34px 70px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 212, 255, 0.08);
+  }
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 212, 255, 0.06);
+  }
+}
+
+/* Scroll indicator mouse wheel slide — smooth fade loop */
+@keyframes scrollWheelAnim {
+  0%   { transform: translate(-50%, 0);   opacity: 1;   }
+  60%  { transform: translate(-50%, 9px); opacity: 0.3; }
+  100% { transform: translate(-50%, 0);   opacity: 1;   }
+}
+
+/* Slide/fade entries */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* -------------------------------------------------------------
+   2. SCROLL-REVEAL CLASSES
+      These classes control initial opacity / translate offsets.
+      The .reveal--visible class is added via JavaScript.
+   ------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transition: opacity var(--transition-slow) ease, transform var(--transition-slow) ease;
+}
+
+.reveal.fade-in-up { transform: translateY(30px); }
+.reveal.fade-in-down { transform: translateY(-30px); }
+.reveal.fade-in-left { transform: translateX(-40px); }
+.reveal.fade-in-right { transform: translateX(40px); }
+
+/* Visible states */
+.reveal--visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
+/* Staggered Delay classes */
+.reveal--delay-1 { transition-delay: 100ms; }
+.reveal--delay-2 { transition-delay: 200ms; }
+.reveal--delay-3 { transition-delay: 300ms; }
+.reveal--delay-4 { transition-delay: 400ms; }
+.reveal--delay-5 { transition-delay: 500ms; }
+
+
+/* -------------------------------------------------------------
+   3. ANIMATED TRANSITIONS & GLOW PULSES
+   ------------------------------------------------------------- */
+
+/* Accent animations to apply manually in markup if desired */
+.anim-fade-in { animation: fadeIn var(--transition-slow) forwards; }
+.anim-fade-in-up { animation: fadeInUp var(--transition-slow) forwards; }
+.anim-fade-in-down { animation: fadeInDown var(--transition-slow) forwards; }
+.anim-fade-in-left { animation: fadeInLeft var(--transition-slow) forwards; }
+.anim-fade-in-right { animation: fadeInRight var(--transition-slow) forwards; }
+
+
+/* -------------------------------------------------------------
+   4. REDUCED MOTION OVERRIDES
+      Respect users who prefer reduced animations.
+   ------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: scroll !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .net-ops-panel {
+    animation: none !important;
+  }
+
+  .badge-status-dot {
+    animation: none !important;
+  }
+
+  .scroll-wheel {
+    animation: none !important;
+  }
+
+  .node-a, .node-b, .node-c, .node-d {
+    animation: none !important;
+  }
+}

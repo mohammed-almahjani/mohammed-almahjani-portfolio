@@ -1,0 +1,31 @@
+[
+  {
+    "_comment": "PLACEHOLDER — Replace with real certificates data in Phase 6",
+    "_schema": {
+      "id": "Unique identifier (string, kebab-case)",
+      "name": "Full certification name",
+      "issuer": "Issuing organization (e.g. 'Cisco', 'CompTIA', 'EC-Council')",
+      "issuerLogo": "Path to issuer logo (assets/icons/...)",
+      "dateIssued": "YYYY-MM",
+      "dateExpires": "YYYY-MM or null if no expiry",
+      "credentialId": "Official credential ID (string)",
+      "verifyUrl": "URL to verify the certificate online",
+      "badge": "Path to certificate badge image (assets/images/...)",
+      "skills": ["Skill covered 1", "Skill covered 2"],
+      "featured": true
+    }
+  },
+  {
+    "id": "placeholder-cert",
+    "name": "Placeholder Certification",
+    "issuer": "Placeholder Issuer",
+    "issuerLogo": "",
+    "dateIssued": "",
+    "dateExpires": null,
+    "credentialId": "",
+    "verifyUrl": "",
+    "badge": "",
+    "skills": ["Placeholder skill"],
+    "featured": false
+  }
+]

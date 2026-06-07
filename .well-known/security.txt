@@ -1,0 +1,9 @@
+# security.txt
+# This is a security contact point for reporting vulnerabilities on this site/domain.
+# Defined in RFC 9116: https://tools.ietf.org/html/rfc9116
+
+Contact: mailto:security@example.com (Placeholder - Replace with real email)
+Expires: 2027-06-06T09:45:00+03:00 (Placeholder - Update accordingly)
+Preferred-Languages: en
+Canonical: https://example.com/.well-known/security.txt (Placeholder - Update with domain)
+Policy: https://example.com/security-policy.html (Placeholder - optional)
