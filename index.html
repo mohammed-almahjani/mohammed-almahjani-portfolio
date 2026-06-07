@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ============================================================
+       META & SEO
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO Meta Tags (to be filled in Phase 3) -->
+  <meta name="description"
+    content="Professional portfolio of a Network & Cybersecurity Engineer. Specializing in network architecture, penetration testing, and security operations." />
+  <meta name="keywords"
+    content="network engineer, cybersecurity, portfolio, penetration testing, SOC, firewall, CCNA" />
+  <meta name="author" content="Mohammed Al-Mahjani" />
+
+  <!-- Open Graph (Social Sharing) -->
+  <meta property="og:title" content="Mohammed Al-Mahjani | Network &amp; Cybersecurity Engineer" />
+  <meta property="og:description"
+    content="Professional portfolio — Network Architecture, Cybersecurity &amp; Smart Systems." />
+  <meta property="og:type" content="website" />
+  <!-- og:image to be added in Phase 3 -->
+
+  <!-- Twitter Card (Social Sharing) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mohammed Al-Mahjani | Network &amp; Cybersecurity Engineer" />
+  <meta name="twitter:description"
+    content="Professional portfolio — Network Architecture, Cybersecurity &amp; Smart Systems." />
+  <!-- twitter:image to be added in Phase 3 -->
+
+  <title>Mohammed Al-Mahjani | Network &amp; Cybersecurity Engineer</title>
+
+  <!-- ============================================================
+       STYLESHEETS
+       Order matters: base → animations → responsive
+       ============================================================ -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Favicon placeholder (add real favicon in Phase 3) -->
+  <!-- <link rel="icon" type="image/png" href="assets/icons/favicon.png" /> -->
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NETWORK INFRASTRUCTURE BACKGROUND CANVAS
+       Renders behind all content at z-index: -1
+       Powered by js/network-bg.js
+       ============================================================ -->
+  <canvas id="network-bg" aria-hidden="true"></canvas>
+
+
+  <!-- ============================================================
+       NAVIGATION
+       Fixed top navbar with logo + links
+       ============================================================ -->
+  <header id="navbar" role="banner">
+    <nav id="main-nav" aria-label="Main navigation">
+      <div class="nav-logo">
+        <!-- Logo / Name branding -->
+        <span class="logo-text">MA</span>
+      </div>
+      <ul class="nav-links" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#Sam-Smart">Sam-Smart</a></li>
+        <li><a href="#network-labs">Network Labs</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <!-- Mobile hamburger button -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       All sections are children of <main>
+       ============================================================ -->
+  <main id="main-content" role="main">
+
+    <!-- ──────────────────────────────────────────
+         SECTION 1 — HOME / HERO
+         Full-screen landing with name, title, CTA
+         ────────────────────────────────────────── -->
+    <section id="home" class="section section--hero" aria-label="Home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal fade-in-left">
+          <div class="hero-badge text-mono">
+            <span class="badge-status-dot"></span> SEC_OPS // ENCRYPTED_STATUS_OK
+          </div>
+          <h1 class="hero-name" id="hero-name">Mohammed Al-Mahjani</h1>
+          <p class="hero-title" id="hero-title">Network &amp; Cybersecurity Engineer</p>
+          <p class="hero-tagline" id="hero-tagline">Securing networks, automating systems, and defending digital assets.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn--primary">
+              <span>View Projects</span>
+            </a>
+            <a href="assets/cv/resume.pdf" class="btn btn--secondary" download>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download CV</span>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn--secondary"
+              aria-label="GitHub Profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+              </svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn--secondary"
+              aria-label="LinkedIn Profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual-container reveal fade-in-right">
+          <!-- Cyber Network Node Visualizer (Pure CSS) -->
+          <div class="network-canvas" aria-hidden="true">
+            <div class="network-node node-a"></div>
+            <div class="network-node node-b"></div>
+            <div class="network-node node-c"></div>
+            <div class="network-node node-d"></div>
+            <div class="network-edge edge-ab"></div>
+            <div class="network-edge edge-bc"></div>
+            <div class="network-edge edge-cd"></div>
+            <div class="network-edge edge-da"></div>
+          </div>
+
+          <!-- Network Operations Panel -->
+          <div class="net-ops-panel" aria-label="Network Operations Status Panel">
+            <!-- Panel Header -->
+            <div class="nop-header">
+              <div class="nop-header-left">
+                <span class="nop-status-dot" aria-hidden="true"></span>
+                <span class="nop-title text-mono">NET_OPS_PANEL</span>
+              </div>
+              <span class="nop-hostname text-mono">R1.CORE // OSPF_AREA_0</span>
+            </div>
+
+            <!-- Block 1: OSPF Neighbor Table -->
+            <div class="nop-block">
+              <div class="nop-block-label text-mono">OSPF NEIGHBOR TABLE</div>
+              <table class="nop-table" aria-label="OSPF neighbor status">
+                <thead>
+                  <tr>
+                    <th>Neighbor ID</th>
+                    <th>Interface</th>
+                    <th>State</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-mono">10.0.0.2</td>
+                    <td class="text-mono">Gi0/0</td>
+                    <td><span class="nop-badge nop-badge--full">FULL</span></td>
+                  </tr>
+                  <tr>
+                    <td class="text-mono">10.0.0.3</td>
+                    <td class="text-mono">Gi0/1</td>
+                    <td><span class="nop-badge nop-badge--full">FULL</span></td>
+                  </tr>
+                  <tr>
+                    <td class="text-mono">10.0.1.1</td>
+                    <td class="text-mono">Gi0/2</td>
+                    <td><span class="nop-badge nop-badge--2way">2-WAY</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Block 2: VLAN Summary -->
+            <div class="nop-block">
+              <div class="nop-block-label text-mono">ACTIVE VLANs // SW-CORE</div>
+              <div class="nop-vlan-row">
+                <span class="nop-vlan-id text-mono">VLAN 10</span>
+                <span class="nop-vlan-name">Management</span>
+                <span class="nop-badge nop-badge--active">ACTIVE</span>
+              </div>
+              <div class="nop-vlan-row">
+                <span class="nop-vlan-id text-mono">VLAN 20</span>
+                <span class="nop-vlan-name">Operations</span>
+                <span class="nop-badge nop-badge--active">ACTIVE</span>
+              </div>
+              <div class="nop-vlan-row">
+                <span class="nop-vlan-id text-mono">VLAN 99</span>
+                <span class="nop-vlan-name">Native (Hardened)</span>
+                <span class="nop-badge nop-badge--locked">LOCKED</span>
+              </div>
+            </div>
+
+            <!-- Block 3: Interface Status -->
+            <div class="nop-block">
+              <div class="nop-block-label text-mono">INTERFACE STATUS</div>
+              <div class="nop-iface-row">
+                <span class="nop-iface-name text-mono">Gi0/0</span>
+                <span class="nop-iface-desc">Uplink → ISP</span>
+                <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
+              </div>
+              <div class="nop-iface-row">
+                <span class="nop-iface-name text-mono">Gi0/1</span>
+                <span class="nop-iface-desc">Trunk → SW-CORE</span>
+                <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
+              </div>
+              <div class="nop-iface-row">
+                <span class="nop-iface-name text-mono">Gi0/2</span>
+                <span class="nop-iface-desc">Link → BRANCH</span>
+                <span class="nop-iface-state nop-iface-state--down">DOWN</span>
+              </div>
+            </div>
+
+            <!-- Panel Footer: Live monitoring ticker -->
+            <div class="nop-footer text-mono">
+              <span class="nop-live-dot" aria-hidden="true"></span>
+              <span>MONITORING ACTIVE — 0 ANOMALIES DETECTED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span class="scroll-text text-mono">SCROLL TO ANALYZE</span>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 2 — ABOUT
+         Short bio, profile photo, quick stats
+         ────────────────────────────────────────── -->
+    <section id="about" class="section section--about" aria-label="About me">
+      <div class="container">
+        <h2 class="section-title reveal fade-in-up">About</h2>
+
+        <div class="about-grid">
+          <div class="about-info reveal fade-in-left">
+            <h3 class="about-subtitle text-mono">SYSTEMS_ENGINEER // PROFILE</h3>
+            <p class="about-desc">
+              I am an early-career Network &amp; Cybersecurity Engineer dedicated to designing secure network
+              infrastructures, managing enterprise server environments, and building robust automated topologies. My
+              approach combines strong dynamic routing fundamentals with rigorous security configurations.
+            </p>
+            <p class="about-desc">
+              With a background focused heavily on hands-on labs and architectural sandboxing, I specialize in
+              validating design choices using utilities like GNS3, EVE-NG, and Packet Tracer. I am highly motivated by
+              systems hardening, operational threat containment, and secure systems architecture.
+            </p>
+
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-number text-mono">100+</span>
+                <span class="stat-label">Hours Lab Testing</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number text-mono">15+</span>
+                <span class="stat-label">Network Topologies</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number text-mono">5+</span>
+                <span class="stat-label">Security Audits</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-cards reveal fade-in-right">
+            <div class="about-card">
+              <div class="card-icon text-mono">[01]</div>
+              <h4 class="card-title">Network Engineering</h4>
+              <p class="card-text">Designing Layer 2/3 networks, configuring VLAN trunks, OSPF areas, and managing Cisco
+                IOS &amp; MikroTik RouterOS devices.</p>
+            </div>
+            <div class="about-card">
+              <div class="card-icon text-mono">[02]</div>
+              <h4 class="card-title">Cybersecurity Fundamentals</h4>
+              <p class="card-text">Configuring secure access controls, firewall inspection zones, analyzing packets via
+                Wireshark, and conducting vulnerability scans.</p>
+            </div>
+            <div class="about-card">
+              <div class="card-icon text-mono">[03]</div>
+              <h4 class="card-title">Systems Administration</h4>
+              <p class="card-text">Deploying domain environments on Windows Server (AD, DNS, DHCP) and configuring
+                standard security-compliant Linux servers.</p>
+            </div>
+            <div class="about-card">
+              <div class="card-icon text-mono">[04]</div>
+              <h4 class="card-title">Practical Labs &amp; Documentation</h4>
+              <p class="card-text">Architecting scalable staging labs in GNS3, EVE-NG, and Cisco Packet Tracer to
+                pre-validate configuration security before deployment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 3 — SKILLS
+         Technical skills grouped by category
+         Data sourced from data/skills.json
+         ────────────────────────────────────────── -->
+    <section id="skills" class="section section--skills" aria-label="Technical skills">
+      <div class="container">
+        <h2 class="section-title reveal fade-in-up">Skills</h2>
+        <!-- Skills cards/bars will be rendered dynamically by main.js from skills.json -->
+        <div id="skills-grid" class="skills-grid" aria-live="polite">
+          <p class="text-mono loading-text">Accessing skills database...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 4 — PROJECTS
+         Portfolio project cards (data/projects.json)
+         ────────────────────────────────────────── -->
+    <section id="projects" class="section section--projects" aria-label="Portfolio projects">
+      <div class="container">
+        <h2 class="section-title reveal fade-in-up">Projects</h2>
+        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Real-world engineering work and security-focused
+          solutions.</p>
+        <!-- Dynamic project cards rendered by main.js from projects.json -->
+        <div id="projects-grid" class="projects-grid" aria-live="polite">
+          <p class="text-mono loading-text">Loading project database...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 5 — Sam-Smart SHOWCASE
+         Featured deep-dive into the Sam-Smart system
+         ────────────────────────────────────────── -->
+    <section id="Sam-Smart" class="section section--Sam-Smart" aria-label="Sam-Smart Password Manager Showcase">
+      <div class="container">
+
+        <!-- Section Label -->
+        <div class="showcase-label text-mono reveal fade-in-up">FEATURED_PROJECT // DEEP_DIVE</div>
+        <h2 class="section-title reveal fade-in-up">Sam-Smart</h2>
+        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Zero-Knowledge Password Manager — Enterprise-Grade
+          Cryptographic Security</p>
+
+        <div class="showcase-grid">
+
+          <!-- Left: Project Overview -->
+          <div class="showcase-info reveal fade-in-left">
+            <div class="showcase-meta text-mono">
+              <span class="meta-tag">SECURITY ENGINEERING</span>
+              <span class="meta-tag">CRYPTOGRAPHY</span>
+              <span class="meta-tag">ZERO-KNOWLEDGE</span>
+            </div>
+
+            <h3 class="showcase-heading">Project Overview</h3>
+            <p class="showcase-desc">
+              Sam-Smart is a Zero-Knowledge Password Manager designed to provide enterprise-grade password protection
+              while ensuring that sensitive user data remains inaccessible to the server itself.
+            </p>
+            <p class="showcase-desc">
+              The platform utilizes AES-256-GCM encryption, secure master-key management, key wrapping, and multi-factor
+              authentication to protect credentials through a modern security architecture.
+            </p>
+
+            <h3 class="showcase-heading">Core Security Features</h3>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <span class="feature-bullet text-mono">&gt;</span>
+                <span><strong>Zero-Knowledge Security Architecture</strong> — Client vault entries are encrypted
+                  client-side; plaintext values never traverse the network or touch database systems.</span>
+              </li>
+              <li class="feature-item">
+                <span class="feature-bullet text-mono">&gt;</span>
+                <span><strong>AES-256-GCM Encryption</strong> — Authenticated symmetric cryptography protecting data
+                  confidentiality and verifying integrity of vault payloads.</span>
+              </li>
+              <li class="feature-item">
+                <span class="feature-bullet text-mono">&gt;</span>
+                <span><strong>Master Key &amp; Key Wrapping System</strong> — Local cryptographic keys wrapped
+                  dynamically to protect storage session integrity.</span>
+              </li>
+              <li class="feature-item">
+                <span class="feature-bullet text-mono">&gt;</span>
+                <span><strong>Multi-Factor Authentication (2FA)</strong> — Built-in security layers validation using
+                  secondary authentication mechanisms.</span>
+              </li>
+              <li class="feature-item">
+                <span class="feature-bullet text-mono">&gt;</span>
+                <span><strong>Secure Password Vault Management</strong> — Structured, robust client-side storage objects
+                  handling safe updates, entry query, and entropy checking.</span>
+              </li>
+            </ul>
+
+            <div class="showcase-tech">
+              <span class="tech-badge">PHP</span>
+              <span class="tech-badge">AES-256-GCM</span>
+              <span class="tech-badge">Cryptography</span>
+              <span class="tech-badge">Argon2id</span>
+              <span class="tech-badge">Libsodium</span>
+              <span class="tech-badge">Zero-Knowledge Security</span>
+              <span class="tech-badge">2FA</span>
+              <span class="tech-badge">Password Management</span>
+            </div>
+
+            <div class="showcase-actions">
+              <a href="https://github.com/mohammed-almahjani/Sam-Smart" target="_blank" rel="noopener noreferrer"
+                class="btn btn--primary" aria-label="View Sam-Smart on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"
+                  aria-hidden="true">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                <span>View on GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Screenshot Container inside Mock Browser -->
+          <div class="showcase-visual reveal fade-in-right">
+            <div class="mock-browser">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span class="browser-dot browser-dot--close"></span>
+                  <span class="browser-dot browser-dot--minimize"></span>
+                  <span class="browser-dot browser-dot--maximize"></span>
+                </div>
+                <div class="browser-bar">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>localhost:8080/SAM_Smart/login.php</span>
+                </div>
+              </div>
+              <div class="browser-content">
+                <img src="assets/screenshots/smartsam-login.png" alt="Sam-Smart Login Interface screenshot"
+                  class="browser-screenshot lightbox-trigger" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Row 3: Architecture Diagram (Full Width below) -->
+        <div class="showcase-architecture reveal fade-in-up reveal--delay-1" style="margin-top: var(--space-12);">
+          <div class="arch-panel">
+            <div class="arch-panel-header">
+              <span class="arch-label text-mono">CRYPTOGRAPHIC_ARCHITECTURE_FLOW</span>
+              <span class="arch-status text-mono"><span class="badge-status-dot"></span> ENCRYPTED</span>
+            </div>
+            <div class="arch-body">
+              <!-- Encryption Flow Visual -->
+              <div class="arch-flow">
+                <div class="arch-node arch-node--user">
+                  <div class="arch-node-icon text-mono">CLIENT</div>
+                  <span>Plaintext Credentials &amp; Master Password</span>
+                </div>
+                <div class="arch-arrow">
+                  <div class="arch-arrow-line"></div>
+                  <span class="arch-arrow-label text-mono">Argon2id KDF Derivation</span>
+                </div>
+                <div class="arch-node arch-node--crypto">
+                  <div class="arch-node-icon text-mono">CRYPTO</div>
+                  <span>Local AES-256-GCM Encryption</span>
+                </div>
+                <div class="arch-arrow">
+                  <div class="arch-arrow-line"></div>
+                  <span class="arch-arrow-label text-mono">Symmetric Key Wrap &amp; Authenticated Tags</span>
+                </div>
+                <div class="arch-node arch-node--vault">
+                  <div class="arch-node-icon text-mono">VAULT</div>
+                  <span>Client-Side Sealed Cryptographic Payload</span>
+                </div>
+                <div class="arch-arrow">
+                  <div class="arch-arrow-line"></div>
+                  <span class="arch-arrow-label text-mono">Secure API Sync</span>
+                </div>
+                <div class="arch-node arch-node--cloud">
+                  <div class="arch-node-icon text-mono">SERVER</div>
+                  <span>Database Host (Zero Plaintext Access)</span>
+                </div>
+              </div>
+
+              <!-- Security Stats -->
+              <div class="arch-stats">
+                <div class="arch-stat-item">
+                  <span class="arch-stat-val text-mono">Argon2id</span>
+                  <span class="arch-stat-key">KDF Protocol</span>
+                </div>
+                <div class="arch-stat-item">
+                  <span class="arch-stat-val text-mono">AES-256-GCM</span>
+                  <span class="arch-stat-key">Symmetric Cipher</span>
+                </div>
+                <div class="arch-stat-item">
+                  <span class="arch-stat-val text-mono">Libsodium</span>
+                  <span class="arch-stat-key">Crypto Primitives</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 6 — NETWORK LABS
+         Practical hands-on lab documentation
+         ────────────────────────────────────────── -->
+    <section id="network-labs" class="section section--network-labs" aria-label="Network Labs">
+      <div class="container">
+        <div class="showcase-label text-mono reveal fade-in-up">HANDS_ON // PRACTICAL_ENGINEERING</div>
+        <h2 class="section-title reveal fade-in-up">Network Labs</h2>
+        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Documented lab environments built to validate
+          real-world network architectures and security configurations.</p>
+
+        <!-- Tools Used Strip -->
+        <div class="labs-tools reveal fade-in-up reveal--delay-2">
+          <span class="labs-tools-label text-mono">LAB ENVIRONMENTS:</span>
+          <span class="tech-badge">EVE-NG</span>
+          <span class="tech-badge">GNS3</span>
+          <span class="tech-badge">Cisco Packet Tracer</span>
+          <span class="tech-badge">Cisco IOS</span>
+          <span class="tech-badge">MikroTik RouterOS</span>
+          <span class="tech-badge">WinBox</span>
+        </div>
+
+        <div class="labs-grid" id="labs-grid">
+
+          <!-- Lab Card 1: Multi-Area OSPF -->
+          <article class="lab-card reveal fade-in-up">
+            <div class="lab-card-header">
+              <div class="lab-card-meta">
+                <span class="lab-type text-mono">ROUTING LAB</span>
+                <span class="lab-tool text-mono">EVE-NG</span>
+              </div>
+              <div class="lab-topology-placeholder" aria-label="OSPF topology diagram placeholder">
+                <div class="topology-visual" aria-hidden="true">
+                  <div class="topo-node topo-r1">R1</div>
+                  <div class="topo-node topo-r2">R2</div>
+                  <div class="topo-node topo-r3">R3</div>
+                  <div class="topo-link topo-link-12"></div>
+                  <div class="topo-link topo-link-23"></div>
+                  <div class="topo-node topo-area0">Area 0</div>
+                </div>
+              </div>
+            </div>
+            <div class="lab-card-body">
+              <h3 class="lab-title">Enterprise Multi-Area OSPF Network</h3>
+              <p class="lab-desc">Designed a multi-site campus topology in EVE-NG connecting Area 0 backbone with
+                stubbed branch areas. Tuned hello timers, cost metrics, and enabled MD5 routing authentication.</p>
+              <div class="lab-tech">
+                <span class="tech-badge tech-badge--sm">OSPF</span>
+                <span class="tech-badge tech-badge--sm">Cisco IOS</span>
+                <span class="tech-badge tech-badge--sm">EVE-NG</span>
+                <span class="tech-badge tech-badge--sm">MD5 Auth</span>
+              </div>
+              <div class="lab-outcomes">
+                <h4 class="outcomes-title text-mono">LEARNING OUTCOMES</h4>
+                <ul class="outcomes-list">
+                  <li>Mastered LSA flooding control and loop avoidance logic</li>
+                  <li>Configured MD5 authentication on Cisco routing protocols</li>
+                  <li>Understood convergence metrics under simulated link failures</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lab Card 2: VLAN Segmentation -->
+          <article class="lab-card reveal fade-in-up reveal--delay-1">
+            <div class="lab-card-header">
+              <div class="lab-card-meta">
+                <span class="lab-type text-mono">SWITCHING LAB</span>
+                <span class="lab-tool text-mono">PACKET TRACER</span>
+              </div>
+              <div class="lab-topology-placeholder" aria-label="VLAN topology diagram placeholder">
+                <div class="topology-visual" aria-hidden="true">
+                  <div class="topo-node topo-sw1">SW1</div>
+                  <div class="topo-node topo-sw2">SW2</div>
+                  <div class="topo-node topo-rt">RT</div>
+                  <div class="topo-link topo-link-sw12"></div>
+                  <div class="topo-link topo-link-sw1rt"></div>
+                  <div class="topo-vlan-label">VLAN 10 | VLAN 20 | VLAN 99</div>
+                </div>
+              </div>
+            </div>
+            <div class="lab-card-body">
+              <h3 class="lab-title">Secure VLAN Segmentation &amp; Inter-VLAN Routing</h3>
+              <p class="lab-desc">Segmented corporate departments using VLANs with 802.1Q trunk encapsulation.
+                Implemented Router-on-a-Stick gateway routing and hardened switches against VLAN hopping attacks.</p>
+              <div class="lab-tech">
+                <span class="tech-badge tech-badge--sm">VLANs</span>
+                <span class="tech-badge tech-badge--sm">802.1Q</span>
+                <span class="tech-badge tech-badge--sm">Router-on-a-Stick</span>
+                <span class="tech-badge tech-badge--sm">Switchport Security</span>
+              </div>
+              <div class="lab-outcomes">
+                <h4 class="outcomes-title text-mono">LEARNING OUTCOMES</h4>
+                <ul class="outcomes-list">
+                  <li>Configured Layer 2 switchport protections and MAC address limits</li>
+                  <li>Built and troubleshot Router-on-a-Stick gateway interfaces</li>
+                  <li>Mitigated Layer 2 attacks including rogue DHCP insertion</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lab Card 3: MikroTik -->
+          <article class="lab-card reveal fade-in-up reveal--delay-2">
+            <div class="lab-card-header">
+              <div class="lab-card-meta">
+                <span class="lab-type text-mono">MIKROTIK LAB</span>
+                <span class="lab-tool text-mono">WINBOX</span>
+              </div>
+              <div class="lab-topology-placeholder" aria-label="MikroTik topology diagram placeholder">
+                <div class="topology-visual" aria-hidden="true">
+                  <div class="topo-node topo-mt">MK</div>
+                  <div class="topo-node topo-isp">ISP</div>
+                  <div class="topo-node topo-lan">LAN</div>
+                  <div class="topo-link topo-link-mtisp"></div>
+                  <div class="topo-link topo-link-mtlan"></div>
+                  <div class="topo-vlan-label">NAT | Firewall | DHCP</div>
+                </div>
+              </div>
+            </div>
+            <div class="lab-card-body">
+              <h3 class="lab-title">MikroTik RouterOS Gateway Configuration</h3>
+              <p class="lab-desc">Configured a MikroTik RB series router as an internet gateway with NAT masquerade,
+                stateful firewall chains, DHCP server, and bandwidth management using WinBox and terminal CLI.</p>
+              <div class="lab-tech">
+                <span class="tech-badge tech-badge--sm">MikroTik RouterOS</span>
+                <span class="tech-badge tech-badge--sm">WinBox</span>
+                <span class="tech-badge tech-badge--sm">NAT</span>
+                <span class="tech-badge tech-badge--sm">Firewall Chains</span>
+              </div>
+              <div class="lab-outcomes">
+                <h4 class="outcomes-title text-mono">LEARNING OUTCOMES</h4>
+                <ul class="outcomes-list">
+                  <li>Mastered WinBox and RouterOS CLI for live device management</li>
+                  <li>Designed stateful input/forward firewall rule chains</li>
+                  <li>Configured DHCP server pools and static leases for LAN segments</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 7 — EXPERIENCE
+         Work history timeline
+         ────────────────────────────────────────── -->
+    <section id="experience" class="section section--experience" aria-label="Work experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <!-- Timeline of professional experience -->
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 8 — CERTIFICATES
+         Professional certifications
+         Data sourced from data/certificates.json
+         ────────────────────────────────────────── -->
+    <section id="certificates" class="section section--certificates" aria-label="Certifications">
+      <div class="container">
+        <h2 class="section-title">Certificates</h2>
+        <!-- Certificate cards will be rendered by main.js from certificates.json -->
+        <div id="certificates-grid" class="certificates-grid" aria-live="polite">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────
+         SECTION 9 — CONTACT
+         Contact form + social links
+         ────────────────────────────────────────── -->
+    <section id="contact" class="section section--contact" aria-label="Contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <!-- Contact form with semantic inputs and labels -->
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="contact-name" class="form-label">Name</label>
+            <input type="text" id="contact-name" name="name" required placeholder="Your Name" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label for="contact-email" class="form-label">Email</label>
+            <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com"
+              class="form-input" />
+          </div>
+          <div class="form-group">
+            <label for="contact-message" class="form-label">Message</label>
+            <textarea id="contact-message" name="message" required placeholder="How can I help you?"
+              class="form-input form-textarea"></textarea>
+          </div>
+          <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+          <button type="submit" class="btn btn--submit">Send Message</button>
+        </form>
+        <!-- Social links: LinkedIn, GitHub, Email -->
+        <div id="social-links" class="social-links">
+          <!-- Dynamically or statically added in Phase 3 -->
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ============================================================
+       FOOTER
+       Copyright + back-to-top
+       ============================================================ -->
+  <footer id="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer-text">
+        &copy; <span id="footer-year"></span> Mohammed Al-Mahjani. All rights reserved.
+      </p>
+      <a href="#home" class="back-to-top" aria-label="Back to top">&#8679;</a>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       LIGHTBOX MODAL FOR SCREENSHOTS
+       ============================================================ -->
+  <div id="lightbox-modal" class="lightbox" role="dialog" aria-hidden="true" aria-label="Screenshot expansion viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image expansion viewer">&times;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Expanded preview image" />
+    </div>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       Load order: data globals → animations helper → main logic
+       data scripts must come BEFORE main.js so globals are defined
+       ============================================================ -->
+  <script src="data/skills-data.js"></script>
+  <script src="data/projects-data.js"></script>
+  <script src="js/animations.js"></script>
+
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
