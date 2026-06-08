@@ -38,7 +38,14 @@
     "subnet": "Mobile / Cloud-Connected Grocery Management System",
     "description": "An offline-first, cloud-connected mobile application featuring biometric authentication, real-time Firebase sync, and a multi-layer security system.",
     "longDescription": "Built on clean mobile architecture principles to deliver high availability offline while maintaining seamless secure sync with cloud datastores under role-based control parameters.",
-    "techStack": ["Firebase", "Offline-First", "Biometric Authentication", "Role-Based Access", "Cloud Sync", "Mobile App"],
+    "techStack": [
+      "Firebase",
+      "Offline-First",
+      "Biometric Authentication",
+      "Role-Based Access",
+      "Cloud Sync",
+      "Mobile App"
+    ],
     "keyFeatures": [
       "Offline-First Architecture with Automatic Synchronization",
       "Multi-Layer Security System",
@@ -47,7 +54,7 @@
       "Role-Based Access & Management System"
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://https://github.com/mohammed-almahjani",
       "demo": ""
     },
     "thumbnail": "assets/screenshots/grocerycards-dashboard.png",
@@ -73,7 +80,7 @@
       "Stub Areas: Restricted LSA floods to optimize memory on branch routers."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://https://github.com/mohammed-almahjani",
       "demo": ""
     },
     "thumbnail": "assets/screenshots/ospflab-thumb.png",

@@ -21,7 +21,7 @@ const PROJECTS_DATA = [
       "Local Session Vaulting: Secure memory management handles encryption states without disk storage."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://https://github.com/mohammed-almahjani",
       "demo": "https://example.com"
     },
     "thumbnail": "assets/screenshots/smartsam-thumb.png",
@@ -42,7 +42,7 @@ const PROJECTS_DATA = [
       "Clean UI: Designed dark glassmorphic widgets for scanning cards."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://https://github.com/mohammed-almahjani",
       "demo": ""
     },
     "thumbnail": "assets/screenshots/grocerycards-thumb.png",
@@ -62,7 +62,7 @@ const PROJECTS_DATA = [
       "Stub Areas: Restricted LSA floods to optimize memory on branch routers."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://https://github.com/mohammed-almahjani",
       "demo": ""
     },
     "thumbnail": "assets/screenshots/ospflab-thumb.png",
@@ -87,7 +87,7 @@ const PROJECTS_DATA = [
       "Switchport Limits: Restricted MAC addresses per port to prevent MAC-flooding attacks."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://https://github.com/mohammed-almahjani",
       "demo": ""
     },
     "thumbnail": "assets/screenshots/vlanlab-thumb.png",

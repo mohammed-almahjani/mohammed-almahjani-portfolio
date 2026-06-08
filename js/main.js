@@ -187,7 +187,7 @@ function loadProjects() {
                 "Role-Based Access & Management System"
               ],
               links: {
-                github: "https://github.com",
+                github: "https://https://github.com/mohammed-almahjani",
                 demo: ""
               },
               thumbnail: "assets/screenshots/grocerycards-dashboard.png"
