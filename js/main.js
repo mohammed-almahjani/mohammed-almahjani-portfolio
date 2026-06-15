@@ -209,9 +209,67 @@ function loadProjects() {
     });
 }
 
+const CERTIFICATES_DATA = [
+  {
+    id: "ccna",
+    name: "CCNA",
+    issuer: "Cisco",
+    category: "Networking",
+    description: "Fundamental networking concepts, routing, switching, IP services, network security, and troubleshooting.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg"><path d="M5 12h14"></path><path d="M12 5v14"></path><circle cx="12" cy="5" r="3"></circle><circle cx="12" cy="19" r="3"></circle><circle cx="5" cy="12" r="3"></circle><circle cx="19" cy="12" r="3"></circle></svg>`
+  },
+  {
+    id: "mikrotik",
+    name: "MikroTik Certification",
+    issuer: "MikroTik",
+    category: "Networking Infrastructure",
+    description: "RouterOS administration, routing, firewall management, hotspot systems, PPPoE deployment, and network services.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="6" y="6" width="2" height="2"></rect><rect x="10" y="6" width="2" height="2"></rect><rect x="14" y="6" width="2" height="2"></rect><path d="M18 10v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10"></path><line x1="12" y1="14" x2="12" y2="18"></line></svg>`
+  },
+  {
+    id: "mcsa",
+    name: "MCSA",
+    issuer: "Microsoft",
+    category: "Systems Administration",
+    description: "Windows Server administration, Active Directory, user management, and enterprise services.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg"><rect x="4" y="2" width="16" height="6" rx="1"></rect><rect x="4" y="9" width="16" height="6" rx="1"></rect><rect x="4" y="16" width="16" height="6" rx="1"></rect><line x1="6" y1="5" x2="6" y2="5.01"></line><line x1="6" y1="12" x2="6" y2="12.01"></line><line x1="6" y1="19" x2="6" y2="19.01"></line><line x1="8" y1="5" x2="18" y2="5"></line><line x1="8" y1="12" x2="18" y2="12"></line><line x1="8" y1="19" x2="18" y2="19"></line></svg>`
+  },
+  {
+    id: "comptia-a",
+    name: "CompTIA A+",
+    issuer: "CompTIA",
+    category: "IT Support",
+    description: "Hardware, operating systems, troubleshooting, technical support, and IT fundamentals.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>`
+  },
+  {
+    id: "icdl",
+    name: "ICDL",
+    issuer: "ICDL Foundation",
+    category: "Productivity & Office Skills",
+    description: "Microsoft Office applications, spreadsheets, documentation, and digital productivity.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`
+  }
+];
+
 /* --- Load certificates.json --- */
-async function loadCertificates() {
-  // TODO: Fetch certificates from data/certificates.json and render in Phase 5
+function loadCertificates() {
+  fetch('data/certificates.json')
+    .then(response => {
+      if (!response.ok) throw new Error('HTTP error');
+      return response.json();
+    })
+    .then(data => {
+      if (!data || data.length === 0 || data[0].id === 'placeholder-cert' || data.some(item => item._comment)) {
+        renderCertificates(CERTIFICATES_DATA);
+      } else {
+        renderCertificates(data);
+      }
+    })
+    .catch(error => {
+      console.warn('Could not fetch data/certificates.json dynamically, falling back to local CERTIFICATES_DATA:', error);
+      renderCertificates(CERTIFICATES_DATA);
+    });
 }
 
 
@@ -332,22 +390,55 @@ function renderProjects(projectsData) {
 }
 
 /* --- Render Certificates Grid --- */
-// TODO: function renderCertificates(certificatesData) { ... }
+function renderCertificates(certificatesData) {
+  const grid = document.getElementById('certificates-grid');
+  if (!grid) return;
+
+  grid.innerHTML = ''; // Clear loading placeholder
+
+  certificatesData.forEach(cert => {
+    const card = document.createElement('article');
+    card.className = 'cert-card reveal fade-in-up';
+
+    card.innerHTML = `
+      <div class="cert-icon-container">
+        ${cert.icon || `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        `}
+      </div>
+      <div class="cert-card-header">
+        <span class="cert-badge text-mono">${cert.category}</span>
+        <h3 class="cert-title">${cert.name}</h3>
+      </div>
+      <div class="cert-card-body">
+        <p class="cert-desc">${cert.description}</p>
+        <div class="cert-issuer text-mono">
+          <span class="issuer-label">ISSUER:</span>
+          <span class="issuer-name">${cert.issuer}</span>
+        </div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  // Re-run scroll reveal so dynamically inserted cards animate in
+  initScrollReveal();
+}
 
 
 // -----------------------------------------------------------------------
 // 4. CONTACT FORM (Skeletons to be completed in Phase 5)
 // -----------------------------------------------------------------------
 
-/* --- Form Submit Handler --- */
+/* --- Set Dynamic Portfolio Link --- */
 function initContactForm() {
-  const contactForm = document.getElementById('contact-form');
-  if (!contactForm) return;
-
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // TODO: implement form validation & mailto/service sending in Phase 5
-  });
+  const portfolioLink = document.getElementById('portfolio-site-link');
+  if (portfolioLink) {
+    portfolioLink.href = window.location.origin;
+  }
 }
 
 
@@ -684,9 +775,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initActiveLinkHighlighting();
   initScrollReveal();
-  loadSkills();    // Retrieve and render technical skills data
-  loadProjects();  // Retrieve and render portfolio projects
-  initLightbox();  // Initialize screenshot lightbox modal
+  loadSkills();        // Retrieve and render technical skills data
+  loadProjects();      // Retrieve and render portfolio projects
+  loadCertificates();  // Retrieve and render technical certifications
+  initLightbox();      // Initialize screenshot lightbox modal
   initContactForm();
   setFooterYear();
 });

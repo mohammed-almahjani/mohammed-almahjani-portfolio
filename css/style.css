@@ -2660,3 +2660,832 @@ pre,
   margin-top: calc(-1 * var(--space-3));
   line-height: 1.7;
 }
+
+/* =============================================================
+   SECTION 7 — EXPERIENCE
+   Professional Experience Vertical Timeline
+   ============================================================= */
+
+.section--experience {
+  background: rgba(9, 14, 26, 0.90);
+  position: relative;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 1000px;
+  margin: var(--space-16) auto 0;
+  padding: var(--space-4) 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 212, 255, 0.05) 0%,
+    rgba(0, 212, 255, 0.4) 15%,
+    rgba(0, 255, 157, 0.4) 85%,
+    rgba(0, 255, 157, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: var(--space-12);
+  z-index: 2;
+}
+
+.timeline-item--left {
+  left: 0;
+  padding-right: var(--space-12);
+}
+
+.timeline-item--right {
+  left: 50%;
+  padding-left: var(--space-12);
+}
+
+/* Timeline nodes */
+.timeline-node {
+  position: absolute;
+  top: 30px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-accent-cyan);
+  box-shadow: var(--glow-cyan);
+  z-index: 5;
+  transition: transform var(--transition-bounce), border-color var(--transition-normal);
+}
+
+.timeline-item--left .timeline-node {
+  right: -9px;
+}
+
+.timeline-item--right .timeline-node {
+  left: -9px;
+}
+
+.timeline-node--green {
+  border-color: var(--color-accent-green);
+  box-shadow: var(--glow-green);
+}
+
+/* Node pulse ring */
+.node-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.timeline-node--cyan .node-pulse {
+  border-color: rgba(0, 212, 255, 0.5);
+  animation: nodePulse 2.5s infinite;
+}
+
+.timeline-node--green .node-pulse {
+  border-color: rgba(0, 255, 157, 0.5);
+  animation: nodePulse 2.5s infinite 1.25s;
+}
+
+/* Date badge layout */
+.timeline-date-wrapper {
+  position: absolute;
+  top: 26px;
+  width: calc(100% - var(--space-12));
+  display: flex;
+  align-items: center;
+}
+
+.timeline-item--left .timeline-date-wrapper {
+  left: calc(100% + var(--space-12));
+  justify-content: flex-start;
+}
+
+.timeline-item--right .timeline-date-wrapper {
+  right: calc(100% + var(--space-12));
+  justify-content: flex-end;
+}
+
+.timeline-date {
+  font-size: var(--fs-md);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 4px var(--space-3);
+  letter-spacing: var(--ls-wider);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: border-color var(--transition-normal), color var(--transition-normal);
+}
+
+.timeline-item--right .timeline-date {
+  border-color: rgba(0, 212, 255, 0.25);
+}
+
+.timeline-item--left .timeline-date {
+  border-color: rgba(0, 255, 157, 0.25);
+}
+
+/* Experience card styling */
+.timeline-card {
+  background: rgba(13, 21, 38, 0.45);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color var(--transition-normal),
+              box-shadow var(--transition-normal),
+              transform var(--transition-bounce);
+}
+
+.timeline-item--right .timeline-card {
+  border-color: rgba(0, 212, 255, 0.15);
+}
+
+.timeline-item--left .timeline-card {
+  border-color: rgba(0, 255, 157, 0.15);
+}
+
+/* Hover effects */
+.timeline-item:hover .timeline-card {
+  transform: translateY(-4px);
+}
+
+.timeline-item--right:hover .timeline-card {
+  border-color: rgba(0, 212, 255, 0.45);
+  box-shadow: var(--glow-cyan);
+}
+
+.timeline-item--left:hover .timeline-card {
+  border-color: rgba(0, 255, 157, 0.45);
+  box-shadow: var(--glow-green);
+}
+
+.timeline-item:hover .timeline-node {
+  transform: scale(1.25);
+}
+
+.timeline-item--right:hover .timeline-node {
+  border-color: var(--color-accent-green);
+}
+
+.timeline-item--left:hover .timeline-node {
+  border-color: var(--color-accent-cyan);
+}
+
+.timeline-item--right:hover .timeline-date {
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+.timeline-item--left:hover .timeline-date {
+  border-color: var(--color-accent-green);
+  color: var(--color-accent-green);
+}
+
+/* Card content layout */
+.card-header-main {
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+}
+
+.card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.08em;
+}
+
+.card-badge--cyan {
+  color: var(--color-accent-cyan);
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.card-badge--green {
+  color: var(--color-accent-green);
+  background: rgba(0, 255, 157, 0.1);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+}
+
+.experience-title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.experience-role {
+  font-size: var(--fs-sm);
+  color: var(--color-accent-cyan);
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.05em;
+}
+
+.timeline-item--left .experience-role {
+  color: var(--color-accent-green);
+}
+
+.experience-scope {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.experience-desc {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-normal);
+  margin-bottom: var(--space-5);
+}
+
+.experience-responsibilities {
+  margin-bottom: var(--space-5);
+  background: rgba(255, 255, 255, 0.01);
+  border-left: 2px solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.timeline-item--right .experience-responsibilities {
+  border-left-color: var(--color-accent-cyan);
+}
+
+.timeline-item--left .experience-responsibilities {
+  border-left-color: var(--color-accent-green);
+}
+
+.responsibilities-title {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.08em;
+}
+
+.responsibilities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-2);
+}
+
+.responsibilities-list li {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  position: relative;
+  padding-left: var(--space-4);
+  line-height: 1.4;
+}
+
+.responsibilities-list li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  color: var(--color-accent-cyan);
+}
+
+.timeline-item--left .responsibilities-list li::before {
+  color: var(--color-accent-green);
+}
+
+.experience-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-4);
+}
+
+/* =============================================================
+   MOBILE RESPONSIVENESS (MEDIA QUERIES) FOR TIMELINE
+   ============================================================= */
+@media (max-width: 992px) {
+  .timeline-line {
+    left: 16px;
+    transform: none;
+    background: linear-gradient(
+      to bottom,
+      var(--color-accent-cyan) 0%,
+      var(--color-accent-green) 100%
+    );
+  }
+
+  .timeline-item {
+    width: 100%;
+    margin-bottom: var(--space-8);
+  }
+
+  .timeline-item--left,
+  .timeline-item--right {
+    left: 0;
+    padding-left: var(--space-10);
+    padding-right: 0;
+  }
+
+  .timeline-node {
+    left: 7px !important;
+    right: auto !important;
+  }
+
+  .timeline-date-wrapper {
+    position: static;
+    width: auto;
+    margin-bottom: var(--space-3);
+    display: inline-block;
+  }
+
+  .timeline-item--left .timeline-date-wrapper,
+  .timeline-item--right .timeline-date-wrapper {
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .timeline-card {
+    padding: var(--space-5);
+  }
+
+  .responsibilities-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================================
+   SECTION 8 — CERTIFICATIONS
+   Professional Certifications Card Grid
+   ============================================================= */
+
+.section--certificates {
+  background: rgba(9, 14, 26, 0.92);
+  position: relative;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-16);
+  position: relative;
+  z-index: 2;
+}
+
+.cert-card {
+  background: rgba(13, 21, 38, 0.45);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  transition: border-color var(--transition-normal),
+              box-shadow var(--transition-normal),
+              transform var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.cert-card:hover {
+  border-color: var(--color-border-active);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-5px);
+}
+
+.cert-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  color: var(--color-accent-cyan);
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-bounce);
+}
+
+.cert-card:hover .cert-icon-container {
+  background: rgba(0, 212, 255, 0.12);
+  border-color: var(--color-accent-cyan);
+  transform: scale(1.05) rotate(5deg);
+}
+
+.cert-svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-accent-cyan);
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.3));
+  transition: color var(--transition-fast);
+}
+
+.cert-card:hover .cert-svg {
+  color: var(--color-accent-green);
+  filter: drop-shadow(0 0 6px rgba(0, 255, 157, 0.4));
+}
+
+.cert-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cert-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-accent-green);
+  background: rgba(0, 255, 157, 0.08);
+  border: 1px solid rgba(0, 255, 157, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cert-title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cert-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex-grow: 1;
+}
+
+.cert-desc {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cert-issuer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 11px;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-3);
+  margin-top: auto;
+}
+
+.issuer-label {
+  color: var(--color-text-muted);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.issuer-name {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* =============================================================
+   MOBILE RESPONSIVENESS (MEDIA QUERIES) FOR CERTIFICATIONS
+   ============================================================= */
+@media (max-width: 992px) {
+  .certificates-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 600px) {
+  .certificates-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
+
+/* =============================================================
+   SECTION 9 — CONTACT
+   Premium Recruiter-Focused Contact Cards & CTA Block
+   ============================================================= */
+
+.section--contact {
+  background: rgba(9, 14, 26, 0.95);
+  position: relative;
+  padding-bottom: var(--space-20);
+}
+
+.section-subtitle {
+  font-size: var(--fs-md);
+  color: var(--color-text-secondary);
+  margin-top: calc(-1 * var(--space-8));
+  margin-bottom: var(--space-16);
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+.contact-grid {
+  display: grid;
+  gap: var(--space-6);
+  margin-bottom: var(--space-20);
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card {
+  background: rgba(13, 21, 38, 0.45);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  transition: border-color var(--transition-normal),
+              box-shadow var(--transition-normal),
+              transform var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.contact-card:hover {
+  border-color: var(--color-border-active);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-5px);
+}
+
+.contact-card-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  color: var(--color-accent-cyan);
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-bounce);
+}
+
+.contact-card:hover .contact-card-icon-container {
+  background: rgba(0, 212, 255, 0.12);
+  border-color: var(--color-accent-cyan);
+  transform: scale(1.05) rotate(5deg);
+}
+
+.contact-svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-accent-cyan);
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.3));
+  transition: color var(--transition-fast);
+}
+
+.contact-card:hover .contact-svg {
+  color: var(--color-accent-green);
+  filter: drop-shadow(0 0 6px rgba(0, 255, 157, 0.4));
+}
+
+.contact-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact-card-title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.contact-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex-grow: 1;
+}
+
+.contact-card-desc {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-card-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+  margin-top: auto;
+}
+
+.contact-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-accent-cyan);
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+  max-width: 100%;
+}
+
+.contact-card-action span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-card-action:hover {
+  color: var(--color-accent-green);
+  text-shadow: 0 0 8px rgba(0, 255, 157, 0.4);
+}
+
+.external-icon {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.contact-card-action:hover .external-icon {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+
+/* --- Professional Final CTA Block --- */
+
+.contact-cta-block {
+  background: linear-gradient(135deg, rgba(13, 21, 38, 0.6) 0%, rgba(9, 14, 26, 0.8) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.contact-cta-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent);
+}
+
+.cta-cyber-decor {
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  opacity: 0.8;
+}
+
+.cta-decor-line {
+  height: 1px;
+  background: var(--color-border);
+  flex-grow: 1;
+  max-width: 80px;
+}
+
+.cta-decor-status {
+  font-size: var(--fs-xs);
+  color: var(--color-accent-green);
+  text-shadow: var(--glow-green);
+  letter-spacing: 0.05em;
+}
+
+.contact-cta-title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  line-height: 1.3;
+}
+
+.contact-cta-text {
+  font-size: var(--fs-base);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-8) auto;
+  line-height: 1.6;
+}
+
+.contact-cta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+
+/* =============================================================
+   RESPONSIVE LAYOUTS & COLUMN ALIGNMENT FOR CONTACT
+   ============================================================= */
+
+/* Desktop layout (3-column / 4-column balanced grid) */
+@media (min-width: 992px) {
+  .contact-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .contact-card:nth-child(1),
+  .contact-card:nth-child(2),
+  .contact-card:nth-child(3) {
+    grid-column: span 2;
+  }
+
+  .contact-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .contact-card:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+
+/* Tablet layout (2-column balanced grid) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .contact-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .contact-card:nth-child(1),
+  .contact-card:nth-child(2),
+  .contact-card:nth-child(3),
+  .contact-card:nth-child(4) {
+    grid-column: span 2;
+  }
+
+  .contact-card:nth-child(5) {
+    grid-column: 2 / span 2;
+  }
+}
+
+/* Mobile layout (Single-column layout) */
+@media (max-width: 767px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-cta-block {
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .contact-cta-title {
+    font-size: var(--fs-xl);
+  }
+
+  .contact-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-cta-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -198,4 +198,21 @@
   .node-a, .node-b, .node-c, .node-d {
     animation: none !important;
   }
+
+  .node-pulse {
+    animation: none !important;
+  }
 }
+
+/* Timeline node pulse animation */
+@keyframes nodePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
