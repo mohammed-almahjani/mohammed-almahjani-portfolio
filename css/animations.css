@@ -183,6 +183,7 @@
     transform: none !important;
   }
 
+  .profile-card,
   .net-ops-panel {
     animation: none !important;
   }

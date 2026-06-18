@@ -18,7 +18,7 @@ Owner: Mohammed Al-Mahjani (placeholder — to be confirmed).
 **Current Phase**: Phase 4 — SEO & Final Polish
 Validating final SEO metadata tags, reviewing accessibility (A11y), and running performance optimization checks.
 
-**Previous Phase Completed**: Theme System Enhancement — Light Mode / Dark Mode Toggle added.
+**Previous Phase Completed**: Professional Hero Enhancement — Profile Photo Integration completed.
 
 **Next Phase**: None (Final Polish Stage)
 
@@ -95,6 +95,7 @@ portfolio-website/                  ← root of the project
 - [x] Completed Phase 3E: Certificates Section — designed and built premium dynamic certification cards in `index.html` and `js/main.js` supporting CCNA (Cisco), MikroTik Certification (MikroTik), MCSA (Microsoft), CompTIA A+ (CompTIA), and ICDL (ICDL Foundation). Implemented dynamic loading with fetch and offline local data fallback, custom inline SVG icons, responsive grid layout (3 columns on desktop, 2 on tablet, 1 on mobile) in `css/style.css`, and scroll-reveal triggers.
 - [x] Completed Phase 3F: Recruiter-focused Contact Section — designed and built a grid of 5 premium contact cards (Email, GitHub, LinkedIn, Resume, Portfolio) with hover glow effects, customized icons, and external link indicators, as well as a career availability CTA block at the bottom of the section.
 - [x] Completed Theme System Enhancement — Professional Light Mode: Added a full `[data-theme="light"]` CSS variable override system in `css/style.css` covering every section, component, and interactive element. Theme toggle button added in the navbar (sun/moon SVG icons). `initThemeToggle()` logic added to `js/main.js` with localStorage persistence and system preference fallback. Network background canvas colors branch per theme via `themechange` custom event. Dark Cyber theme remains the default. Theme preference persists across page reloads.
+- [x] Completed Professional Hero Enhancement — Profile Photo Integration: Integrated Mohammed Al-Mahjani's real professional profile photo in a premium glassmorphic verified terminal card styled similarly to the OSPF Network Operations Panel, synchronized their floating animations, and styled theme overrides and responsive behaviors.
 
 ---
 
@@ -160,20 +161,19 @@ portfolio-website/                  ← root of the project
 | 2026-06-15 | CERTIFICATES_SECTION | Implemented dynamic rendering of certificates in `js/main.js` (with local constant fallback), custom inline SVGs for Cisco, MikroTik, Microsoft, CompTIA, and ICDL, styled with responsive premium grid in `css/style.css`, updated title/subtitle in `index.html`, and verified scroll reveal. |
 | 2026-06-15 | CONTACT_CARDS | Designed and built recruiter-focused contact section with responsive 5-card grid, hover glow states, and career availability CTA block. Modified js/main.js to dynamically resolve portfolio origin link. |
 | 2026-06-15 | LIGHT_MODE_THEME | Added Professional Light Mode theme system. Created `[data-theme="light"]` CSS token overrides in `css/style.css` covering all sections, cards, badges, buttons, nav, footer, lightbox, and scrollbar. Added `.theme-toggle` navbar button with sun/moon icons. Added `initThemeToggle()` to `js/main.js` with localStorage persistence, system preference fallback, and `themechange` custom event for canvas palette update. Updated `css/animations.css` to use CSS variables in keyframes for theme-aware glows. Dark Cyber theme remains the default. |
+| 2026-06-18 | HERO_PROFILE_PHOTO | Integrated the professional profile photo in the Hero Section. Created a premium rounded card with a browser header, verified status badge, and custom career tags. Implemented theme overrides, synced floating animations, and verified responsive stacked layouts on tablet/mobile. |
 
 ---
 
 # Last Action Performed
 
-**Theme System Enhancement — Professional Light Mode — COMPLETE**
-Added a full professional Light Mode theme system across the entire portfolio website while preserving the existing Dark Cyber theme as the default.
+**Hero Profile Photo Integration — COMPLETE**
+Integrated the professional profile photo of Mohammed Al-Mahjani into the Hero Section.
 
-- **`css/style.css`**: Added `[data-theme="light"]` CSS custom property overrides redefining all backgrounds, text, accent, border, glow, and shadow tokens. Added component-level overrides for every section (Navbar, Hero, Net-Ops Panel, About, Skills, Projects, Sam-Smart Showcase, Network Labs, Experience Timeline, Certificates, Contact, Footer), all interactive components (buttons, badges, forms, lightbox, scrollbar, focus states), and the new `.theme-toggle` button with sun/moon icon animation.
-- **`css/animations.css`**: Replaced hardcoded neon rgba values in `glowPulseGreen` and `floatUpDownCard` keyframes with CSS custom properties (`--glow-pulse-green-from`, `--glow-pulse-green-to`, `--shadow-card-float-0`, `--shadow-card-float-50`) for theme-aware animation glows.
-- **`css/responsive.css`**: Added `max-width: 480px` styles for compact theme toggle sizing on small mobile screens.
-- **`js/main.js`**: Added `initThemeToggle()` which reads `data-theme` from `<html>`, toggles between light/dark on click, saves to `localStorage`, updates the button's `aria-label`, and dispatches a `themechange` event. Updated `initNetworkBackground()` to maintain two color palettes (`COLORS_DARK` / `COLORS_LIGHT`) and respond to `themechange` by reassigning node colors.
-- **`index.html`**: Theme toggle button and FOUC-prevention script were already present and confirmed correct.
-- **Theme Storage**: User preference is stored in `localStorage` under the key `"theme"`. If no preference exists, the system preference (`prefers-color-scheme`) is respected. Dark Mode is the default if neither is set.
+- **`index.html`**: Added the `.profile-card` HTML structure inside `.hero-visual-container`, stacked above the network operations panel.
+- **`css/style.css`**: Updated `.hero-visual-container` to stack elements vertically with custom spacing (`flex-direction: column`, `gap: var(--space-6)`). Added comprehensive styling for `.profile-card` and its child elements (verified header, photo frame, live status badge, and tags). Styled hover state grayscale adjustments. Added light theme overrides to match the portfolio's color scheme.
+- **`css/animations.css`**: Configured `prefers-reduced-motion` override for `.profile-card`.
+- **Assets**: Saved and integrated `assets/images/profile.jpg` in the project.
 
 ---
 

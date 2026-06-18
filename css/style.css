@@ -362,6 +362,36 @@
   color: var(--color-text-muted);
 }
 
+/* --- PROFILE CARD (hero right side) --- */
+[data-theme="light"] .profile-card {
+  background: rgba(230, 233, 242, 0.90);
+  border-color: var(--color-border-active);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 111, 138, 0.06);
+}
+
+[data-theme="light"] .profile-card-header {
+  background: rgba(0, 111, 138, 0.05);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .profile-card-title {
+  color: var(--color-accent-cyan);
+}
+
+[data-theme="light"] .profile-badge {
+  background: rgba(230, 233, 242, 0.90);
+  border-color: var(--color-border);
+  color: var(--color-accent-green);
+}
+
+[data-theme="light"] .profile-card-footer {
+  background: rgba(230, 233, 242, 0.50);
+}
+
+[data-theme="light"] .profile-tag {
+  color: var(--color-text-secondary);
+}
+
 /* --- NET OPS PANEL (hero right side) --- */
 [data-theme="light"] .net-ops-panel {
   background: rgba(230, 233, 242, 0.90);
@@ -1966,8 +1996,11 @@ pre,
 .hero-visual-container {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--space-6);
+  width: 100%;
 }
 
 /* Pure CSS Network Canvas Background */
@@ -2052,6 +2085,124 @@ pre,
   width: 55%;
   height: 1px;
   transform: rotate(-110deg);
+}
+
+/* ── Profile Card ─────────────────────────────────────────── */
+.profile-card {
+  width: 100%;
+  max-width: 280px;
+  background: rgba(13, 21, 38, 0.78);
+  border: 1px solid var(--color-border-active);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 212, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+  animation: floatUpDownCard 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: -0.8s; /* offset phase from net-ops-panel */
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.profile-card:hover {
+  border-color: var(--color-accent-cyan);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.60),
+    0 0 15px rgba(0, 212, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.profile-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: rgba(0, 212, 255, 0.06);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.profile-card-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.profile-card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.profile-card-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-accent-cyan);
+  letter-spacing: 0.12em;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 686 / 1024;
+  overflow: hidden;
+  background: #090e1a;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter var(--transition-normal);
+  filter: grayscale(15%) contrast(105%);
+}
+
+.profile-card:hover .profile-image {
+  filter: grayscale(0%) contrast(105%);
+}
+
+.profile-badge {
+  position: absolute;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(9, 14, 26, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--color-border-active);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: 9px;
+  color: var(--color-accent-green);
+  letter-spacing: 0.08em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.profile-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1.5);
+  padding: var(--space-4);
+  background: rgba(9, 14, 26, 0.4);
+}
+
+.profile-tag {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.profile-tag::before {
+  content: '>';
+  color: var(--color-accent-green);
+  font-weight: bold;
 }
 
 /* ── Network Operations Panel ─────────────────────────────── */
