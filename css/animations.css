@@ -17,13 +17,13 @@
   50% { opacity: 1; }
 }
 
-/* Green status indicator pulsing */
+/* Green status indicator pulsing — uses CSS vars for theme-awareness */
 @keyframes glowPulseGreen {
   from {
-    box-shadow: 0 0 10px rgba(0, 255, 157, 0.4), 0 0 20px rgba(0, 255, 157, 0.2);
+    box-shadow: var(--glow-pulse-green-from);
   }
   to {
-    box-shadow: 0 0 18px rgba(0, 255, 157, 0.8), 0 0 30px rgba(0, 255, 157, 0.4);
+    box-shadow: var(--glow-pulse-green-to);
   }
 }
 
@@ -45,19 +45,19 @@
   100% { transform: translate(0px,   0px);   }
 }
 
-/* Floating effect for Network Operations Panel — smooth sinusoidal float */
+/* Floating effect for Network Operations Panel — uses CSS vars for theme-awareness */
 @keyframes floatUpDownCard {
   0%   {
     transform: translateY(0px);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 212, 255, 0.06);
+    box-shadow: var(--shadow-card-float-0);
   }
   50%  {
     transform: translateY(-10px);
-    box-shadow: 0 34px 70px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 212, 255, 0.08);
+    box-shadow: var(--shadow-card-float-50);
   }
   100% {
     transform: translateY(0px);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 212, 255, 0.06);
+    box-shadow: var(--shadow-card-float-0);
   }
 }
 

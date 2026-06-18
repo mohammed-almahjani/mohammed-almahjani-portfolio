@@ -30,8 +30,18 @@
    ------------------------------------------------------------- */
 
 @media (max-width: 480px) {
-  /* To be built in Phase 9 */
+  /* Theme toggle: ensure tight fit on small screens */
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Ensure nav right side (toggle + hamburger) flex nicely */
+  #main-nav {
+    gap: 0.5rem;
+  }
 }
+
 
 
 /* -------------------------------------------------------------

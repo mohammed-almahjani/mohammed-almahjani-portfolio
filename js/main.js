@@ -443,6 +443,61 @@ function initContactForm() {
 
 
 // -----------------------------------------------------------------------
+// 4.5 THEME TOGGLE — Light / Dark Mode
+// -----------------------------------------------------------------------
+
+/**
+ * Reads the current theme from the <html> data attribute,
+ * updates the toggle button's aria-label and active state,
+ * and saves the preference to localStorage.
+ *
+ * Theme priority:
+ *   1. Saved preference in localStorage ("theme" key)
+ *   2. System preference (prefers-color-scheme)
+ *   3. Default: dark
+ */
+function initThemeToggle() {
+  const toggleBtn   = document.getElementById('theme-toggle');
+  const htmlEl      = document.documentElement;
+
+  if (!toggleBtn) return;
+
+  /* --- Determine initial theme (FOUC script in <head> already set it) --- */
+  const getTheme = () => htmlEl.getAttribute('data-theme') || 'dark';
+
+  /* --- Apply theme attribute to <html> and save to localStorage --- */
+  function applyTheme(theme) {
+    htmlEl.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateToggleState(theme);
+
+    /* Notify canvas to refresh its color palette */
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+  }
+
+  /* --- Keep toggle button aria-label and icon in sync --- */
+  function updateToggleState(theme) {
+    if (theme === 'light') {
+      toggleBtn.setAttribute('aria-label', 'Switch to Dark Mode');
+      toggleBtn.setAttribute('title', 'Switch to Dark Mode');
+    } else {
+      toggleBtn.setAttribute('aria-label', 'Switch to Light Mode');
+      toggleBtn.setAttribute('title', 'Switch to Light Mode');
+    }
+  }
+
+  /* --- Click handler --- */
+  toggleBtn.addEventListener('click', () => {
+    const current = getTheme();
+    applyTheme(current === 'light' ? 'dark' : 'light');
+  });
+
+  /* --- Init state sync (theme may already be set by FOUC script) --- */
+  updateToggleState(getTheme());
+}
+
+
+// -----------------------------------------------------------------------
 // 5. FOOTER — DYNAMIC YEAR
 // -----------------------------------------------------------------------
 function setFooterYear() {
@@ -530,11 +585,31 @@ function initNetworkBackground() {
   let particles = [];
   let pulses = [];
 
-  const COLORS = [
-    'rgba(0, 212, 255, $opacity)', // Cyan
-    'rgba(0, 255, 157, $opacity)', // Green
+  /* Colour palettes — switched on theme */
+  const COLORS_DARK = [
+    'rgba(0, 212, 255, $opacity)',  // Cyan
+    'rgba(0, 255, 157, $opacity)',  // Green
     'rgba(26, 110, 247, $opacity)'  // Blue
   ];
+
+  const COLORS_LIGHT = [
+    'rgba(0, 111, 138, $opacity)',  // Deep teal
+    'rgba(26, 122, 82, $opacity)',  // Forest green
+    'rgba(21, 82, 204, $opacity)'   // Navy blue
+  ];
+
+  const getColors = () =>
+    document.documentElement.getAttribute('data-theme') === 'light'
+      ? COLORS_LIGHT
+      : COLORS_DARK;
+
+  /* When theme changes, re-assign node colors and re-render */
+  window.addEventListener('themechange', () => {
+    const palette = getColors();
+    nodes.forEach(node => {
+      node.color = palette[Math.floor(Math.random() * palette.length)];
+    });
+  });
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -559,6 +634,8 @@ function initNetworkBackground() {
     nodes = [];
     particles = [];
     pulses = [];
+
+    const COLORS = getColors();
 
     // Density-based count
     const nodeCount = Math.min(32, Math.max(12, Math.floor((width * height) / 40000)));
@@ -773,6 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNetworkBackground();
   initStickyNavbar();
   initMobileMenu();
+  initThemeToggle();       // Theme toggle — must run before first paint decisions
   initActiveLinkHighlighting();
   initScrollReveal();
   loadSkills();        // Retrieve and render technical skills data

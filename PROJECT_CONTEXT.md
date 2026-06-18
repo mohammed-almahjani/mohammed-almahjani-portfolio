@@ -18,6 +18,8 @@ Owner: Mohammed Al-Mahjani (placeholder — to be confirmed).
 **Current Phase**: Phase 4 — SEO & Final Polish
 Validating final SEO metadata tags, reviewing accessibility (A11y), and running performance optimization checks.
 
+**Previous Phase Completed**: Theme System Enhancement — Light Mode / Dark Mode Toggle added.
+
 **Next Phase**: None (Final Polish Stage)
 
 ---
@@ -92,6 +94,7 @@ portfolio-website/                  ← root of the project
 - [x] Completed Phase 3D: Experience Section Timeline — designed and built a premium vertical timeline layout in `index.html` showcasing professional experience (database assistant role + network infrastructure deployment). Configured node pulse keyframe animations in `css/animations.css`, styling in `css/style.css` (alternating desktop layout, responsive tablet/mobile stacking, glowing hover states, custom date badges), and scroll-reveal triggers.
 - [x] Completed Phase 3E: Certificates Section — designed and built premium dynamic certification cards in `index.html` and `js/main.js` supporting CCNA (Cisco), MikroTik Certification (MikroTik), MCSA (Microsoft), CompTIA A+ (CompTIA), and ICDL (ICDL Foundation). Implemented dynamic loading with fetch and offline local data fallback, custom inline SVG icons, responsive grid layout (3 columns on desktop, 2 on tablet, 1 on mobile) in `css/style.css`, and scroll-reveal triggers.
 - [x] Completed Phase 3F: Recruiter-focused Contact Section — designed and built a grid of 5 premium contact cards (Email, GitHub, LinkedIn, Resume, Portfolio) with hover glow effects, customized icons, and external link indicators, as well as a career availability CTA block at the bottom of the section.
+- [x] Completed Theme System Enhancement — Professional Light Mode: Added a full `[data-theme="light"]` CSS variable override system in `css/style.css` covering every section, component, and interactive element. Theme toggle button added in the navbar (sun/moon SVG icons). `initThemeToggle()` logic added to `js/main.js` with localStorage persistence and system preference fallback. Network background canvas colors branch per theme via `themechange` custom event. Dark Cyber theme remains the default. Theme preference persists across page reloads.
 
 ---
 
@@ -107,9 +110,10 @@ portfolio-website/                  ← root of the project
 |---|---|---|
 | Framework | None (Vanilla HTML/CSS/JS) | Clean, no dependencies, full control |
 | CSS preprocessor | None | Keep it simple and portable |
-| Theme | Premium Dark Cyber | Reflects cybersecurity domain |
+| Theme | Premium Dark Cyber (default) + Professional Light Mode | Reflects cybersecurity domain; light mode for recruiter viewing |
+| Theme Switching | `[data-theme="light"]` on `<html>`, `localStorage` persistence | Zero-flicker via inline FOUC script in `<head>`; system preference fallback |
 | Layout | Single Page Application (SPA-style) | Smooth user experience |
-| Color direction | Deep dark navy/black + cyan/green accents | Cyber aesthetic |
+| Color direction | Deep dark navy/black + cyan/green accents (dark) / Off-white + teal/navy (light) | Cyber aesthetic; professional light palette |
 | Font direction | Monospace for accents + sans-serif for body | Professional & thematic |
 | Data storage | JSON files | Separation of content from presentation |
 | Images | Real assets only | No placeholder/fake images |
@@ -155,13 +159,21 @@ portfolio-website/                  ← root of the project
 | 2026-06-15 | EXPERIENCE_TIMELINE | Designed and built a premium vertical timeline in `index.html`, styled with responsive CSS (alternating on desktop, single-column on mobile) in `style.css`, configured node pulse animations in `animations.css`, and verified scroll-reveal triggers. |
 | 2026-06-15 | CERTIFICATES_SECTION | Implemented dynamic rendering of certificates in `js/main.js` (with local constant fallback), custom inline SVGs for Cisco, MikroTik, Microsoft, CompTIA, and ICDL, styled with responsive premium grid in `css/style.css`, updated title/subtitle in `index.html`, and verified scroll reveal. |
 | 2026-06-15 | CONTACT_CARDS | Designed and built recruiter-focused contact section with responsive 5-card grid, hover glow states, and career availability CTA block. Modified js/main.js to dynamically resolve portfolio origin link. |
+| 2026-06-15 | LIGHT_MODE_THEME | Added Professional Light Mode theme system. Created `[data-theme="light"]` CSS token overrides in `css/style.css` covering all sections, cards, badges, buttons, nav, footer, lightbox, and scrollbar. Added `.theme-toggle` navbar button with sun/moon icons. Added `initThemeToggle()` to `js/main.js` with localStorage persistence, system preference fallback, and `themechange` custom event for canvas palette update. Updated `css/animations.css` to use CSS variables in keyframes for theme-aware glows. Dark Cyber theme remains the default. |
 
 ---
 
 # Last Action Performed
 
-**Premium Recruiter-Focused Contact Section — COMPLETE**
-Designed and built a recruiter-focused Contact section replacing the traditional contact form. Built a responsive 5-card grid container (`.contact-grid`) containing cards for Email, GitHub, LinkedIn, Resume, and Portfolio, with cyber hover glow effects, customized icons, and external link indicators. Implemented a career availability CTA block (`.contact-cta-block`) at the bottom. Modified `initContactForm()` in `js/main.js` to dynamically set the portfolio site link's `href` to `window.location.origin` for production deployment.
+**Theme System Enhancement — Professional Light Mode — COMPLETE**
+Added a full professional Light Mode theme system across the entire portfolio website while preserving the existing Dark Cyber theme as the default.
+
+- **`css/style.css`**: Added `[data-theme="light"]` CSS custom property overrides redefining all backgrounds, text, accent, border, glow, and shadow tokens. Added component-level overrides for every section (Navbar, Hero, Net-Ops Panel, About, Skills, Projects, Sam-Smart Showcase, Network Labs, Experience Timeline, Certificates, Contact, Footer), all interactive components (buttons, badges, forms, lightbox, scrollbar, focus states), and the new `.theme-toggle` button with sun/moon icon animation.
+- **`css/animations.css`**: Replaced hardcoded neon rgba values in `glowPulseGreen` and `floatUpDownCard` keyframes with CSS custom properties (`--glow-pulse-green-from`, `--glow-pulse-green-to`, `--shadow-card-float-0`, `--shadow-card-float-50`) for theme-aware animation glows.
+- **`css/responsive.css`**: Added `max-width: 480px` styles for compact theme toggle sizing on small mobile screens.
+- **`js/main.js`**: Added `initThemeToggle()` which reads `data-theme` from `<html>`, toggles between light/dark on click, saves to `localStorage`, updates the button's `aria-label`, and dispatches a `themechange` event. Updated `initNetworkBackground()` to maintain two color palettes (`COLORS_DARK` / `COLORS_LIGHT`) and respond to `themechange` by reassigning node colors.
+- **`index.html`**: Theme toggle button and FOUC-prevention script were already present and confirmed correct.
+- **Theme Storage**: User preference is stored in `localStorage` under the key `"theme"`. If no preference exists, the system preference (`prefers-color-scheme`) is respected. Dark Mode is the default if neither is set.
 
 ---
 
