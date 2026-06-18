@@ -170,6 +170,7 @@
           </div>
         </div>
 
+        <!-- Right: Professional Profile Photo Card only -->
         <div class="hero-visual-container reveal fade-in-right">
           <!-- Cyber Network Node Visualizer (Pure CSS) -->
           <div class="network-canvas" aria-hidden="true">
@@ -202,11 +203,13 @@
             <div class="profile-card-footer text-mono">
               <div class="profile-tag">Network Engineer</div>
               <div class="profile-tag">Cybersecurity Focus</div>
-              <div class="profile-tag">Infrastructure & Systems</div>
+              <div class="profile-tag">Infrastructure &amp; Systems</div>
             </div>
           </div>
+        </div>
 
-          <!-- Network Operations Panel -->
+        <!-- Full-width bottom row: NET_OPS_PANEL as supporting technical dashboard -->
+        <div class="hero-panel-row reveal fade-in-up reveal--delay-2">
           <div class="net-ops-panel" aria-label="Network Operations Status Panel">
             <!-- Panel Header -->
             <div class="nop-header">
@@ -268,23 +271,25 @@
               </div>
             </div>
 
-            <!-- Block 3: Interface Status -->
-            <div class="nop-block">
+            <!-- Block 3: Interface Status — laid out horizontally in 3 columns on desktop -->
+            <div class="nop-block nop-block--iface-row">
               <div class="nop-block-label text-mono">INTERFACE STATUS</div>
-              <div class="nop-iface-row">
-                <span class="nop-iface-name text-mono">Gi0/0</span>
-                <span class="nop-iface-desc">Uplink → ISP</span>
-                <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
-              </div>
-              <div class="nop-iface-row">
-                <span class="nop-iface-name text-mono">Gi0/1</span>
-                <span class="nop-iface-desc">Trunk → SW-CORE</span>
-                <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
-              </div>
-              <div class="nop-iface-row">
-                <span class="nop-iface-name text-mono">Gi0/2</span>
-                <span class="nop-iface-desc">Link → BRANCH</span>
-                <span class="nop-iface-state nop-iface-state--down">DOWN</span>
+              <div class="nop-iface-grid">
+                <div class="nop-iface-row">
+                  <span class="nop-iface-name text-mono">Gi0/0</span>
+                  <span class="nop-iface-desc">Uplink → ISP</span>
+                  <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
+                </div>
+                <div class="nop-iface-row">
+                  <span class="nop-iface-name text-mono">Gi0/1</span>
+                  <span class="nop-iface-desc">Trunk → SW-CORE</span>
+                  <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
+                </div>
+                <div class="nop-iface-row">
+                  <span class="nop-iface-name text-mono">Gi0/2</span>
+                  <span class="nop-iface-desc">Link → BRANCH</span>
+                  <span class="nop-iface-state nop-iface-state--down">DOWN</span>
+                </div>
               </div>
             </div>
 

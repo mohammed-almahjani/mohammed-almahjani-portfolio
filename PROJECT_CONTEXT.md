@@ -18,7 +18,7 @@ Owner: Mohammed Al-Mahjani (placeholder — to be confirmed).
 **Current Phase**: Phase 4 — SEO & Final Polish
 Validating final SEO metadata tags, reviewing accessibility (A11y), and running performance optimization checks.
 
-**Previous Phase Completed**: Professional Hero Enhancement — Profile Photo Integration completed.
+**Previous Phase Completed**: Hero Section Layout Refinement — NET_OPS_PANEL moved to full-width panel row below the hero text/photo columns.
 
 **Next Phase**: None (Final Polish Stage)
 
@@ -96,6 +96,7 @@ portfolio-website/                  ← root of the project
 - [x] Completed Phase 3F: Recruiter-focused Contact Section — designed and built a grid of 5 premium contact cards (Email, GitHub, LinkedIn, Resume, Portfolio) with hover glow effects, customized icons, and external link indicators, as well as a career availability CTA block at the bottom of the section.
 - [x] Completed Theme System Enhancement — Professional Light Mode: Added a full `[data-theme="light"]` CSS variable override system in `css/style.css` covering every section, component, and interactive element. Theme toggle button added in the navbar (sun/moon SVG icons). `initThemeToggle()` logic added to `js/main.js` with localStorage persistence and system preference fallback. Network background canvas colors branch per theme via `themechange` custom event. Dark Cyber theme remains the default. Theme preference persists across page reloads.
 - [x] Completed Professional Hero Enhancement — Profile Photo Integration: Integrated Mohammed Al-Mahjani's real professional profile photo in a premium glassmorphic verified terminal card styled similarly to the OSPF Network Operations Panel, synchronized their floating animations, and styled theme overrides and responsive behaviors.
+- [x] Completed Hero Section Layout Refinement — Restructured the Hero grid to a CSS grid-template-areas layout (2 rows): top row has Hero text (left) and Profile photo card (right); bottom row spans full width with the NET_OPS_PANEL as a horizontal three-column technical dashboard. Profile photo card and text are now top-aligned. Mobile stacks Hero text → Photo → OSPF panel cleanly.
 
 ---
 
@@ -162,18 +163,17 @@ portfolio-website/                  ← root of the project
 | 2026-06-15 | CONTACT_CARDS | Designed and built recruiter-focused contact section with responsive 5-card grid, hover glow states, and career availability CTA block. Modified js/main.js to dynamically resolve portfolio origin link. |
 | 2026-06-15 | LIGHT_MODE_THEME | Added Professional Light Mode theme system. Created `[data-theme="light"]` CSS token overrides in `css/style.css` covering all sections, cards, badges, buttons, nav, footer, lightbox, and scrollbar. Added `.theme-toggle` navbar button with sun/moon icons. Added `initThemeToggle()` to `js/main.js` with localStorage persistence, system preference fallback, and `themechange` custom event for canvas palette update. Updated `css/animations.css` to use CSS variables in keyframes for theme-aware glows. Dark Cyber theme remains the default. |
 | 2026-06-18 | HERO_PROFILE_PHOTO | Integrated the professional profile photo in the Hero Section. Created a premium rounded card with a browser header, verified status badge, and custom career tags. Implemented theme overrides, synced floating animations, and verified responsive stacked layouts on tablet/mobile. |
+| 2026-06-18 | HERO_LAYOUT_REFINE | Restructured Hero grid to CSS grid-template-areas: top row = Hero text (left) + Profile photo (right); bottom row = NET_OPS_PANEL spanning full width as a three-column technical dashboard. Profile card is top-aligned with Hero text. Mobile stacks Hero text → Photo → Panel. |
 
 ---
 
 # Last Action Performed
 
-**Hero Profile Photo Integration — COMPLETE**
-Integrated the professional profile photo of Mohammed Al-Mahjani into the Hero Section.
+**Hero Section Layout Refinement — COMPLETE**
+Restructured the Hero section to achieve a balanced, professional, recruiter-friendly layout.
 
-- **`index.html`**: Added the `.profile-card` HTML structure inside `.hero-visual-container`, stacked above the network operations panel.
-- **`css/style.css`**: Updated `.hero-visual-container` to stack elements vertically with custom spacing (`flex-direction: column`, `gap: var(--space-6)`). Added comprehensive styling for `.profile-card` and its child elements (verified header, photo frame, live status badge, and tags). Styled hover state grayscale adjustments. Added light theme overrides to match the portfolio's color scheme.
-- **`css/animations.css`**: Configured `prefers-reduced-motion` override for `.profile-card`.
-- **Assets**: Saved and integrated `assets/images/profile.jpg` in the project.
+- **`index.html`**: Moved `.net-ops-panel` out of `.hero-visual-container` into a new `.hero-panel-row` sibling div. Interface Status block now wrapped in `.nop-iface-grid`. The `.hero-visual-container` now holds only the profile card.
+- **`css/style.css`**: Converted `.hero-grid` to `grid-template-areas` with two rows: `'content photo'` (top) and `'panel panel'` (full-width bottom). Set `align-items: start` + `padding-top: nav-height + space-10` for correct top offset. Added `.hero-panel-row` with horizontal three-column OSPF layout on desktop. Removed `display: flex` from `.section--hero` (the grid controls its own flow). Responsive `@media (max-width: 992px)` collapses to single-column stack: Hero text → Photo → Panel.
 
 ---
 

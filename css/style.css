@@ -1888,9 +1888,6 @@ pre,
 .section--hero {
   padding-block: 0;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   /* Transparent — the canvas background shows through.
      A very subtle dark vignette at top-left keeps text readable. */
   background: radial-gradient(
@@ -1900,6 +1897,7 @@ pre,
     transparent 100%
   );
   border-bottom: 1px solid var(--color-border);
+  position: relative; /* needed for scroll indicator absolute positioning */
 }
 
 
@@ -1910,13 +1908,20 @@ pre,
 .hero-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-  gap: var(--space-12);
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'content  photo'
+    'panel    panel';
+  align-items: start;
+  column-gap: var(--space-12);
+  row-gap: var(--space-10);
   width: 100%;
-  margin-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + var(--space-10));
+  padding-bottom: var(--space-12);
 }
 
 .hero-content {
+  grid-area: content;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1994,12 +1999,19 @@ pre,
 }
 
 .hero-visual-container {
+  grid-area: photo;
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: var(--space-6);
+  width: 100%;
+}
+
+/* Full-width panel row below the two-column hero row */
+.hero-panel-row {
+  grid-area: panel;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 
@@ -2090,7 +2102,7 @@ pre,
 /* ── Profile Card ─────────────────────────────────────────── */
 .profile-card {
   width: 100%;
-  max-width: 280px;
+  max-width: 300px;
   background: rgba(13, 21, 38, 0.78);
   border: 1px solid var(--color-border-active);
   border-radius: var(--radius-lg);
@@ -2206,6 +2218,30 @@ pre,
 }
 
 /* ── Network Operations Panel ─────────────────────────────── */
+/* In hero-panel-row the panel expands to full container width */
+.hero-panel-row .net-ops-panel {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  animation: none; /* panel row doesn't float — it's anchored */
+}
+
+.hero-panel-row .nop-header {
+  grid-column: 1 / -1;
+}
+
+.hero-panel-row .nop-footer {
+  grid-column: 1 / -1;
+}
+
+/* nop-iface-grid wraps the 3 interface rows horizontally */
+.nop-iface-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
 .net-ops-panel {
   width: 100%;
   max-width: 500px;
@@ -2476,13 +2512,18 @@ pre,
   color: var(--color-text-muted);
 }
 
-/* Mobile responsive adjustments for Hero Grid */
+/* Tablet responsive adjustments for Hero Grid */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-12);
-    margin-top: calc(var(--nav-height) + var(--space-8));
-    padding-bottom: var(--space-16);
+    grid-template-areas:
+      'content'
+      'photo'
+      'panel';
+    column-gap: 0;
+    row-gap: var(--space-8);
+    padding-top: calc(var(--nav-height) + var(--space-6));
+    padding-bottom: var(--space-12);
   }
 
   .hero-content {
@@ -2500,6 +2541,19 @@ pre,
 
   .terminal-card {
     margin-inline: auto;
+  }
+
+  .hero-visual-container {
+    justify-content: center;
+  }
+
+  .profile-card {
+    max-width: 300px;
+  }
+
+  /* On tablet/mobile, stack OSPF panel blocks vertically */
+  .hero-panel-row .net-ops-panel {
+    grid-template-columns: 1fr;
   }
 }
 
