@@ -536,17 +536,17 @@ function initNetworkBackground() {
   let particles = [];
   let pulses = [];
 
-  /* Colour palettes — switched on theme */
+  /* Colour palettes — switched on theme (Warm Obsidian/Gold vs Editorial Beige/Bronze) */
   const COLORS_DARK = [
-    'rgba(0, 212, 255, $opacity)',  // Cyan
-    'rgba(0, 255, 157, $opacity)',  // Green
-    'rgba(26, 110, 247, $opacity)'  // Blue
+    'rgba(223, 163, 58, $opacity)',   // Warm Amber Gold (#DFA33A)
+    'rgba(200, 182, 158, $opacity)',  // Champagne Sand (#C8B69E)
+    'rgba(154, 123, 86, $opacity)'    // Muted Bronze (#9A7B56)
   ];
 
   const COLORS_LIGHT = [
-    'rgba(0, 111, 138, $opacity)',  // Deep teal
-    'rgba(26, 122, 82, $opacity)',  // Forest green
-    'rgba(21, 82, 204, $opacity)'   // Navy blue
+    'rgba(155, 101, 20, $opacity)',   // Deep Bronze (#9B6514)
+    'rgba(122, 115, 103, $opacity)',  // Warm Taupe (#7A7367)
+    'rgba(120, 90, 40, $opacity)'     // Antique Bronze (#785A28)
   ];
 
   const getColors = () =>
@@ -710,11 +710,14 @@ function initNetworkBackground() {
       }
     }
 
-    // Draw Particles
+    // Draw Particles (theme-aware warm aura)
+    const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
     particles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 212, 255, ${p.opacity})`;
+      ctx.fillStyle = isLightMode
+        ? `rgba(155, 101, 20, ${p.opacity * 0.7})`
+        : `rgba(223, 163, 58, ${p.opacity * 0.7})`;
       ctx.fill();
     });
 

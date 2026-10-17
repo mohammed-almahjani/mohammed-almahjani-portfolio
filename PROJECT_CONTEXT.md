@@ -110,13 +110,32 @@ portfolio-website/                  ← root of the project
 |---|---|---|
 | Framework | None (Vanilla HTML/CSS/JS) | Clean, no dependencies, full control |
 | CSS preprocessor | None | Keep it simple and portable |
-| Theme | Premium Dark Cyber (default) + Professional Light Mode | Reflects cybersecurity domain; light mode for recruiter viewing |
+| Theme | Luxury Industrial Tech: Warm Obsidian & Muted Gold (default) + Editorial Warm Beige & Bronze (light) | Calm, sophisticated executive tech aesthetic; recruiter-friendly luxury contrast |
 | Theme Switching | `[data-theme="light"]` on `<html>`, `localStorage` persistence | Zero-flicker via inline FOUC script in `<head>`; system preference fallback |
 | Layout | Single Page Application (SPA-style) | Smooth user experience |
-| Color direction | Deep dark navy/black + cyan/green accents (dark) / Off-white + teal/navy (light) | Cyber aesthetic; professional light palette |
+| Color direction | Warm Obsidian (`#0E0E10`) + Muted Amber Gold (`#DFA33A`) + Champagne Sand (`#C8B69E`) (dark) / Editorial Warm Ivory (`#F5F0E6`) + Rich Bronze (`#9B6514`) + Warm Taupe (light) | Luxury Industrial Tech aesthetic; zero harsh neon artifacts |
 | Font direction | Monospace for accents + sans-serif for body | Professional & thematic |
 | Data storage | JSON files | Separation of content from presentation |
 | Images | Real assets only | No placeholder/fake images |
+
+### Design Tokens Reference Table
+
+| Token Name | Dark Mode (Default `:root`) | Light Mode (`[data-theme="light"]`) | Scope & Visual Role |
+|---|---|---|---|
+| `--color-bg-primary` | `#0E0E10` (Matte Warm Obsidian) | `#F5F0E6` (Warm Editorial Ivory) | Viewport & document base background |
+| `--color-bg-secondary` | `#151518` (Dark Velvet Card Surface) | `#EBE4D6` (Soft Sand Surface) | Cards, panels, elevated sections |
+| `--color-bg-tertiary` | `#1D1D21` (Elevated Surface) | `#E0D7C5` (Elevated Sand) | Hover states, pill tracks, chips |
+| `--color-bg-overlay` | `rgba(14, 14, 16, 0.88)` | `rgba(245, 240, 230, 0.92)` | Sticky navbar glass & modal overlays |
+| `--color-accent-cyan` | `#DFA33A` (Warm Amber Gold) | `#9B6514` (Rich Bronze) | Primary CTA buttons, key highlights, active nav |
+| `--color-accent-green`| `#C8B69E` (Muted Champagne Sand) | `#785A28` (Warm Antique Bronze) | Secondary accents, tags, learning outcomes |
+| `--color-accent-purple`| `#9A7B56` (Warm Bronze / Umber) | `#6B5335` (Deep Earthy Umber) | Tertiary indicators, timeline accents |
+| `--color-accent-blue` | `#C68B2C` (Deep Rich Gold) | `#B5781A` (Warm Ochre) | Secondary highlights, gradient endpoints |
+| `--color-status-online`| `#5E9E6E` (Calm Sage/Olive Green) | `#467B54` (Subtle Olive Green) | Semantic verified/online/active indicators |
+| `--color-text-primary`| `#F4EFE6` (Soft Warm Alabaster) | `#181715` (Deep Espresso Charcoal) | Headings, hero name, primary text |
+| `--color-text-secondary`| `#A6A095` (Warm Stone Grey-Beige) | `#4A463F` (Warm Dark Slate-Brown) | Body copy, descriptions, subtitles |
+| `--color-text-muted`  | `#6E695F` (Muted Warm Umber-Grey) | `#7A7367` (Muted Warm Taupe) | Footers, labels, placeholders |
+| `--color-border`      | `rgba(223, 163, 58, 0.14)` | `rgba(155, 101, 20, 0.16)` | Subtle hairline borders |
+| `--color-border-active`| `rgba(223, 163, 58, 0.38)` | `rgba(155, 101, 20, 0.35)` | Active/hover interactive borders |
 
 > ⚠️ **CRITICAL: Design decisions in the table above are FROZEN and MUST NOT be changed under any circumstances.**
 
@@ -163,21 +182,24 @@ portfolio-website/                  ← root of the project
 | 2026-06-18 | HERO_PROFILE_PHOTO | Integrated the professional profile photo in the Hero Section. Created a premium rounded card with a browser header, verified status badge, and custom career tags. Implemented theme overrides, synced floating animations, and verified responsive stacked layouts on tablet/mobile. |
 | 2026-06-18 | HERO_LAYOUT_REFINE | Restructured Hero grid to CSS grid-template-areas: top row = Hero text (left) + Profile photo (right); bottom row = NET_OPS_PANEL spanning full width as a three-column technical dashboard. Profile card is top-aligned with Hero text. Mobile stacks Hero text → Photo → Panel. |
 | 2026-10-17 | CLEANUP_SPRINT | Executed surgical cleanup: fixed malformed and generic URLs, populated og:image and twitter:image meta tags, configured verified security.txt contact, synchronized projects and skills data mirrors, populated certificates.json, and removed dead files (animations.js, network-bg.js). |
+| 2026-10-17 | THEME_OVERHAUL | Executed complete visual overhaul: replaced legacy cyan/green cyber theme with Luxury Industrial Tech palette (Warm Obsidian #0E0E10, Muted Amber Gold #DFA33A, Champagne Sand #C8B69E, Editorial Warm Beige #F5F0E6, Rich Bronze #9B6514, and Calm Sage #5E9E6E for status dots). Purged all 218 legacy hardcoded neon RGB/hex occurrences across CSS, refined keyframe animations, updated buttons, skill bars, and re-themed procedural network canvas background. |
 
 ---
 
 # Last Action Performed
 
-**Bugfix, Data Synchronization, and Technical Debt Cleanup — COMPLETE**
-- **URLs**: Fixed malformed GitHub URL in `main.js`; mapped Hero CTA buttons to exact profiles (`https://github.com/mohammed-almahjani` and `https://www.linkedin.com/in/mohammed-al-mohjani/`).
-- **Security & SEO**: Configured RFC 9116 verified security contact in `.well-known/security.txt` and set future expiration date; populated `og:image` and `twitter:image` with `assets/images/profile.jpg`.
-- **Data Synchronization**: Synchronized `data/certificates.json` with active certification cards; synchronized `data/projects.json` and `data/projects-data.js` matching real screenshots (`smartsam-login.png`, `grocerycards-dashboard.png`); synchronized `data/skills.json` and `data/skills-data.js`.
-- **Dead Code Pruning**: Removed unreferenced `<script src="js/animations.js"></script>` from `index.html`; deleted dead files `js/animations.js` and orphaned `js/network-bg.js`.
+**Luxury Industrial Tech Theme Overhaul — COMPLETE**
+- **Root Tokens Overhaul**: Transformed `:root` to Warm Obsidian & Muted Amber Gold, and `[data-theme="light"]` to Editorial Warm Beige & Bronze.
+- **Purged Neon Artifacts**: Completely eliminated all legacy cyan (`#00d4ff`, `rgba(0, 212, 255, ...)`), neon green (`#00ff9d`, `rgba(0, 255, 157, ...)`), and deep navy (`#090e1a`, `#0d1526`, `rgba(9, 14, 26, ...)`) values across `css/style.css` and `css/animations.css`.
+- **Canvas Re-theming**: Replaced canvas network background palette in `js/main.js` with warm amber gold, champagne sand, and muted bronze (dark) / deep bronze and warm taupe (light), with theme-aware particle styling.
+- **Component Polish**: Styled primary buttons with amber-gold fill and dark charcoal text, secondary buttons with golden-beige hairline borders, and skill progress bars with smooth dual-gold gradients.
+- **Status Semantics**: Applied calm non-neon sage/olive green (`#5E9E6E` / `#467B54`) exclusively to status dots and active indicators.
+- **SEO & Meta**: Added `<meta name="theme-color" content="#0E0E10" />` to `index.html`.
 
 ---
 
 # Next Recommended Action
 
 **Phase 4 — SEO & Final Polish**
-Final accessibility (A11y) checks, Lighthouse performance audit, and production deployment validation.
+Lighthouse performance audit, accessibility (A11y) verification, and production Netlify deployment validation.
 

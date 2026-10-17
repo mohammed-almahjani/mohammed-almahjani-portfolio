@@ -17,7 +17,7 @@
   50% { opacity: 1; }
 }
 
-/* Green status indicator pulsing — uses CSS vars for theme-awareness */
+/* Status indicator pulsing — uses CSS vars for theme-awareness */
 @keyframes glowPulseGreen {
   from {
     box-shadow: var(--glow-pulse-green-from);
@@ -205,15 +205,17 @@
   }
 }
 
-/* Timeline node pulse animation */
+/* Timeline node pulse animation — warm amber gold aura */
 @keyframes nodePulse {
   0% {
     transform: scale(1);
     opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(223, 163, 58, 0.35);
   }
   100% {
     transform: scale(1.6);
     opacity: 0;
+    box-shadow: 0 0 14px 6px rgba(223, 163, 58, 0);
   }
 }
 
