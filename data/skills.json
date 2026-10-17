@@ -16,7 +16,7 @@
     "skills": [
       { "name": "Security Fundamentals", "level": 75, "label": "Intermediate" },
       { "name": "Firewall Rules", "level": 65, "label": "Intermediate" },
-      { "name": "Threat Analysis basics", "level": 60, "label": "Competent" },
+      { "name": "Threat Analysis Basics", "level": 60, "label": "Competent" },
       { "name": "Wireshark Packet Analysis", "level": 70, "label": "Intermediate" }
     ]
   },
@@ -25,7 +25,7 @@
     "icon": "server",
     "skills": [
       { "name": "Windows Server (AD, DNS, DHCP)", "level": 75, "label": "Intermediate" },
-      { "name": "Linux basics (CLI, SSH)", "level": 65, "label": "Intermediate" }
+      { "name": "Linux Basics (CLI, SSH)", "level": 65, "label": "Intermediate" }
     ]
   },
   {
@@ -34,7 +34,7 @@
     "skills": [
       { "name": "VMware ESXi & Workstation", "level": 70, "label": "Intermediate" },
       { "name": "AWS (EC2, VPC)", "level": 60, "label": "Competent" },
-      { "name": "Firebase basics", "level": 55, "label": "Beginner" }
+      { "name": "Firebase Basics", "level": 55, "label": "Beginner" }
     ]
   },
   {

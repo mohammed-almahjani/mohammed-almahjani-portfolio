@@ -1,10 +1,10 @@
 [
   {
-    "id": "Sam-Smart",
-    "title": "Sam-Smart",
+    "id": "smart-sam",
+    "title": "Smart-SAM",
     "category": "Featured Project",
     "subnet": "Zero-Knowledge Password Manager",
-    "description": "Sam-Smart is a Zero-Knowledge Password Manager designed to provide enterprise-grade password protection while ensuring that sensitive user data remains inaccessible to the server itself.",
+    "description": "Smart-SAM is a Zero-Knowledge Password Manager designed to provide enterprise-grade password protection while ensuring that sensitive user data remains inaccessible to the server itself.",
     "longDescription": "The platform utilizes AES-256-GCM encryption, secure master-key management, key wrapping, and multi-factor authentication to protect credentials through a modern security architecture.",
     "techStack": [
       "PHP",
@@ -28,7 +28,6 @@
       "demo": ""
     },
     "thumbnail": "assets/screenshots/smartsam-login.png",
-    "architecture": "assets/screenshots/smartsam-arch.png",
     "featured": true
   },
   {
@@ -54,7 +53,7 @@
       "Role-Based Access & Management System"
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://github.com/mohammed-almahjani",
       "demo": ""
     },
     "thumbnail": "assets/screenshots/grocerycards-dashboard.png",
@@ -80,10 +79,10 @@
       "Stub Areas: Restricted LSA floods to optimize memory on branch routers."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://github.com/mohammed-almahjani",
       "demo": ""
     },
-    "thumbnail": "assets/screenshots/ospflab-thumb.png",
+    "thumbnail": "",
     "learningOutcomes": [
       "Mastered LSA flooding control and loop avoidance logic.",
       "Understood dynamic convergence metrics under link failure states.",
@@ -111,10 +110,10 @@
       "Switchport Limits: Restricted MAC addresses per port to prevent MAC-flooding attacks."
     ],
     "links": {
-      "github": "https://github",
+      "github": "https://github.com/mohammed-almahjani",
       "demo": ""
     },
-    "thumbnail": "assets/screenshots/vlanlab-thumb.png",
+    "thumbnail": "",
     "learningOutcomes": [
       "Configured robust Layer 2 switchport protections.",
       "Built and troubleshot Router-on-a-Stick gateway interfaces.",

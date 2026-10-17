@@ -146,56 +146,7 @@ function loadProjects() {
     .catch(error => {
       console.warn('Could not fetch data/projects.json dynamically, falling back to local PROJECTS_DATA:', error);
       if (typeof PROJECTS_DATA !== 'undefined') {
-        // Synchronize project properties in the fallback PROJECTS_DATA global array
-        const syncedData = PROJECTS_DATA.map(project => {
-          if (project.id === 'smart-sam' || project.id === 'Sam-Smart') {
-            return {
-              ...project,
-              id: "smart-sam", // align with json id
-              title: "Smart-SAM",
-              subnet: "Zero-Knowledge Password Manager",
-              description: "Smart-SAM is a Zero-Knowledge Password Manager designed to provide enterprise-grade password protection while ensuring that sensitive user data remains inaccessible to the server itself.",
-              longDescription: "The platform utilizes AES-256-GCM encryption, secure master-key management, key wrapping, and multi-factor authentication to protect credentials through a modern security architecture.",
-              techStack: ["PHP", "AES-256-GCM", "Cryptography", "Argon2id", "Libsodium", "Zero-Knowledge Security", "2FA", "Password Management"],
-              keyFeatures: [
-                "Zero-Knowledge Security Architecture",
-                "AES-256-GCM Encryption",
-                "Master Key & Key Wrapping System",
-                "Multi-Factor Authentication (2FA)",
-                "Secure Password Vault Management"
-              ],
-              links: {
-                github: "https://github.com/mohammed-almahjani/Smart-SAM",
-                demo: ""
-              },
-              thumbnail: "assets/screenshots/smartsam-login.png"
-            };
-          }
-          if (project.id === 'grocery-cards') {
-            return {
-              ...project,
-              title: "Grocery Cards",
-              subnet: "Mobile / Cloud-Connected Grocery Management System",
-              description: "An offline-first, cloud-connected mobile application featuring biometric authentication, real-time Firebase sync, and a multi-layer security system.",
-              longDescription: "Built on clean mobile architecture principles to deliver high availability offline while maintaining seamless secure sync with cloud datastores under role-based control parameters.",
-              techStack: ["Firebase", "Offline-First", "Biometric Authentication", "Role-Based Access", "Cloud Sync", "Mobile App"],
-              keyFeatures: [
-                "Offline-First Architecture with Automatic Synchronization",
-                "Multi-Layer Security System",
-                "Biometric Authentication",
-                "Real-Time Firebase Synchronization",
-                "Role-Based Access & Management System"
-              ],
-              links: {
-                github: "https://https://github.com/mohammed-almahjani",
-                demo: ""
-              },
-              thumbnail: "assets/screenshots/grocerycards-dashboard.png"
-            };
-          }
-          return project;
-        });
-        renderProjects(syncedData);
+        renderProjects(PROJECTS_DATA);
       } else {
         const grid = document.getElementById('projects-grid');
         if (grid) {

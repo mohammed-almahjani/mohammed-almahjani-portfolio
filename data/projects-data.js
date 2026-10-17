@@ -7,45 +7,63 @@
 
 const PROJECTS_DATA = [
   {
-    "id": "Sam-Smart",
-    "title": "Sam-Smart Password Manager",
+    "id": "smart-sam",
+    "title": "Smart-SAM",
     "category": "Featured Project",
-    "subnet": "Security Architecture",
-    "description": "A Zero-Knowledge password manager securing credentials locally with AES-256-GCM encryption before sync.",
-    "longDescription": "Sam-Smart is a highly secure password management solution designed on zero-knowledge architecture principles. Master passwords are key-derived locally using PBKDF2, ensuring plaintext keys never traverse networks or store in databases. All client vault entries are encrypted client-side using authenticated AES-256-GCM before transport to secure storage surfaces.",
-    "techStack": ["Cryptography", "AES-256-GCM", "PBKDF2", "JavaScript ES6", "Firebase", "Web Crypto API"],
+    "subnet": "Zero-Knowledge Password Manager",
+    "description": "Smart-SAM is a Zero-Knowledge Password Manager designed to provide enterprise-grade password protection while ensuring that sensitive user data remains inaccessible to the server itself.",
+    "longDescription": "The platform utilizes AES-256-GCM encryption, secure master-key management, key wrapping, and multi-factor authentication to protect credentials through a modern security architecture.",
+    "techStack": [
+      "PHP",
+      "AES-256-GCM",
+      "Cryptography",
+      "Argon2id",
+      "Libsodium",
+      "Zero-Knowledge Security",
+      "2FA",
+      "Password Management"
+    ],
     "keyFeatures": [
-      "Zero-Knowledge Protocol: Client encryption keys never leave the local device.",
-      "AES-256-GCM: Standard authenticated symmetric cryptography for securing credentials.",
-      "Cryptographic Derivation: Master keys salted and hashed locally using PBKDF2.",
-      "Local Session Vaulting: Secure memory management handles encryption states without disk storage."
+      "Zero-Knowledge Security Architecture",
+      "AES-256-GCM Encryption",
+      "Master Key & Key Wrapping System",
+      "Multi-Factor Authentication (2FA)",
+      "Secure Password Vault Management"
     ],
     "links": {
-      "github": "https://github.com",
-      "demo": "https://example.com"
+      "github": "https://github.com/mohammed-almahjani/Sam-Smart",
+      "demo": ""
     },
-    "thumbnail": "assets/screenshots/smartsam-thumb.png",
-    "architecture": "assets/screenshots/smartsam-arch.png",
+    "thumbnail": "assets/screenshots/smartsam-login.png",
     "featured": true
   },
   {
     "id": "grocery-cards",
-    "title": "Grocery Cards App",
+    "title": "Grocery Cards",
     "category": "Other Projects",
-    "subnet": "Application Development",
-    "description": "A clean Flutter utility application providing shopping list management and smart card representation.",
-    "longDescription": "An application designed to streamline grocery organization and household card cataloging. Built using Flutter for cross-platform support and clean architecture rules to structure business states.",
-    "techStack": ["Flutter", "Dart", "Provider", "Local Cache", "SQLite"],
+    "subnet": "Mobile / Cloud-Connected Grocery Management System",
+    "description": "An offline-first, cloud-connected mobile application featuring biometric authentication, real-time Firebase sync, and a multi-layer security system.",
+    "longDescription": "Built on clean mobile architecture principles to deliver high availability offline while maintaining seamless secure sync with cloud datastores under role-based control parameters.",
+    "techStack": [
+      "Firebase",
+      "Offline-First",
+      "Biometric Authentication",
+      "Role-Based Access",
+      "Cloud Sync",
+      "Mobile App"
+    ],
     "keyFeatures": [
-      "State Management: Managed shopping list states smoothly with Provider pattern.",
-      "Offline Database: Stored cards and list data locally on device SQL storage.",
-      "Clean UI: Designed dark glassmorphic widgets for scanning cards."
+      "Offline-First Architecture with Automatic Synchronization",
+      "Multi-Layer Security System",
+      "Biometric Authentication",
+      "Real-Time Firebase Synchronization",
+      "Role-Based Access & Management System"
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://github.com/mohammed-almahjani",
       "demo": ""
     },
-    "thumbnail": "assets/screenshots/grocerycards-thumb.png",
+    "thumbnail": "assets/screenshots/grocerycards-dashboard.png",
     "featured": false
   },
   {
@@ -55,17 +73,23 @@ const PROJECTS_DATA = [
     "subnet": "Core Routing Lab",
     "description": "An enterprise dynamic routing lab configured in EVE-NG linking multi-area OSPF sectors securely.",
     "longDescription": "Designed a multi-site campus topology configuring dynamic OSPF areas. Established Area 0 backbones, configured Area 1 stub sectors, optimized cost-metric path selection, and enabled password-based routing authentication.",
-    "techStack": ["OSPF", "Cisco IOS", "EVE-NG", "Routing Authentication", "MD5 Hash"],
+    "techStack": [
+      "OSPF",
+      "Cisco IOS",
+      "EVE-NG",
+      "Routing Authentication",
+      "MD5 Hash"
+    ],
     "keyFeatures": [
       "Dynamic Path Optimization: Fine-tuned hello timers and cost metrics for failover stability.",
       "MD5 Authentication: Secured route exchanges against rogue advertisements.",
       "Stub Areas: Restricted LSA floods to optimize memory on branch routers."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://github.com/mohammed-almahjani",
       "demo": ""
     },
-    "thumbnail": "assets/screenshots/ospflab-thumb.png",
+    "thumbnail": "",
     "learningOutcomes": [
       "Mastered LSA flooding control and loop avoidance logic.",
       "Understood dynamic convergence metrics under link failure states.",
@@ -80,17 +104,23 @@ const PROJECTS_DATA = [
     "subnet": "Switching & Security Lab",
     "description": "VLAN network segmentation lab configured in Cisco Packet Tracer to isolate corporate departments.",
     "longDescription": "Configured department segregation using VLANs. Enabled trunk links with dot1q encapsulation, implemented Layer 3 routing via Router-on-a-Stick, secured switches by disabling unused ports, and locked down trunks from VLAN hopping attacks.",
-    "techStack": ["VLANs", "802.1Q", "Router-on-a-Stick", "Switchport Security", "Cisco Packet Tracer"],
+    "techStack": [
+      "VLANs",
+      "802.1Q",
+      "Router-on-a-Stick",
+      "Switchport Security",
+      "Cisco Packet Tracer"
+    ],
     "keyFeatures": [
       "Traffic Isolation: Kept department traffic isolated at Layer 2.",
       "Trunk Hardening: Changed native VLANs and disabled DTP negotiation.",
       "Switchport Limits: Restricted MAC addresses per port to prevent MAC-flooding attacks."
     ],
     "links": {
-      "github": "https://github.com",
+      "github": "https://github.com/mohammed-almahjani",
       "demo": ""
     },
-    "thumbnail": "assets/screenshots/vlanlab-thumb.png",
+    "thumbnail": "",
     "learningOutcomes": [
       "Configured robust Layer 2 switchport protections.",
       "Built and troubleshot Router-on-a-Stick gateway interfaces.",

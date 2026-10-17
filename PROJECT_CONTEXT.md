@@ -49,9 +49,7 @@ portfolio-website/                  ← root of the project
 │   └── animations.css             ← keyframe animations & transitions
 │
 ├── js/
-│   ├── main.js                     ← core logic (nav, scroll, sections)
-│   ├── animations.js              ← scroll-triggered & UI animations
-│   └── network-bg.js              ← procedural canvas network background (4-layer system)
+│   └── main.js                     ← core logic (nav, scroll, sections, canvas background)
 │
 ├── data/
 │   ├── projects.json               ← portfolio projects data
@@ -164,21 +162,22 @@ portfolio-website/                  ← root of the project
 | 2026-06-15 | LIGHT_MODE_THEME | Added Professional Light Mode theme system. Created `[data-theme="light"]` CSS token overrides in `css/style.css` covering all sections, cards, badges, buttons, nav, footer, lightbox, and scrollbar. Added `.theme-toggle` navbar button with sun/moon icons. Added `initThemeToggle()` to `js/main.js` with localStorage persistence, system preference fallback, and `themechange` custom event for canvas palette update. Updated `css/animations.css` to use CSS variables in keyframes for theme-aware glows. Dark Cyber theme remains the default. |
 | 2026-06-18 | HERO_PROFILE_PHOTO | Integrated the professional profile photo in the Hero Section. Created a premium rounded card with a browser header, verified status badge, and custom career tags. Implemented theme overrides, synced floating animations, and verified responsive stacked layouts on tablet/mobile. |
 | 2026-06-18 | HERO_LAYOUT_REFINE | Restructured Hero grid to CSS grid-template-areas: top row = Hero text (left) + Profile photo (right); bottom row = NET_OPS_PANEL spanning full width as a three-column technical dashboard. Profile card is top-aligned with Hero text. Mobile stacks Hero text → Photo → Panel. |
+| 2026-10-17 | CLEANUP_SPRINT | Executed surgical cleanup: fixed malformed and generic URLs, populated og:image and twitter:image meta tags, configured verified security.txt contact, synchronized projects and skills data mirrors, populated certificates.json, and removed dead files (animations.js, network-bg.js). |
 
 ---
 
 # Last Action Performed
 
-**Hero Section Layout Refinement — COMPLETE**
-Restructured the Hero section to achieve a balanced, professional, recruiter-friendly layout.
-
-- **`index.html`**: Moved `.net-ops-panel` out of `.hero-visual-container` into a new `.hero-panel-row` sibling div. Interface Status block now wrapped in `.nop-iface-grid`. The `.hero-visual-container` now holds only the profile card.
-- **`css/style.css`**: Converted `.hero-grid` to `grid-template-areas` with two rows: `'content photo'` (top) and `'panel panel'` (full-width bottom). Set `align-items: start` + `padding-top: nav-height + space-10` for correct top offset. Added `.hero-panel-row` with horizontal three-column OSPF layout on desktop. Removed `display: flex` from `.section--hero` (the grid controls its own flow). Responsive `@media (max-width: 992px)` collapses to single-column stack: Hero text → Photo → Panel.
+**Bugfix, Data Synchronization, and Technical Debt Cleanup — COMPLETE**
+- **URLs**: Fixed malformed GitHub URL in `main.js`; mapped Hero CTA buttons to exact profiles (`https://github.com/mohammed-almahjani` and `https://www.linkedin.com/in/mohammed-al-mohjani/`).
+- **Security & SEO**: Configured RFC 9116 verified security contact in `.well-known/security.txt` and set future expiration date; populated `og:image` and `twitter:image` with `assets/images/profile.jpg`.
+- **Data Synchronization**: Synchronized `data/certificates.json` with active certification cards; synchronized `data/projects.json` and `data/projects-data.js` matching real screenshots (`smartsam-login.png`, `grocerycards-dashboard.png`); synchronized `data/skills.json` and `data/skills-data.js`.
+- **Dead Code Pruning**: Removed unreferenced `<script src="js/animations.js"></script>` from `index.html`; deleted dead files `js/animations.js` and orphaned `js/network-bg.js`.
 
 ---
 
 # Next Recommended Action
 
 **Phase 4 — SEO & Final Polish**
-Verify and optimize the portfolio website for SEO, check all meta tags, validate responsive alignments, run performance audits, and perform accessibility (A11y) checks.
+Final accessibility (A11y) checks, Lighthouse performance audit, and production deployment validation.
 
