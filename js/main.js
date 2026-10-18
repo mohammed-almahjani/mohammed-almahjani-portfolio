@@ -2,12 +2,13 @@
  * main.js
  * -----------------------------------------------------------------------
  * Purpose : Core application logic for the portfolio website.
- *           Handles navigation, smooth scrolling, data loading from JSON,
- *           dynamic rendering of skills/projects/certificates, and
- *           general site interactions.
+ *           Handles navigation, smooth scrolling, Bento Dashboard
+ *           rendering (skill chips, certs deck), Vault tab filtering,
+ *           email copy mechanism, theme toggle, lightbox, and
+ *           procedural network canvas background.
  *
  * Author  : Mohammed Al-Mahjani Portfolio
- * Phase   : 3C — Projects + Sam-Smart + Network Labs sections complete
+ * Phase   : 4 — Bento Grid Architecture (COMPLETE)
  * -----------------------------------------------------------------------
  */
 
@@ -29,7 +30,6 @@ function initStickyNavbar() {
   };
 
   window.addEventListener('scroll', throttle(handleScroll, 100));
-  // Run once initially to check state
   handleScroll();
 }
 
@@ -65,7 +65,7 @@ function initActiveLinkHighlighting() {
 
   const options = {
     root: null,
-    rootMargin: '-30% 0px -60% 0px', // Trigger when section occupies the active viewport center
+    rootMargin: '-30% 0px -60% 0px',
     threshold: 0
   };
 
@@ -92,7 +92,7 @@ function initScrollReveal() {
 
   const options = {
     root: null,
-    rootMargin: '0px 0px -80px 0px', // Trigger slightly before entering fully
+    rootMargin: '0px 0px -80px 0px',
     threshold: 0.1
   };
 
@@ -100,7 +100,6 @@ function initScrollReveal() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('reveal--visible');
-        // Stop observing once animated in
         observer.unobserve(entry.target);
       }
     });
@@ -111,54 +110,59 @@ function initScrollReveal() {
 
 
 // -----------------------------------------------------------------------
-// 2. DATA LOADING (Skeletons to be completed in Phase 5/6)
+// 2. SKILLS MATRIX RENDERING (Chip/Badge Clusters)
 // -----------------------------------------------------------------------
 
-/* --- Load skills (from data/skills-data.js global) --- */
 function loadSkills() {
   if (typeof SKILLS_DATA === 'undefined') {
     console.error('SKILLS_DATA not found. Ensure data/skills-data.js is loaded before main.js.');
-    const skillsGrid = document.getElementById('skills-grid');
-    if (skillsGrid) {
-      skillsGrid.innerHTML = `
+    const matrix = document.getElementById('skills-matrix');
+    if (matrix) {
+      matrix.innerHTML = `
         <div class="error-panel text-mono">
-          <span class="text-danger">[ERROR]</span> SKILLS_DATA not found. Check script load order in index.html.
+          <span class="text-danger">[ERROR]</span> SKILLS_DATA not found. Check script load order.
         </div>
       `;
     }
     return;
   }
-  renderSkills(SKILLS_DATA);
+  renderSkillsMatrix(SKILLS_DATA);
 }
 
-/* --- Load projects (fetch projects.json with file:// fallback) --- */
-function loadProjects() {
-  fetch('data/projects.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      renderProjects(data);
-    })
-    .catch(error => {
-      console.warn('Could not fetch data/projects.json dynamically, falling back to local PROJECTS_DATA:', error);
-      if (typeof PROJECTS_DATA !== 'undefined') {
-        renderProjects(PROJECTS_DATA);
-      } else {
-        const grid = document.getElementById('projects-grid');
-        if (grid) {
-          grid.innerHTML = `
-            <div class="error-panel text-mono">
-              <span class="text-danger">[ERROR]</span> PROJECTS_DATA database could not be loaded.
-            </div>
-          `;
-        }
-      }
+function renderSkillsMatrix(data) {
+  const matrix = document.getElementById('skills-matrix');
+  if (!matrix) return;
+
+  matrix.innerHTML = '';
+
+  data.forEach(domain => {
+    const domainEl = document.createElement('div');
+    domainEl.className = 'skill-domain';
+
+    const titleEl = document.createElement('h3');
+    titleEl.className = 'skill-domain-title';
+    titleEl.textContent = domain.domain;
+    domainEl.appendChild(titleEl);
+
+    const chipsEl = document.createElement('div');
+    chipsEl.className = 'skill-chips';
+
+    domain.skills.forEach(skill => {
+      const chip = document.createElement('span');
+      chip.className = 'skill-chip';
+      chip.textContent = skill;
+      chipsEl.appendChild(chip);
     });
+
+    domainEl.appendChild(chipsEl);
+    matrix.appendChild(domainEl);
+  });
 }
+
+
+// -----------------------------------------------------------------------
+// 3. CERTIFICATES DECK RENDERING
+// -----------------------------------------------------------------------
 
 const CERTIFICATES_DATA = [
   {
@@ -203,8 +207,8 @@ const CERTIFICATES_DATA = [
   }
 ];
 
-/* --- Load certificates.json --- */
 function loadCertificates() {
+  // Try fetch first, fall back to inline data for file:// compatibility
   fetch('data/certificates.json')
     .then(response => {
       if (!response.ok) throw new Error('HTTP error');
@@ -212,211 +216,150 @@ function loadCertificates() {
     })
     .then(data => {
       if (!data || data.length === 0 || data[0].id === 'placeholder-cert' || data.some(item => item._comment)) {
-        renderCertificates(CERTIFICATES_DATA);
+        renderCertsDeck(CERTIFICATES_DATA);
       } else {
-        renderCertificates(data);
+        renderCertsDeck(data);
       }
     })
-    .catch(error => {
-      console.warn('Could not fetch data/certificates.json dynamically, falling back to local CERTIFICATES_DATA:', error);
-      renderCertificates(CERTIFICATES_DATA);
+    .catch(() => {
+      renderCertsDeck(CERTIFICATES_DATA);
     });
 }
 
+function renderCertsDeck(certs) {
+  const deck = document.getElementById('certs-deck');
+  if (!deck) return;
 
-// -----------------------------------------------------------------------
-// 3. DYNAMIC RENDERING (Skeletons to be completed in Phase 5/6)
-// -----------------------------------------------------------------------
+  deck.innerHTML = '';
 
-/* --- Render Skills Grid --- */
-function renderSkills(skillsData) {
-  const skillsGrid = document.getElementById('skills-grid');
-  if (!skillsGrid) return;
+  certs.forEach(cert => {
+    const item = document.createElement('div');
+    item.className = 'cert-mini';
 
-  skillsGrid.innerHTML = ''; // Clear loading notification
-
-  skillsData.forEach(categoryObj => {
-    const categoryCard = document.createElement('div');
-    categoryCard.className = 'skills-category-card reveal fade-in-up';
-
-    let cardHtml = `
-      <div class="skills-category-header">
-        <h3 class="category-title text-mono">${categoryObj.category}</h3>
+    item.innerHTML = `
+      <div class="cert-mini-icon">
+        ${cert.icon || '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>'}
       </div>
-      <div class="skills-list">
+      <div class="cert-mini-info">
+        <div class="cert-mini-name">${cert.name}</div>
+        <div class="cert-mini-issuer">${cert.issuer}</div>
+      </div>
     `;
 
-    categoryObj.skills.forEach(skill => {
-      cardHtml += `
-        <div class="skill-item">
-          <div class="skill-info flex-between">
-            <span class="skill-name">${skill.name}</span>
-            <span class="skill-percentage text-mono">${skill.level}%</span>
-          </div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" style="--fill-level: ${skill.level}%"></div>
-          </div>
-        </div>
-      `;
+    deck.appendChild(item);
+  });
+}
+
+
+// -----------------------------------------------------------------------
+// 4. VAULT TAB FILTERING
+// -----------------------------------------------------------------------
+
+function initVaultTabs() {
+  const tabs = document.querySelectorAll('.vault-tab');
+  const cards = document.querySelectorAll('.vault-card');
+  const emptyState = document.getElementById('vault-empty');
+
+  if (!tabs.length || !cards.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.getAttribute('data-filter');
+
+      // Update active tab
+      tabs.forEach(t => {
+        t.classList.remove('vault-tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('vault-tab--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      // Filter cards
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category') || '';
+        const categoryAlt = card.getAttribute('data-category-alt') || '';
+
+        if (filter === 'all' || category === filter || categoryAlt === filter) {
+          card.classList.remove('vault-card--hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('vault-card--hidden');
+        }
+      });
+
+      // Show/hide empty state
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
     });
-
-    cardHtml += `</div>`;
-    categoryCard.innerHTML = cardHtml;
-    skillsGrid.appendChild(categoryCard);
   });
-
-  // Re-observe dynamic nodes to trigger scroll animation
-  initScrollReveal();
-}
-
-/* --- Render Projects Grid --- */
-function renderProjects(projectsData) {
-  const grid = document.getElementById('projects-grid');
-  if (!grid) return;
-
-  grid.innerHTML = ''; // Clear loading placeholder
-
-  // Sort: featured cards first
-  const sorted = [...projectsData].sort((a, b) =>
-    (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
-  );
-
-  sorted.forEach(project => {
-    const card = document.createElement('article');
-    card.className = `project-card reveal fade-in-up${project.featured ? ' project-card--featured' : ''}`;
-
-    /* Build tech badges HTML */
-    const techBadges = (project.techStack || []).map(
-      tech => `<span class="tech-badge">${tech}</span>`
-    ).join('');
-
-    /* Build key features list (only for featured) */
-    const featuresHtml = project.featured && project.keyFeatures
-      ? `<ul class="project-features">${project.keyFeatures.map(
-        f => `<li>${f}</li>`
-      ).join('')}</ul>`
-      : '';
-
-    /* Build CTA links */
-    const githubLink = project.links?.github
-      ? `<a href="${project.links.github}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View ${project.title} on GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          GitHub
-        </a>`
-      : '';
-
-    const demoLink = project.links?.demo
-      ? `<a href="${project.links.demo}" target="_blank" rel="noopener noreferrer" class="project-link project-link--demo" aria-label="View live demo of ${project.title}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Demo
-        </a>`
-      : '';
-
-    /* Build project thumbnail container if available */
-    const thumbnailHtml = project.thumbnail
-      ? `<div class="project-card-image">
-          <img src="${project.thumbnail}" alt="${project.title} screenshot" class="project-thumbnail lightbox-trigger" />
-         </div>`
-      : '';
-
-    card.innerHTML = `
-      ${thumbnailHtml}
-      <div class="project-card-header">
-        <p class="project-category text-mono">${project.category}</p>
-        <h3 class="project-title">${project.title}</h3>
-      </div>
-      <div class="project-card-body">
-        <p class="project-desc">${project.description}</p>
-        ${featuresHtml}
-        <div class="project-tech">${techBadges}</div>
-      </div>
-      <div class="project-card-footer">${githubLink}${demoLink}</div>
-    `;
-
-    grid.appendChild(card);
-  });
-
-  // Re-run scroll reveal so dynamically inserted cards animate in
-  initScrollReveal();
-}
-
-/* --- Render Certificates Grid --- */
-function renderCertificates(certificatesData) {
-  const grid = document.getElementById('certificates-grid');
-  if (!grid) return;
-
-  grid.innerHTML = ''; // Clear loading placeholder
-
-  certificatesData.forEach(cert => {
-    const card = document.createElement('article');
-    card.className = 'cert-card reveal fade-in-up';
-
-    card.innerHTML = `
-      <div class="cert-icon-container">
-        ${cert.icon || `
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cert-svg">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-        `}
-      </div>
-      <div class="cert-card-header">
-        <span class="cert-badge text-mono">${cert.category}</span>
-        <h3 class="cert-title">${cert.name}</h3>
-      </div>
-      <div class="cert-card-body">
-        <p class="cert-desc">${cert.description}</p>
-        <div class="cert-issuer text-mono">
-          <span class="issuer-label">ISSUER:</span>
-          <span class="issuer-name">${cert.issuer}</span>
-        </div>
-      </div>
-    `;
-
-    grid.appendChild(card);
-  });
-
-  // Re-run scroll reveal so dynamically inserted cards animate in
-  initScrollReveal();
 }
 
 
 // -----------------------------------------------------------------------
-// 4. CONTACT FORM (Skeletons to be completed in Phase 5)
+// 5. EMAIL COPY MECHANISM
 // -----------------------------------------------------------------------
 
-/* --- Set Dynamic Portfolio Link --- */
-function initContactForm() {
-  const portfolioLink = document.getElementById('portfolio-site-link');
-  if (portfolioLink) {
-    portfolioLink.href = window.location.origin;
+function initEmailCopy() {
+  const copyBtn = document.getElementById('copy-email-btn');
+  if (!copyBtn) return;
+
+  copyBtn.addEventListener('click', () => {
+    const email = copyBtn.getAttribute('data-email');
+    const textSpan = copyBtn.querySelector('.copy-text');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => {
+        showCopyFeedback(copyBtn, textSpan, email);
+      }).catch(() => {
+        fallbackCopy(email, copyBtn, textSpan);
+      });
+    } else {
+      fallbackCopy(email, copyBtn, textSpan);
+    }
+  });
+}
+
+function fallbackCopy(text, btn, textSpan) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    showCopyFeedback(btn, textSpan, text);
+  } catch (e) {
+    // Silently fail
   }
+  document.body.removeChild(textarea);
+}
+
+function showCopyFeedback(btn, textSpan, originalText) {
+  btn.classList.add('copied');
+  textSpan.textContent = 'Copied!';
+
+  setTimeout(() => {
+    btn.classList.remove('copied');
+    textSpan.textContent = originalText;
+  }, 2000);
 }
 
 
 // -----------------------------------------------------------------------
-// 4.5 THEME TOGGLE — Light / Dark Mode
+// 6. THEME TOGGLE — Light / Dark Mode
 // -----------------------------------------------------------------------
 
-/**
- * Reads the current theme from the <html> data attribute,
- * updates the toggle button's aria-label and active state,
- * and saves the preference to localStorage.
- *
- * Theme priority:
- *   1. Saved preference in localStorage ("theme" key)
- *   2. System preference (prefers-color-scheme)
- *   3. Default: dark
- */
 function initThemeToggle() {
   const toggleBtn   = document.getElementById('theme-toggle');
   const htmlEl      = document.documentElement;
 
   if (!toggleBtn) return;
 
-  /* --- Determine initial theme (FOUC script in <head> already set it) --- */
   const getTheme = () => htmlEl.getAttribute('data-theme') || 'dark';
 
-  /* --- Apply theme attribute to <html> and save to localStorage --- */
   function applyTheme(theme) {
     htmlEl.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
@@ -426,7 +369,6 @@ function initThemeToggle() {
     window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
   }
 
-  /* --- Keep toggle button aria-label and icon in sync --- */
   function updateToggleState(theme) {
     if (theme === 'light') {
       toggleBtn.setAttribute('aria-label', 'Switch to Dark Mode');
@@ -437,20 +379,19 @@ function initThemeToggle() {
     }
   }
 
-  /* --- Click handler --- */
   toggleBtn.addEventListener('click', () => {
     const current = getTheme();
     applyTheme(current === 'light' ? 'dark' : 'light');
   });
 
-  /* --- Init state sync (theme may already be set by FOUC script) --- */
   updateToggleState(getTheme());
 }
 
 
 // -----------------------------------------------------------------------
-// 5. FOOTER — DYNAMIC YEAR
+// 7. FOOTER — DYNAMIC YEAR
 // -----------------------------------------------------------------------
+
 function setFooterYear() {
   const footerYear = document.getElementById('footer-year');
   if (footerYear) {
@@ -460,10 +401,9 @@ function setFooterYear() {
 
 
 // -----------------------------------------------------------------------
-// 6. UTILITIES
+// 8. UTILITIES
 // -----------------------------------------------------------------------
 
-/* --- Throttle Helper --- */
 function throttle(fn, limit) {
   let waiting = false;
   return function (...args) {
@@ -479,24 +419,26 @@ function throttle(fn, limit) {
 
 
 // -----------------------------------------------------------------------
-// 6.5 SCREENSHOT LIGHTBOX MODAL
+// 9. SCREENSHOT LIGHTBOX MODAL
 // -----------------------------------------------------------------------
+
 function initLightbox() {
   const modal = document.getElementById('lightbox-modal');
   const modalImg = document.getElementById('lightbox-img');
   const closeBtn = document.getElementById('lightbox-close');
-  const triggerImages = document.querySelectorAll('.lightbox-trigger');
 
   if (!modal || !modalImg) return;
 
-  triggerImages.forEach(img => {
-    img.addEventListener('click', () => {
-      modalImg.src = img.src;
-      modalImg.alt = img.alt;
+  // Use event delegation for dynamically rendered images too
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.lightbox-trigger');
+    if (trigger) {
+      modalImg.src = trigger.src;
+      modalImg.alt = trigger.alt;
       modal.classList.add('lightbox--open');
       modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden'; // Lock background scrolling
-    });
+      document.body.style.overflow = 'hidden';
+    }
   });
 
   const closeModal = () => {
@@ -521,8 +463,9 @@ function initLightbox() {
 
 
 // -----------------------------------------------------------------------
-// 6.8 ANIMATED NETWORK BACKGROUND SYSTEM
+// 10. ANIMATED NETWORK BACKGROUND SYSTEM
 // -----------------------------------------------------------------------
+
 function initNetworkBackground() {
   const canvas = document.getElementById('network-bg');
   if (!canvas) return;
@@ -536,7 +479,7 @@ function initNetworkBackground() {
   let particles = [];
   let pulses = [];
 
-  /* Colour palettes — switched on theme (Warm Obsidian/Gold vs Editorial Beige/Bronze) */
+  /* Colour palettes — Warm Obsidian/Gold vs Editorial Beige/Bronze */
   const COLORS_DARK = [
     'rgba(223, 163, 58, $opacity)',   // Warm Amber Gold (#DFA33A)
     'rgba(200, 182, 158, $opacity)',  // Champagne Sand (#C8B69E)
@@ -554,7 +497,7 @@ function initNetworkBackground() {
       ? COLORS_LIGHT
       : COLORS_DARK;
 
-  /* When theme changes, re-assign node colors and re-render */
+  /* When theme changes, re-assign node colors */
   window.addEventListener('themechange', () => {
     const palette = getColors();
     nodes.forEach(node => {
@@ -588,11 +531,9 @@ function initNetworkBackground() {
 
     const COLORS = getColors();
 
-    // Density-based count
     const nodeCount = Math.min(32, Math.max(12, Math.floor((width * height) / 40000)));
     const particleCount = Math.min(45, Math.max(15, Math.floor((width * height) / 30000)));
 
-    // Generate Nodes
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * width,
@@ -606,7 +547,6 @@ function initNetworkBackground() {
       });
     }
 
-    // Generate Particles
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
@@ -622,13 +562,11 @@ function initNetworkBackground() {
   function update() {
     if (prefersReducedMotion) return;
 
-    // Update Nodes
     nodes.forEach(node => {
       node.x += node.vx;
       node.y += node.vy;
       node.pulsePhase += node.pulseSpeed;
 
-      // Screen boundary wrap with radius buffer
       const buffer = node.radius * 3;
       if (node.x < -buffer) node.x = width + buffer;
       if (node.x > width + buffer) node.x = -buffer;
@@ -636,7 +574,6 @@ function initNetworkBackground() {
       if (node.y > height + buffer) node.y = -buffer;
     });
 
-    // Update Particles
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
@@ -647,7 +584,6 @@ function initNetworkBackground() {
       if (p.y > height + p.radius) p.y = -p.radius;
     });
 
-    // Spawn / Update Pulses
     if (Math.random() < 0.0025 && pulses.length < 3) {
       const targetNode = nodes[Math.floor(Math.random() * nodes.length)];
       if (targetNode) {
@@ -684,7 +620,7 @@ function initNetworkBackground() {
       ctx.stroke();
     });
 
-    // Draw Connection Edges (between nearby nodes)
+    // Draw Connection Edges
     const maxDist = 180;
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
@@ -710,7 +646,7 @@ function initNetworkBackground() {
       }
     }
 
-    // Draw Particles (theme-aware warm aura)
+    // Draw Particles (theme-aware)
     const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
     particles.forEach(p => {
       ctx.beginPath();
@@ -754,7 +690,7 @@ function initNetworkBackground() {
 
   let animationFrameId = null;
   let lastTime = 0;
-  const fpsInterval = 1000 / 60; // target 60fps cap
+  const fpsInterval = 1000 / 60;
 
   function tick(timestamp) {
     if (prefersReducedMotion) return;
@@ -769,7 +705,6 @@ function initNetworkBackground() {
     }
   }
 
-  // Handle visibility changes to save battery
   function handleVisibilityChange() {
     if (document.hidden) {
       if (animationFrameId) {
@@ -784,11 +719,9 @@ function initNetworkBackground() {
     }
   }
 
-  // Setup Resize
   window.addEventListener('resize', throttle(resize, 150));
   document.addEventListener('visibilitychange', handleVisibilityChange);
 
-  // Initialize
   resize();
 
   if (!prefersReducedMotion) {
@@ -798,19 +731,20 @@ function initNetworkBackground() {
 
 
 // -----------------------------------------------------------------------
-// 7. INITIALIZATION
+// 11. INITIALIZATION
 // -----------------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
   initNetworkBackground();
   initStickyNavbar();
   initMobileMenu();
-  initThemeToggle();       // Theme toggle — must run before first paint decisions
+  initThemeToggle();
   initActiveLinkHighlighting();
   initScrollReveal();
-  loadSkills();        // Retrieve and render technical skills data
-  loadProjects();      // Retrieve and render portfolio projects
-  loadCertificates();  // Retrieve and render technical certifications
-  initLightbox();      // Initialize screenshot lightbox modal
-  initContactForm();
+  loadSkills();
+  loadCertificates();
+  initVaultTabs();
+  initEmailCopy();
+  initLightbox();
   setFooterYear();
 });

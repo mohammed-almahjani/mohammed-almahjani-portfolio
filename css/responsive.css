@@ -1,10 +1,9 @@
 /* =============================================================
    responsive.css
-   Purpose : All media queries and responsive layout overrides.
-             This file handles every breakpoint and ensures the
-             portfolio looks perfect on all screen sizes.
+   Purpose : All media queries and responsive layout overrides
+             for the 4-Zone Bento Grid Architecture.
    Author  : Mohammed Al-Mahjani Portfolio
-   Phase   : 1 — Scaffolding (comments only, no rules yet)
+   Phase   : 4 — Bento Grid Architecture (COMPLETE)
    Strategy: Mobile-first — base styles in style.css target
              mobile, media queries here add tablet/desktop styles.
    ============================================================= */
@@ -12,115 +11,342 @@
 
 /* -------------------------------------------------------------
    BREAKPOINT REFERENCE
-   These match the breakpoints used throughout this file.
-
-   --bp-xs  : 320px  — Small mobile (iPhone SE etc.)
    --bp-sm  : 480px  — Large mobile
    --bp-md  : 768px  — Tablet portrait
    --bp-lg  : 1024px — Tablet landscape / small laptop
    --bp-xl  : 1280px — Desktop
-   --bp-2xl : 1536px — Large desktop / wide monitor
    ------------------------------------------------------------- */
 
 
 /* -------------------------------------------------------------
    1. SMALL MOBILE  (max-width: 480px)
-      Adjustments for very small screens — font scaling,
-      single-column layouts, condensed spacing.
    ------------------------------------------------------------- */
 
 @media (max-width: 480px) {
-  /* Theme toggle: ensure tight fit on small screens */
+
   .theme-toggle {
     width: 34px;
     height: 34px;
   }
 
-  /* Ensure nav right side (toggle + hamburger) flex nicely */
   #main-nav {
     gap: 0.5rem;
+  }
+
+  .hero-name {
+    font-size: 2rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .portrait-frame {
+    width: 220px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .bento-card-inner {
+    padding: var(--space-4);
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .metric-value {
+    font-size: var(--fs-xl);
+  }
+
+  .vault-tabs {
+    gap: var(--space-1);
+  }
+
+  .vault-tab {
+    font-size: 0.6rem;
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .career-track {
+    padding-left: var(--space-8);
+  }
+
+  .career-node {
+    left: calc(-1 * var(--space-8) + 5px);
+  }
+
+  .career-content {
+    padding: var(--space-4);
+  }
+
+  .contact-hub {
+    grid-template-columns: 1fr;
   }
 }
 
 
-
 /* -------------------------------------------------------------
-   2. TABLET PORTRAIT  (min-width: 481px) and (max-width: 768px)
-      2-column grids begin, nav adjustments.
+   2. TABLET PORTRAIT  (max-width: 768px)
+      Mobile nav reveal, stacked grids
    ------------------------------------------------------------- */
 
-@media (min-width: 481px) and (max-width: 768px) {
-  /* To be built in Phase 9 */
+@media (max-width: 768px) {
+
+  /* Show hamburger, hide desktop nav links */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--color-bg-overlay);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: var(--space-4) var(--container-pad);
+    border-bottom: 1px solid var(--color-border);
+    gap: 0;
+  }
+
+  .nav-links--open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--fs-sm);
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  /* Hamburger open state */
+  [aria-expanded="true"] .hamburger-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  [aria-expanded="true"] .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+  [aria-expanded="true"] .hamburger-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Hero stacks vertically */
+  .hero-split {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content {
+    order: 2;
+  }
+
+  .hero-portrait {
+    order: 1;
+  }
+
+  .hero-availability {
+    justify-content: center;
+  }
+
+  .hero-tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  /* Bento single column */
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card--wide {
+    grid-column: span 1;
+  }
+
+  /* Vault single column */
+  .vault-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vault-card--featured {
+    grid-column: span 1;
+    display: block;
+  }
+
+  /* Scroll indicator hidden on small screens */
+  .hero-scroll-indicator {
+    display: none;
+  }
 }
 
 
 /* -------------------------------------------------------------
    3. TABLET LANDSCAPE / SMALL LAPTOP  (min-width: 769px)
-      Skills grid goes to 3 columns, projects to 2 columns.
    ------------------------------------------------------------- */
 
 @media (min-width: 769px) {
-  /* To be built in Phase 9 */
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex !important;
+  }
+
+  .section-title {
+    font-size: var(--fs-3xl);
+  }
 }
 
 
 /* -------------------------------------------------------------
    4. DESKTOP  (min-width: 1024px)
-      Full-width navigation, multi-column grids, larger hero text.
    ------------------------------------------------------------- */
 
 @media (min-width: 1024px) {
-  /* To be built in Phase 9 */
+
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bento-card--wide {
+    grid-column: span 2;
+  }
+
+  .contact-hub {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-name {
+    font-size: var(--fs-hero);
+  }
 }
 
 
 /* -------------------------------------------------------------
    5. LARGE DESKTOP  (min-width: 1280px)
-      Wider container, larger font sizes, optimized whitespace.
    ------------------------------------------------------------- */
 
 @media (min-width: 1280px) {
-  /* To be built in Phase 9 */
+  :root {
+    --container-max: 1280px;
+  }
 }
 
 
 /* -------------------------------------------------------------
    6. ULTRA-WIDE  (min-width: 1536px)
-      Max container enforced; no layout changes, just visual tuning.
    ------------------------------------------------------------- */
 
 @media (min-width: 1536px) {
-  /* To be built in Phase 9 */
+  :root {
+    --container-max: 1400px;
+  }
 }
 
 
 /* -------------------------------------------------------------
    7. REDUCED MOTION
-      Respect users who prefer reduced animations.
-      Override all transitions and animations for accessibility.
    ------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
-  /* To be built alongside animations in Phase 4 */
-  /* All animations/transitions will be disabled or minimized here */
+  *,
+  *::before,
+  *::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .availability-dot {
+    animation: none !important;
+  }
 }
 
 
 /* -------------------------------------------------------------
    8. HIGH CONTRAST MODE
-      Accessibility override for users with high-contrast needs.
    ------------------------------------------------------------- */
 
 @media (forced-colors: active) {
-  /* To be built in Phase 9 */
+  .btn--primary {
+    border: 2px solid ButtonText;
+  }
+
+  .vault-tab--active {
+    border: 2px solid Highlight;
+  }
+
+  .career-node-dot {
+    border-color: Highlight;
+  }
 }
 
 
 /* -------------------------------------------------------------
    9. PRINT STYLES
-      Clean, readable print layout if user prints the portfolio.
    ------------------------------------------------------------- */
 
 @media print {
-  /* To be built in Phase 10 (optimization phase) */
+  #network-bg,
+  #navbar,
+  .hero-scroll-indicator,
+  .lightbox,
+  .theme-toggle,
+  .nav-toggle,
+  .back-to-top {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    padding: 1rem 0;
+  }
+
+  .bento-card,
+  .vault-card,
+  .career-content,
+  .contact-card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
 }

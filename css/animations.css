@@ -1,9 +1,9 @@
 /* =============================================================
    animations.css
    Purpose : All CSS keyframe animations, transitions, and
-             scroll-reveal utility classes used across the site.
+             scroll-reveal utility classes.
    Author  : Mohammed Al-Mahjani Portfolio
-   Phase   : 3A — Navbar + Hero Animations (COMPLETE)
+   Phase   : 4 — Bento Grid Architecture (COMPLETE)
    ============================================================= */
 
 
@@ -27,41 +27,7 @@
   }
 }
 
-/* Float visual elements slowly (Node A/C) — smooth sinusoidal loop */
-@keyframes floatSlowA {
-  0%   { transform: translate(0px,    0px);  }
-  25%  { transform: translate(8px,  -12px);  }
-  50%  { transform: translate(14px,   4px);  }
-  75%  { transform: translate(4px,   14px);  }
-  100% { transform: translate(0px,    0px);  }
-}
-
-/* Float visual elements slowly (Node B/D) — offset phase */
-@keyframes floatSlowB {
-  0%   { transform: translate(0px,    0px);  }
-  25%  { transform: translate(-10px, 10px);  }
-  50%  { transform: translate(-6px, -12px);  }
-  75%  { transform: translate(8px,  -6px);   }
-  100% { transform: translate(0px,   0px);   }
-}
-
-/* Floating effect for Network Operations Panel — uses CSS vars for theme-awareness */
-@keyframes floatUpDownCard {
-  0%   {
-    transform: translateY(0px);
-    box-shadow: var(--shadow-card-float-0);
-  }
-  50%  {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-card-float-50);
-  }
-  100% {
-    transform: translateY(0px);
-    box-shadow: var(--shadow-card-float-0);
-  }
-}
-
-/* Scroll indicator mouse wheel slide — smooth fade loop */
+/* Scroll indicator mouse wheel slide */
 @keyframes scrollWheelAnim {
   0%   { transform: translate(-50%, 0);   opacity: 1;   }
   60%  { transform: translate(-50%, 9px); opacity: 0.3; }
@@ -121,8 +87,6 @@
 
 /* -------------------------------------------------------------
    2. SCROLL-REVEAL CLASSES
-      These classes control initial opacity / translate offsets.
-      The .reveal--visible class is added via JavaScript.
    ------------------------------------------------------------- */
 
 .reveal {
@@ -150,10 +114,9 @@
 
 
 /* -------------------------------------------------------------
-   3. ANIMATED TRANSITIONS & GLOW PULSES
+   3. ANIMATION UTILITY CLASSES
    ------------------------------------------------------------- */
 
-/* Accent animations to apply manually in markup if desired */
 .anim-fade-in { animation: fadeIn var(--transition-slow) forwards; }
 .anim-fade-in-up { animation: fadeInUp var(--transition-slow) forwards; }
 .anim-fade-in-down { animation: fadeInDown var(--transition-slow) forwards; }
@@ -163,7 +126,6 @@
 
 /* -------------------------------------------------------------
    4. REDUCED MOTION OVERRIDES
-      Respect users who prefer reduced animations.
    ------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -183,39 +145,11 @@
     transform: none !important;
   }
 
-  .profile-card,
-  .net-ops-panel {
-    animation: none !important;
-  }
-
-  .badge-status-dot {
+  .availability-dot {
     animation: none !important;
   }
 
   .scroll-wheel {
     animation: none !important;
   }
-
-  .node-a, .node-b, .node-c, .node-d {
-    animation: none !important;
-  }
-
-  .node-pulse {
-    animation: none !important;
-  }
 }
-
-/* Timeline node pulse animation — warm amber gold aura */
-@keyframes nodePulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-    box-shadow: 0 0 0 0 rgba(223, 163, 58, 0.35);
-  }
-  100% {
-    transform: scale(1.6);
-    opacity: 0;
-    box-shadow: 0 0 14px 6px rgba(223, 163, 58, 0);
-  }
-}
-

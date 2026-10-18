@@ -10,9 +10,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="theme-color" content="#0E0E10" />
 
-  <!-- SEO Meta Tags (to be filled in Phase 3) -->
+  <!-- SEO Meta Tags -->
   <meta name="description"
-    content="Professional portfolio of a Network & Cybersecurity Engineer. Specializing in network architecture, penetration testing, and security operations." />
+    content="Professional portfolio of Mohammed Al-Mahjani — Network & Cybersecurity Engineer. Specializing in network architecture, penetration testing, and security operations." />
   <meta name="keywords"
     content="network engineer, cybersecurity, portfolio, penetration testing, SOC, firewall, CCNA" />
   <meta name="author" content="Mohammed Al-Mahjani" />
@@ -61,30 +61,24 @@
   <!-- ============================================================
        NETWORK INFRASTRUCTURE BACKGROUND CANVAS
        Renders behind all content at z-index: -1
-       Powered by js/network-bg.js
        ============================================================ -->
   <canvas id="network-bg" aria-hidden="true"></canvas>
 
 
   <!-- ============================================================
        NAVIGATION
-       Fixed top navbar with logo + links
+       Fixed top navbar — streamlined 4-zone architecture
        ============================================================ -->
   <header id="navbar" role="banner">
     <nav id="main-nav" aria-label="Main navigation">
       <div class="nav-logo">
-        <!-- Logo / Name branding -->
         <span class="logo-text">MA</span>
       </div>
       <ul class="nav-links" role="list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#Sam-Smart">Sam-Smart</a></li>
-        <li><a href="#network-labs">Network Labs</a></li>
+        <li><a href="#home">Overview</a></li>
+        <li><a href="#dashboard">Skills</a></li>
+        <li><a href="#vault">Vault</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#certificates">Certificates</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <!-- Theme Toggle Button -->
@@ -117,29 +111,29 @@
   </header>
 
   <!-- ============================================================
-       MAIN CONTENT
-       All sections are children of <main>
+       MAIN CONTENT — 4-Zone Architecture
        ============================================================ -->
   <main id="main-content" role="main">
 
-    <!-- ──────────────────────────────────────────
-         SECTION 1 — HOME / HERO
-         Full-screen landing with name, title, CTA
-         ────────────────────────────────────────── -->
+    <!-- ══════════════════════════════════════════════════════════
+         ZONE 1 — EXECUTIVE SPLIT HERO & FOCUS STRIP
+         ══════════════════════════════════════════════════════════ -->
     <section id="home" class="section section--hero" aria-label="Home">
-      <div class="container hero-grid">
+      <div class="container hero-split">
+
+        <!-- Left: Executive Pitch -->
         <div class="hero-content reveal fade-in-left">
-          <div class="hero-badge text-mono">
-            <span class="badge-status-dot"></span> SEC_OPS // ENCRYPTED_STATUS_OK
+          <div class="hero-availability">
+            <span class="availability-dot" aria-hidden="true"></span>
+            <span class="availability-text text-mono">Available for Strategic Roles</span>
           </div>
           <h1 class="hero-name" id="hero-name">Mohammed Al-Mahjani</h1>
           <p class="hero-title" id="hero-title">Network &amp; Cybersecurity Engineer</p>
-          <p class="hero-tagline" id="hero-tagline">Securing networks, automating systems, and defending digital assets.
-          </p>
+          <p class="hero-tagline" id="hero-tagline">Architecting secure networks, hardening infrastructure, and engineering resilient systems from the ground up.</p>
 
           <div class="hero-cta-group">
-            <a href="#projects" class="btn btn--primary">
-              <span>View Projects</span>
+            <a href="#vault" class="btn btn--primary">
+              <span>Explore Engineering Vault</span>
             </a>
             <a href="assets/cv/resume.pdf" class="btn btn--secondary" download>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -160,148 +154,42 @@
               </svg>
               <span>GitHub</span>
             </a>
-            <a href="https://www.linkedin.com/in/mohammed-al-mohjani/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary"
-              aria-label="LinkedIn Profile">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-              <span>LinkedIn</span>
-            </a>
           </div>
         </div>
 
-        <!-- Right: Professional Profile Photo Card only -->
-        <div class="hero-visual-container reveal fade-in-right">
-          <!-- Cyber Network Node Visualizer (Pure CSS) -->
-          <div class="network-canvas" aria-hidden="true">
-            <div class="network-node node-a"></div>
-            <div class="network-node node-b"></div>
-            <div class="network-node node-c"></div>
-            <div class="network-node node-d"></div>
-            <div class="network-edge edge-ab"></div>
-            <div class="network-edge edge-bc"></div>
-            <div class="network-edge edge-cd"></div>
-            <div class="network-edge edge-da"></div>
-          </div>
-
-          <!-- Professional Profile Card -->
-          <div class="profile-card" aria-label="Mohammed Al-Mahjani Professional Profile">
-            <div class="profile-card-header">
-              <div class="profile-card-dots">
-                <span class="profile-card-dot"></span>
-                <span class="profile-card-dot"></span>
-                <span class="profile-card-dot"></span>
-              </div>
-              <span class="profile-card-title text-mono">IDENTITY_VERIFIED // SEC_SYS</span>
-            </div>
-            <div class="profile-image-container">
-              <img src="assets/images/profile.jpg" alt="Mohammed Al-Mahjani Professional Profile Photo"
-                class="profile-image" />
-              <div class="profile-badge text-mono">
-                <span class="badge-status-dot"></span> ONLINE
-              </div>
-            </div>
-            <div class="profile-card-footer text-mono">
-              <div class="profile-tag">Network Engineer</div>
-              <div class="profile-tag">Cybersecurity Focus</div>
-              <div class="profile-tag">Infrastructure &amp; Systems</div>
+        <!-- Right: Profile Portrait Card -->
+        <div class="hero-portrait reveal fade-in-right">
+          <div class="portrait-frame">
+            <img src="assets/images/profile.jpg" alt="Mohammed Al-Mahjani — Professional Portrait"
+              class="portrait-img" />
+            <div class="portrait-badge text-mono">
+              <span class="availability-dot" aria-hidden="true"></span> ONLINE
             </div>
           </div>
         </div>
 
-        <!-- Full-width bottom row: NET_OPS_PANEL as supporting technical dashboard -->
-        <div class="hero-panel-row reveal fade-in-up reveal--delay-2">
-          <div class="net-ops-panel" aria-label="Network Operations Status Panel">
-            <!-- Panel Header -->
-            <div class="nop-header">
-              <div class="nop-header-left">
-                <span class="nop-status-dot" aria-hidden="true"></span>
-                <span class="nop-title text-mono">NET_OPS_PANEL</span>
-              </div>
-              <span class="nop-hostname text-mono">R1.CORE // OSPF_AREA_0</span>
-            </div>
+      </div>
 
-            <!-- Block 1: OSPF Neighbor Table -->
-            <div class="nop-block">
-              <div class="nop-block-label text-mono">OSPF NEIGHBOR TABLE</div>
-              <table class="nop-table" aria-label="OSPF neighbor status">
-                <thead>
-                  <tr>
-                    <th>Neighbor ID</th>
-                    <th>Interface</th>
-                    <th>State</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="text-mono">10.0.0.2</td>
-                    <td class="text-mono">Gi0/0</td>
-                    <td><span class="nop-badge nop-badge--full">FULL</span></td>
-                  </tr>
-                  <tr>
-                    <td class="text-mono">10.0.0.3</td>
-                    <td class="text-mono">Gi0/1</td>
-                    <td><span class="nop-badge nop-badge--full">FULL</span></td>
-                  </tr>
-                  <tr>
-                    <td class="text-mono">10.0.1.1</td>
-                    <td class="text-mono">Gi0/2</td>
-                    <td><span class="nop-badge nop-badge--2way">2-WAY</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Block 2: VLAN Summary -->
-            <div class="nop-block">
-              <div class="nop-block-label text-mono">ACTIVE VLANs // SW-CORE</div>
-              <div class="nop-vlan-row">
-                <span class="nop-vlan-id text-mono">VLAN 10</span>
-                <span class="nop-vlan-name">Management</span>
-                <span class="nop-badge nop-badge--active">ACTIVE</span>
-              </div>
-              <div class="nop-vlan-row">
-                <span class="nop-vlan-id text-mono">VLAN 20</span>
-                <span class="nop-vlan-name">Operations</span>
-                <span class="nop-badge nop-badge--active">ACTIVE</span>
-              </div>
-              <div class="nop-vlan-row">
-                <span class="nop-vlan-id text-mono">VLAN 99</span>
-                <span class="nop-vlan-name">Native (Hardened)</span>
-                <span class="nop-badge nop-badge--locked">LOCKED</span>
-              </div>
-            </div>
-
-            <!-- Block 3: Interface Status — laid out horizontally in 3 columns on desktop -->
-            <div class="nop-block nop-block--iface-row">
-              <div class="nop-block-label text-mono">INTERFACE STATUS</div>
-              <div class="nop-iface-grid">
-                <div class="nop-iface-row">
-                  <span class="nop-iface-name text-mono">Gi0/0</span>
-                  <span class="nop-iface-desc">Uplink → ISP</span>
-                  <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
-                </div>
-                <div class="nop-iface-row">
-                  <span class="nop-iface-name text-mono">Gi0/1</span>
-                  <span class="nop-iface-desc">Trunk → SW-CORE</span>
-                  <span class="nop-iface-state nop-iface-state--up">UP/UP</span>
-                </div>
-                <div class="nop-iface-row">
-                  <span class="nop-iface-name text-mono">Gi0/2</span>
-                  <span class="nop-iface-desc">Link → BRANCH</span>
-                  <span class="nop-iface-state nop-iface-state--down">DOWN</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel Footer: Live monitoring ticker -->
-            <div class="nop-footer text-mono">
-              <span class="nop-live-dot" aria-hidden="true"></span>
-              <span>MONITORING ACTIVE — 0 ANOMALIES DETECTED</span>
-            </div>
+      <!-- Focus Strip: Core Disciplines -->
+      <div class="focus-strip reveal fade-in-up reveal--delay-2">
+        <div class="container">
+          <div class="focus-chips" role="list" aria-label="Core disciplines">
+            <span class="focus-chip" role="listitem">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              Network Infrastructure
+            </span>
+            <span class="focus-chip" role="listitem">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Cyber Defense
+            </span>
+            <span class="focus-chip" role="listitem">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              System Administration
+            </span>
+            <span class="focus-chip" role="listitem">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path></svg>
+              Cloud Architecture
+            </span>
           </div>
         </div>
       </div>
@@ -310,666 +198,479 @@
         <span class="scroll-mouse">
           <span class="scroll-wheel"></span>
         </span>
-        <span class="scroll-text text-mono">SCROLL TO ANALYZE</span>
+        <span class="scroll-text text-mono">SCROLL TO EXPLORE</span>
       </div>
     </section>
 
-    <!-- ──────────────────────────────────────────
-         SECTION 2 — ABOUT
-         Short bio, profile photo, quick stats
-         ────────────────────────────────────────── -->
-    <section id="about" class="section section--about" aria-label="About me">
+    <!-- ══════════════════════════════════════════════════════════
+         ZONE 2 — BENTO CORE DASHBOARD
+         High-density command center for qualifications
+         ══════════════════════════════════════════════════════════ -->
+    <section id="dashboard" class="section section--dashboard" aria-label="Skills & Qualifications Dashboard">
       <div class="container">
-        <h2 class="section-title reveal fade-in-up">About</h2>
+        <h2 class="section-title reveal fade-in-up">Command Center</h2>
+        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Professional qualifications, technical domains, and verified credentials at a glance.</p>
 
-        <div class="about-grid">
-          <div class="about-info reveal fade-in-left">
-            <h3 class="about-subtitle text-mono">SYSTEMS_ENGINEER // PROFILE</h3>
-            <p class="about-desc">
-              I am an early-career Network &amp; Cybersecurity Engineer dedicated to designing secure network
-              infrastructures, managing enterprise server environments, and building robust automated topologies. My
-              approach combines strong dynamic routing fundamentals with rigorous security configurations.
-            </p>
-            <p class="about-desc">
-              With a background focused heavily on hands-on labs and architectural sandboxing, I specialize in
-              validating design choices using utilities like GNS3, EVE-NG, and Packet Tracer. I am highly motivated by
-              systems hardening, operational threat containment, and secure systems architecture.
-            </p>
+        <div class="bento-grid">
 
-            <div class="about-stats">
-              <div class="stat-item">
-                <span class="stat-number text-mono">100+</span>
-                <span class="stat-label">Hours Lab Testing</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number text-mono">15+</span>
-                <span class="stat-label">Network Topologies</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number text-mono">5+</span>
-                <span class="stat-label">Security Audits</span>
-              </div>
+          <!-- BENTO CARD: Executive Profile (spans 2 cols) -->
+          <div class="bento-card bento-card--profile bento-card--wide reveal fade-in-up" id="bento-profile">
+            <div class="bento-card-inner">
+              <div class="bento-label text-mono">EXECUTIVE_PROFILE</div>
+              <h3 class="bento-heading">Engineering Philosophy</h3>
+              <p class="bento-text">
+                I am a Network &amp; Cybersecurity Engineer dedicated to designing secure network infrastructures, managing enterprise server environments, and building robust automated topologies. My approach combines strong dynamic routing fundamentals with rigorous security configurations.
+              </p>
+              <p class="bento-text">
+                With a background focused on hands-on labs and architectural sandboxing, I specialize in validating design choices using utilities like GNS3, EVE-NG, and Packet Tracer. I am highly motivated by systems hardening, operational threat containment, and secure systems architecture.
+              </p>
             </div>
           </div>
 
-          <div class="about-cards reveal fade-in-right">
-            <div class="about-card">
-              <div class="card-icon text-mono">[01]</div>
-              <h4 class="card-title">Network Engineering</h4>
-              <p class="card-text">Designing Layer 2/3 networks, configuring VLAN trunks, OSPF areas, and managing Cisco
-                IOS &amp; MikroTik RouterOS devices.</p>
-            </div>
-            <div class="about-card">
-              <div class="card-icon text-mono">[02]</div>
-              <h4 class="card-title">Cybersecurity Fundamentals</h4>
-              <p class="card-text">Configuring secure access controls, firewall inspection zones, analyzing packets via
-                Wireshark, and conducting vulnerability scans.</p>
-            </div>
-            <div class="about-card">
-              <div class="card-icon text-mono">[03]</div>
-              <h4 class="card-title">Systems Administration</h4>
-              <p class="card-text">Deploying domain environments on Windows Server (AD, DNS, DHCP) and configuring
-                standard security-compliant Linux servers.</p>
-            </div>
-            <div class="about-card">
-              <div class="card-icon text-mono">[04]</div>
-              <h4 class="card-title">Practical Labs &amp; Documentation</h4>
-              <p class="card-text">Architecting scalable staging labs in GNS3, EVE-NG, and Cisco Packet Tracer to
-                pre-validate configuration security before deployment.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────────
-         SECTION 3 — SKILLS
-         Technical skills grouped by category
-         Data sourced from data/skills.json
-         ────────────────────────────────────────── -->
-    <section id="skills" class="section section--skills" aria-label="Technical skills">
-      <div class="container">
-        <h2 class="section-title reveal fade-in-up">Skills</h2>
-        <!-- Skills cards/bars will be rendered dynamically by main.js from skills.json -->
-        <div id="skills-grid" class="skills-grid" aria-live="polite">
-          <p class="text-mono loading-text">Accessing skills database...</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────────
-         SECTION 4 — PROJECTS
-         Portfolio project cards (data/projects.json)
-         ────────────────────────────────────────── -->
-    <section id="projects" class="section section--projects" aria-label="Portfolio projects">
-      <div class="container">
-        <h2 class="section-title reveal fade-in-up">Projects</h2>
-        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Real-world engineering work and security-focused
-          solutions.</p>
-        <!-- Dynamic project cards rendered by main.js from projects.json -->
-        <div id="projects-grid" class="projects-grid" aria-live="polite">
-          <p class="text-mono loading-text">Loading project database...</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────────
-         SECTION 5 — Sam-Smart SHOWCASE
-         Featured deep-dive into the Sam-Smart system
-         ────────────────────────────────────────── -->
-    <section id="Sam-Smart" class="section section--Sam-Smart" aria-label="Sam-Smart Password Manager Showcase">
-      <div class="container">
-
-        <!-- Section Label -->
-        <div class="showcase-label text-mono reveal fade-in-up">FEATURED_PROJECT // DEEP_DIVE</div>
-        <h2 class="section-title reveal fade-in-up">Sam-Smart</h2>
-        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Zero-Knowledge Password Manager — Enterprise-Grade
-          Cryptographic Security</p>
-
-        <div class="showcase-grid">
-
-          <!-- Left: Project Overview -->
-          <div class="showcase-info reveal fade-in-left">
-            <div class="showcase-meta text-mono">
-              <span class="meta-tag">SECURITY ENGINEERING</span>
-              <span class="meta-tag">CRYPTOGRAPHY</span>
-              <span class="meta-tag">ZERO-KNOWLEDGE</span>
-            </div>
-
-            <h3 class="showcase-heading">Project Overview</h3>
-            <p class="showcase-desc">
-              Sam-Smart is a Zero-Knowledge Password Manager designed to provide enterprise-grade password protection
-              while ensuring that sensitive user data remains inaccessible to the server itself.
-            </p>
-            <p class="showcase-desc">
-              The platform utilizes AES-256-GCM encryption, secure master-key management, key wrapping, and multi-factor
-              authentication to protect credentials through a modern security architecture.
-            </p>
-
-            <h3 class="showcase-heading">Core Security Features</h3>
-            <ul class="feature-list">
-              <li class="feature-item">
-                <span class="feature-bullet text-mono">&gt;</span>
-                <span><strong>Zero-Knowledge Security Architecture</strong> — Client vault entries are encrypted
-                  client-side; plaintext values never traverse the network or touch database systems.</span>
-              </li>
-              <li class="feature-item">
-                <span class="feature-bullet text-mono">&gt;</span>
-                <span><strong>AES-256-GCM Encryption</strong> — Authenticated symmetric cryptography protecting data
-                  confidentiality and verifying integrity of vault payloads.</span>
-              </li>
-              <li class="feature-item">
-                <span class="feature-bullet text-mono">&gt;</span>
-                <span><strong>Master Key &amp; Key Wrapping System</strong> — Local cryptographic keys wrapped
-                  dynamically to protect storage session integrity.</span>
-              </li>
-              <li class="feature-item">
-                <span class="feature-bullet text-mono">&gt;</span>
-                <span><strong>Multi-Factor Authentication (2FA)</strong> — Built-in security layers validation using
-                  secondary authentication mechanisms.</span>
-              </li>
-              <li class="feature-item">
-                <span class="feature-bullet text-mono">&gt;</span>
-                <span><strong>Secure Password Vault Management</strong> — Structured, robust client-side storage objects
-                  handling safe updates, entry query, and entropy checking.</span>
-              </li>
-            </ul>
-
-            <div class="showcase-tech">
-              <span class="tech-badge">PHP</span>
-              <span class="tech-badge">AES-256-GCM</span>
-              <span class="tech-badge">Cryptography</span>
-              <span class="tech-badge">Argon2id</span>
-              <span class="tech-badge">Libsodium</span>
-              <span class="tech-badge">Zero-Knowledge Security</span>
-              <span class="tech-badge">2FA</span>
-              <span class="tech-badge">Password Management</span>
-            </div>
-
-            <div class="showcase-actions">
-              <a href="https://github.com/mohammed-almahjani/Sam-Smart" target="_blank" rel="noopener noreferrer"
-                class="btn btn--primary" aria-label="View Sam-Smart on GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"
-                  aria-hidden="true">
-                  <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                  </path>
-                </svg>
-                <span>View on GitHub</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Right: Interactive Screenshot Container inside Mock Browser -->
-          <div class="showcase-visual reveal fade-in-right">
-            <div class="mock-browser">
-              <div class="browser-header">
-                <div class="browser-dots">
-                  <span class="browser-dot browser-dot--close"></span>
-                  <span class="browser-dot browser-dot--minimize"></span>
-                  <span class="browser-dot browser-dot--maximize"></span>
+          <!-- BENTO CARD: High-Impact Metrics -->
+          <div class="bento-card bento-card--metrics reveal fade-in-up reveal--delay-1" id="bento-metrics">
+            <div class="bento-card-inner">
+              <div class="bento-label text-mono">KEY_METRICS</div>
+              <div class="metrics-grid">
+                <div class="metric-tile">
+                  <span class="metric-value text-mono">5+</span>
+                  <span class="metric-label">Verified Certifications</span>
                 </div>
-                <div class="browser-bar">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                    aria-hidden="true">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                <div class="metric-tile">
+                  <span class="metric-value text-mono">100+</span>
+                  <span class="metric-label">Hours Lab Testing</span>
+                </div>
+                <div class="metric-tile">
+                  <span class="metric-value text-mono">15+</span>
+                  <span class="metric-label">Network Topologies</span>
+                </div>
+                <div class="metric-tile">
+                  <span class="metric-value text-mono">5+</span>
+                  <span class="metric-label">Security Audits</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BENTO CARD: Technical Skills Matrix (spans 2 cols, tall) -->
+          <div class="bento-card bento-card--skills bento-card--wide reveal fade-in-up reveal--delay-2" id="bento-skills">
+            <div class="bento-card-inner">
+              <div class="bento-label text-mono">TECHNICAL_SKILLS_MATRIX</div>
+              <div id="skills-matrix" class="skills-matrix" aria-live="polite">
+                <p class="text-mono loading-text">Accessing skills database...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- BENTO CARD: Certifications Quick Deck -->
+          <div class="bento-card bento-card--certs reveal fade-in-up reveal--delay-1" id="bento-certs">
+            <div class="bento-card-inner">
+              <div class="bento-label text-mono">VERIFIED_CREDENTIALS</div>
+              <div id="certs-deck" class="certs-deck" aria-live="polite">
+                <!-- Dynamically populated by main.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- BENTO CARD: Core Competencies -->
+          <div class="bento-card bento-card--competencies reveal fade-in-up reveal--delay-2" id="bento-competencies">
+            <div class="bento-card-inner">
+              <div class="bento-label text-mono">CORE_COMPETENCIES</div>
+              <div class="competencies-list">
+                <div class="competency-item">
+                  <div class="competency-icon text-mono">[01]</div>
+                  <h4 class="competency-title">Network Engineering</h4>
+                  <p class="competency-desc">Designing Layer 2/3 networks, VLAN trunks, OSPF areas, and managing Cisco IOS &amp; MikroTik RouterOS.</p>
+                </div>
+                <div class="competency-item">
+                  <div class="competency-icon text-mono">[02]</div>
+                  <h4 class="competency-title">Cybersecurity</h4>
+                  <p class="competency-desc">Secure access controls, firewall inspection zones, packet analysis via Wireshark, and vulnerability assessment.</p>
+                </div>
+                <div class="competency-item">
+                  <div class="competency-icon text-mono">[03]</div>
+                  <h4 class="competency-title">Systems Administration</h4>
+                  <p class="competency-desc">Windows Server (AD, DNS, DHCP) deployment and security-compliant Linux server configuration.</p>
+                </div>
+                <div class="competency-item">
+                  <div class="competency-icon text-mono">[04]</div>
+                  <h4 class="competency-title">Lab Architecture</h4>
+                  <p class="competency-desc">Scalable staging labs in GNS3, EVE-NG, and Packet Tracer for pre-deployment security validation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.bento-grid -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         ZONE 3 — UNIFIED ENGINEERING VAULT
+         Consolidated hub: Projects + Sam-Smart + Network Labs
+         ══════════════════════════════════════════════════════════ -->
+    <section id="vault" class="section section--vault" aria-label="Engineering Vault">
+      <div class="container">
+        <h2 class="section-title reveal fade-in-up">Engineering Vault</h2>
+        <p class="section-subtitle reveal fade-in-up reveal--delay-1">A unified workspace of security systems, network labs, and software projects.</p>
+
+        <!-- Tab Filter Bar -->
+        <div class="vault-tabs reveal fade-in-up reveal--delay-2" role="tablist" aria-label="Filter engineering projects">
+          <button class="vault-tab vault-tab--active" role="tab" aria-selected="true" data-filter="all" id="tab-all">All</button>
+          <button class="vault-tab" role="tab" aria-selected="false" data-filter="cyber" id="tab-cyber">Cyber &amp; Security</button>
+          <button class="vault-tab" role="tab" aria-selected="false" data-filter="network" id="tab-network">Network Infrastructure</button>
+          <button class="vault-tab" role="tab" aria-selected="false" data-filter="software" id="tab-software">Software &amp; Tools</button>
+        </div>
+
+        <!-- Vault Cards Grid -->
+        <div id="vault-grid" class="vault-grid" role="tabpanel" aria-live="polite">
+
+          <!-- ─── SAM-SMART (Cyber & Security) ─── -->
+          <article class="vault-card vault-card--featured" data-category="cyber" data-category-alt="software">
+            <div class="vault-card-visual">
+              <div class="vault-card-browser">
+                <div class="browser-dots-row">
+                  <span class="bdot bdot--close"></span>
+                  <span class="bdot bdot--min"></span>
+                  <span class="bdot bdot--max"></span>
+                </div>
+                <img src="assets/screenshots/smartsam-login.png" alt="Sam-Smart Login Interface"
+                  class="vault-card-screenshot lightbox-trigger" loading="lazy" />
+              </div>
+            </div>
+            <div class="vault-card-body">
+              <div class="vault-card-meta">
+                <span class="vault-badge vault-badge--featured text-mono">FEATURED</span>
+                <span class="vault-badge text-mono">SECURITY ENGINEERING</span>
+              </div>
+              <h3 class="vault-card-title">Sam-Smart</h3>
+              <p class="vault-card-subtitle">Zero-Knowledge Password Manager — Enterprise-Grade Cryptographic Security</p>
+              <p class="vault-card-desc">Sam-Smart is a Zero-Knowledge Password Manager designed to provide enterprise-grade password protection while ensuring that sensitive user data remains inaccessible to the server itself. Utilizes AES-256-GCM encryption, Argon2id KDF, key wrapping, and multi-factor authentication.</p>
+              <ul class="vault-card-features">
+                <li>Zero-Knowledge Security Architecture</li>
+                <li>AES-256-GCM Authenticated Encryption</li>
+                <li>Master Key &amp; Key Wrapping System</li>
+                <li>Multi-Factor Authentication (2FA)</li>
+                <li>Secure Password Vault Management</li>
+              </ul>
+              <div class="vault-card-tech">
+                <span class="tech-badge">PHP</span>
+                <span class="tech-badge">AES-256-GCM</span>
+                <span class="tech-badge">Argon2id</span>
+                <span class="tech-badge">Libsodium</span>
+                <span class="tech-badge">2FA</span>
+                <span class="tech-badge">Zero-Knowledge</span>
+              </div>
+              <div class="vault-card-actions">
+                <a href="https://github.com/mohammed-almahjani/Sam-Smart" target="_blank" rel="noopener noreferrer"
+                  class="btn btn--primary btn--sm" aria-label="View Sam-Smart on GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon" aria-hidden="true">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
-                  <span>localhost:8080/SAM_Smart/login.php</span>
-                </div>
-              </div>
-              <div class="browser-content">
-                <img src="assets/screenshots/smartsam-login.png" alt="Sam-Smart Login Interface screenshot"
-                  class="browser-screenshot lightbox-trigger" />
+                  <span>View on GitHub</span>
+                </a>
               </div>
             </div>
-          </div>
+          </article>
 
-        </div>
-
-        <!-- Row 3: Architecture Diagram (Full Width below) -->
-        <div class="showcase-architecture reveal fade-in-up reveal--delay-1" style="margin-top: var(--space-12);">
-          <div class="arch-panel">
-            <div class="arch-panel-header">
-              <span class="arch-label text-mono">CRYPTOGRAPHIC_ARCHITECTURE_FLOW</span>
-              <span class="arch-status text-mono"><span class="badge-status-dot"></span> ENCRYPTED</span>
-            </div>
-            <div class="arch-body">
-              <!-- Encryption Flow Visual -->
-              <div class="arch-flow">
-                <div class="arch-node arch-node--user">
-                  <div class="arch-node-icon text-mono">CLIENT</div>
-                  <span>Plaintext Credentials &amp; Master Password</span>
+          <!-- ─── GROCERY CARDS (Software & Tools) ─── -->
+          <article class="vault-card" data-category="software">
+            <div class="vault-card-visual">
+              <div class="vault-card-browser">
+                <div class="browser-dots-row">
+                  <span class="bdot bdot--close"></span>
+                  <span class="bdot bdot--min"></span>
+                  <span class="bdot bdot--max"></span>
                 </div>
-                <div class="arch-arrow">
-                  <div class="arch-arrow-line"></div>
-                  <span class="arch-arrow-label text-mono">Argon2id KDF Derivation</span>
-                </div>
-                <div class="arch-node arch-node--crypto">
-                  <div class="arch-node-icon text-mono">CRYPTO</div>
-                  <span>Local AES-256-GCM Encryption</span>
-                </div>
-                <div class="arch-arrow">
-                  <div class="arch-arrow-line"></div>
-                  <span class="arch-arrow-label text-mono">Symmetric Key Wrap &amp; Authenticated Tags</span>
-                </div>
-                <div class="arch-node arch-node--vault">
-                  <div class="arch-node-icon text-mono">VAULT</div>
-                  <span>Client-Side Sealed Cryptographic Payload</span>
-                </div>
-                <div class="arch-arrow">
-                  <div class="arch-arrow-line"></div>
-                  <span class="arch-arrow-label text-mono">Secure API Sync</span>
-                </div>
-                <div class="arch-node arch-node--cloud">
-                  <div class="arch-node-icon text-mono">SERVER</div>
-                  <span>Database Host (Zero Plaintext Access)</span>
-                </div>
-              </div>
-
-              <!-- Security Stats -->
-              <div class="arch-stats">
-                <div class="arch-stat-item">
-                  <span class="arch-stat-val text-mono">Argon2id</span>
-                  <span class="arch-stat-key">KDF Protocol</span>
-                </div>
-                <div class="arch-stat-item">
-                  <span class="arch-stat-val text-mono">AES-256-GCM</span>
-                  <span class="arch-stat-key">Symmetric Cipher</span>
-                </div>
-                <div class="arch-stat-item">
-                  <span class="arch-stat-val text-mono">Libsodium</span>
-                  <span class="arch-stat-key">Crypto Primitives</span>
-                </div>
+                <img src="assets/screenshots/grocerycards-dashboard.png" alt="Grocery Cards Dashboard"
+                  class="vault-card-screenshot lightbox-trigger" loading="lazy" />
               </div>
             </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────────
-         SECTION 6 — NETWORK LABS
-         Practical hands-on lab documentation
-         ────────────────────────────────────────── -->
-    <section id="network-labs" class="section section--network-labs" aria-label="Network Labs">
-      <div class="container">
-        <div class="showcase-label text-mono reveal fade-in-up">HANDS_ON // PRACTICAL_ENGINEERING</div>
-        <h2 class="section-title reveal fade-in-up">Network Labs</h2>
-        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Documented lab environments built to validate
-          real-world network architectures and security configurations.</p>
-
-        <!-- Tools Used Strip -->
-        <div class="labs-tools reveal fade-in-up reveal--delay-2">
-          <span class="labs-tools-label text-mono">LAB ENVIRONMENTS:</span>
-          <span class="tech-badge">EVE-NG</span>
-          <span class="tech-badge">GNS3</span>
-          <span class="tech-badge">Cisco Packet Tracer</span>
-          <span class="tech-badge">Cisco IOS</span>
-          <span class="tech-badge">MikroTik RouterOS</span>
-          <span class="tech-badge">WinBox</span>
-        </div>
-
-        <div class="labs-grid" id="labs-grid">
-
-          <!-- Lab Card 1: Multi-Area OSPF -->
-          <article class="lab-card reveal fade-in-up">
-            <div class="lab-card-header">
-              <div class="lab-card-meta">
-                <span class="lab-type text-mono">ROUTING LAB</span>
-                <span class="lab-tool text-mono">EVE-NG</span>
+            <div class="vault-card-body">
+              <div class="vault-card-meta">
+                <span class="vault-badge text-mono">MOBILE APP</span>
               </div>
-              <div class="lab-topology-placeholder" aria-label="OSPF topology diagram placeholder">
-                <div class="topology-visual" aria-hidden="true">
-                  <div class="topo-node topo-r1">R1</div>
-                  <div class="topo-node topo-r2">R2</div>
-                  <div class="topo-node topo-r3">R3</div>
-                  <div class="topo-link topo-link-12"></div>
-                  <div class="topo-link topo-link-23"></div>
-                  <div class="topo-node topo-area0">Area 0</div>
-                </div>
+              <h3 class="vault-card-title">Grocery Cards</h3>
+              <p class="vault-card-subtitle">Cloud-Connected Grocery Management System</p>
+              <p class="vault-card-desc">An offline-first, cloud-connected mobile application featuring biometric authentication, real-time Firebase sync, and a multi-layer security system.</p>
+              <ul class="vault-card-features">
+                <li>Offline-First Architecture with Auto-Sync</li>
+                <li>Multi-Layer Security System</li>
+                <li>Biometric Authentication</li>
+                <li>Role-Based Access &amp; Management</li>
+              </ul>
+              <div class="vault-card-tech">
+                <span class="tech-badge">Firebase</span>
+                <span class="tech-badge">Offline-First</span>
+                <span class="tech-badge">Biometric Auth</span>
+                <span class="tech-badge">Cloud Sync</span>
+              </div>
+              <div class="vault-card-actions">
+                <a href="https://github.com/mohammed-almahjani" target="_blank" rel="noopener noreferrer"
+                  class="btn btn--secondary btn--sm" aria-label="View Grocery Cards on GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon" aria-hidden="true">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>GitHub</span>
+                </a>
               </div>
             </div>
-            <div class="lab-card-body">
-              <h3 class="lab-title">Enterprise Multi-Area OSPF Network</h3>
-              <p class="lab-desc">Designed a multi-site campus topology in EVE-NG connecting Area 0 backbone with
-                stubbed branch areas. Tuned hello timers, cost metrics, and enabled MD5 routing authentication.</p>
-              <div class="lab-tech">
-                <span class="tech-badge tech-badge--sm">OSPF</span>
-                <span class="tech-badge tech-badge--sm">Cisco IOS</span>
-                <span class="tech-badge tech-badge--sm">EVE-NG</span>
-                <span class="tech-badge tech-badge--sm">MD5 Auth</span>
+          </article>
+
+          <!-- ─── OSPF LAB (Network Infrastructure) ─── -->
+          <article class="vault-card" data-category="network">
+            <div class="vault-card-body">
+              <div class="vault-card-meta">
+                <span class="vault-badge text-mono">ROUTING LAB</span>
+                <span class="vault-badge text-mono">EVE-NG</span>
               </div>
-              <div class="lab-outcomes">
-                <h4 class="outcomes-title text-mono">LEARNING OUTCOMES</h4>
-                <ul class="outcomes-list">
+              <div class="vault-card-topology" aria-label="OSPF topology diagram" aria-hidden="true">
+                <div class="topo-mini">
+                  <span class="topo-dot">R1</span>
+                  <span class="topo-line"></span>
+                  <span class="topo-dot">R2</span>
+                  <span class="topo-line"></span>
+                  <span class="topo-dot">R3</span>
+                </div>
+                <span class="topo-label text-mono">OSPF Area 0 Backbone</span>
+              </div>
+              <h3 class="vault-card-title">Enterprise Multi-Area OSPF Network</h3>
+              <p class="vault-card-desc">Designed a multi-site campus topology in EVE-NG connecting Area 0 backbone with stubbed branch areas. Tuned hello timers, cost metrics, and enabled MD5 routing authentication.</p>
+              <div class="vault-card-outcomes">
+                <h4 class="outcomes-label text-mono">LEARNING OUTCOMES</h4>
+                <ul>
                   <li>Mastered LSA flooding control and loop avoidance logic</li>
                   <li>Configured MD5 authentication on Cisco routing protocols</li>
                   <li>Understood convergence metrics under simulated link failures</li>
                 </ul>
               </div>
+              <div class="vault-card-tech">
+                <span class="tech-badge">OSPF</span>
+                <span class="tech-badge">Cisco IOS</span>
+                <span class="tech-badge">EVE-NG</span>
+                <span class="tech-badge">MD5 Auth</span>
+              </div>
             </div>
           </article>
 
-          <!-- Lab Card 2: VLAN Segmentation -->
-          <article class="lab-card reveal fade-in-up reveal--delay-1">
-            <div class="lab-card-header">
-              <div class="lab-card-meta">
-                <span class="lab-type text-mono">SWITCHING LAB</span>
-                <span class="lab-tool text-mono">PACKET TRACER</span>
+          <!-- ─── VLAN LAB (Network Infrastructure) ─── -->
+          <article class="vault-card" data-category="network" data-category-alt="cyber">
+            <div class="vault-card-body">
+              <div class="vault-card-meta">
+                <span class="vault-badge text-mono">SWITCHING LAB</span>
+                <span class="vault-badge text-mono">PACKET TRACER</span>
               </div>
-              <div class="lab-topology-placeholder" aria-label="VLAN topology diagram placeholder">
-                <div class="topology-visual" aria-hidden="true">
-                  <div class="topo-node topo-sw1">SW1</div>
-                  <div class="topo-node topo-sw2">SW2</div>
-                  <div class="topo-node topo-rt">RT</div>
-                  <div class="topo-link topo-link-sw12"></div>
-                  <div class="topo-link topo-link-sw1rt"></div>
-                  <div class="topo-vlan-label">VLAN 10 | VLAN 20 | VLAN 99</div>
+              <div class="vault-card-topology" aria-label="VLAN topology diagram" aria-hidden="true">
+                <div class="topo-mini">
+                  <span class="topo-dot">SW1</span>
+                  <span class="topo-line"></span>
+                  <span class="topo-dot">SW2</span>
+                  <span class="topo-line"></span>
+                  <span class="topo-dot">RT</span>
                 </div>
+                <span class="topo-label text-mono">VLAN 10 | VLAN 20 | VLAN 99</span>
               </div>
-            </div>
-            <div class="lab-card-body">
-              <h3 class="lab-title">Secure VLAN Segmentation &amp; Inter-VLAN Routing</h3>
-              <p class="lab-desc">Segmented corporate departments using VLANs with 802.1Q trunk encapsulation.
-                Implemented Router-on-a-Stick gateway routing and hardened switches against VLAN hopping attacks.</p>
-              <div class="lab-tech">
-                <span class="tech-badge tech-badge--sm">VLANs</span>
-                <span class="tech-badge tech-badge--sm">802.1Q</span>
-                <span class="tech-badge tech-badge--sm">Router-on-a-Stick</span>
-                <span class="tech-badge tech-badge--sm">Switchport Security</span>
-              </div>
-              <div class="lab-outcomes">
-                <h4 class="outcomes-title text-mono">LEARNING OUTCOMES</h4>
-                <ul class="outcomes-list">
-                  <li>Configured Layer 2 switchport protections and MAC address limits</li>
+              <h3 class="vault-card-title">Secure VLAN Segmentation &amp; Inter-VLAN Routing</h3>
+              <p class="vault-card-desc">Segmented corporate departments using VLANs with 802.1Q trunk encapsulation. Implemented Router-on-a-Stick gateway routing and hardened switches against VLAN hopping attacks.</p>
+              <div class="vault-card-outcomes">
+                <h4 class="outcomes-label text-mono">LEARNING OUTCOMES</h4>
+                <ul>
+                  <li>Configured Layer 2 switchport protections and MAC limits</li>
                   <li>Built and troubleshot Router-on-a-Stick gateway interfaces</li>
                   <li>Mitigated Layer 2 attacks including rogue DHCP insertion</li>
                 </ul>
               </div>
+              <div class="vault-card-tech">
+                <span class="tech-badge">VLANs</span>
+                <span class="tech-badge">802.1Q</span>
+                <span class="tech-badge">Router-on-a-Stick</span>
+                <span class="tech-badge">Switchport Security</span>
+              </div>
             </div>
           </article>
 
-          <!-- Lab Card 3: MikroTik -->
-          <article class="lab-card reveal fade-in-up reveal--delay-2">
-            <div class="lab-card-header">
-              <div class="lab-card-meta">
-                <span class="lab-type text-mono">MIKROTIK LAB</span>
-                <span class="lab-tool text-mono">WINBOX</span>
+          <!-- ─── MIKROTIK LAB (Network Infrastructure) ─── -->
+          <article class="vault-card" data-category="network">
+            <div class="vault-card-body">
+              <div class="vault-card-meta">
+                <span class="vault-badge text-mono">MIKROTIK LAB</span>
+                <span class="vault-badge text-mono">WINBOX</span>
               </div>
-              <div class="lab-topology-placeholder" aria-label="MikroTik topology diagram placeholder">
-                <div class="topology-visual" aria-hidden="true">
-                  <div class="topo-node topo-mt">MK</div>
-                  <div class="topo-node topo-isp">ISP</div>
-                  <div class="topo-node topo-lan">LAN</div>
-                  <div class="topo-link topo-link-mtisp"></div>
-                  <div class="topo-link topo-link-mtlan"></div>
-                  <div class="topo-vlan-label">NAT | Firewall | DHCP</div>
+              <div class="vault-card-topology" aria-label="MikroTik topology diagram" aria-hidden="true">
+                <div class="topo-mini">
+                  <span class="topo-dot">MK</span>
+                  <span class="topo-line"></span>
+                  <span class="topo-dot">ISP</span>
+                  <span class="topo-line"></span>
+                  <span class="topo-dot">LAN</span>
                 </div>
+                <span class="topo-label text-mono">NAT | Firewall | DHCP</span>
               </div>
-            </div>
-            <div class="lab-card-body">
-              <h3 class="lab-title">MikroTik RouterOS Gateway Configuration</h3>
-              <p class="lab-desc">Configured a MikroTik RB series router as an internet gateway with NAT masquerade,
-                stateful firewall chains, DHCP server, and bandwidth management using WinBox and terminal CLI.</p>
-              <div class="lab-tech">
-                <span class="tech-badge tech-badge--sm">MikroTik RouterOS</span>
-                <span class="tech-badge tech-badge--sm">WinBox</span>
-                <span class="tech-badge tech-badge--sm">NAT</span>
-                <span class="tech-badge tech-badge--sm">Firewall Chains</span>
-              </div>
-              <div class="lab-outcomes">
-                <h4 class="outcomes-title text-mono">LEARNING OUTCOMES</h4>
-                <ul class="outcomes-list">
+              <h3 class="vault-card-title">MikroTik RouterOS Gateway Configuration</h3>
+              <p class="vault-card-desc">Configured a MikroTik RB series router as an internet gateway with NAT masquerade, stateful firewall chains, DHCP server, and bandwidth management using WinBox and terminal CLI.</p>
+              <div class="vault-card-outcomes">
+                <h4 class="outcomes-label text-mono">LEARNING OUTCOMES</h4>
+                <ul>
                   <li>Mastered WinBox and RouterOS CLI for live device management</li>
                   <li>Designed stateful input/forward firewall rule chains</li>
-                  <li>Configured DHCP server pools and static leases for LAN segments</li>
+                  <li>Configured DHCP server pools and static leases</li>
                 </ul>
+              </div>
+              <div class="vault-card-tech">
+                <span class="tech-badge">MikroTik RouterOS</span>
+                <span class="tech-badge">WinBox</span>
+                <span class="tech-badge">NAT</span>
+                <span class="tech-badge">Firewall Chains</span>
               </div>
             </div>
           </article>
 
+        </div><!-- /.vault-grid -->
+
+        <!-- Empty state for filtered results -->
+        <div id="vault-empty" class="vault-empty" style="display: none;" aria-live="polite">
+          <p class="text-mono">No projects found in this category.</p>
         </div>
+
       </div>
     </section>
 
-    <!-- ──────────────────────────────────────────
-         SECTION 7 — EXPERIENCE
-         Work history timeline
-         ────────────────────────────────────────── -->
-    <section id="experience" class="section section--experience" aria-label="Work experience">
+    <!-- ══════════════════════════════════════════════════════════
+         ZONE 4 — CAREER TRACK & DIRECT UPLINK
+         ══════════════════════════════════════════════════════════ -->
+
+    <!-- Career Timeline -->
+    <section id="experience" class="section section--experience" aria-label="Career Experience">
       <div class="container">
-        <h2 class="section-title reveal fade-in-up">Experience</h2>
-        <p class="section-subtitle reveal fade-in-up reveal--delay-1">A timeline of my professional work history and
-          technical deployments.</p>
+        <h2 class="section-title reveal fade-in-up">Career Track</h2>
+        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Professional milestones and specialized deployments.</p>
 
-        <div class="timeline-container">
-          <div class="timeline-line"></div>
+        <div class="career-track">
+          <div class="career-spine" aria-hidden="true"></div>
 
-          <!-- Experience #2: Enterprise Network Infrastructure Deployment -->
-          <div class="timeline-item timeline-item--right reveal fade-in-up">
-            <div class="timeline-node timeline-node--cyan">
-              <div class="node-pulse"></div>
+          <!-- Milestone 1 -->
+          <div class="career-item reveal fade-in-up">
+            <div class="career-node">
+              <div class="career-node-dot"></div>
             </div>
-            <div class="timeline-date-wrapper">
-              <span class="timeline-date text-mono">2023</span>
-            </div>
-            <div class="timeline-card">
-              <div class="card-header-main">
-                <span class="card-badge card-badge--cyan text-mono">REAL-WORLD DEPLOYMENT</span>
-                <h3 class="experience-title">Enterprise Network Infrastructure Deployment</h3>
-                <h4 class="experience-role text-mono">Network Infrastructure Engineer</h4>
-                <div class="experience-scope text-mono">
-                  <span>Scope: 100+ Users</span>
-                </div>
-              </div>
-              <div class="card-body-main">
-                <p class="experience-desc">
-                  Participated in the implementation and deployment of a production network environment serving more
-                  than 100 users. Configured MikroTik routers, VLAN segmentation, firewall rules, PPPoE services,
-                  hotspot management, and load balancing solutions.
-                </p>
-                <div class="experience-responsibilities">
-                  <h5 class="responsibilities-title text-mono">KEY RESPONSIBILITIES</h5>
-                  <ul class="responsibilities-list">
-                    <li>Network Design</li>
-                    <li>VLAN Segmentation</li>
-                    <li>PPPoE Deployment</li>
-                    <li>Hotspot Configuration</li>
-                    <li>Firewall Hardening</li>
-                    <li>Load Balancing Configuration</li>
-                    <li>Network Monitoring</li>
-                  </ul>
-                </div>
-                <div class="experience-tech">
-                  <span class="tech-badge">MikroTik</span>
-                  <span class="tech-badge">VLAN</span>
-                  <span class="tech-badge">PPPoE</span>
-                  <span class="tech-badge">Hotspot</span>
-                  <span class="tech-badge">Firewall</span>
-                  <span class="tech-badge">Load Balancing</span>
-                </div>
+            <div class="career-content">
+              <span class="career-date text-mono">2023</span>
+              <span class="career-badge text-mono">REAL-WORLD DEPLOYMENT</span>
+              <h3 class="career-role">Enterprise Network Infrastructure Deployment</h3>
+              <h4 class="career-position text-mono">Network Infrastructure Engineer</h4>
+              <p class="career-desc">
+                Participated in the implementation and deployment of a production network environment serving more
+                than 100 users. Configured MikroTik routers, VLAN segmentation, firewall rules, PPPoE services,
+                hotspot management, and load balancing solutions.
+              </p>
+              <div class="career-responsibilities">
+                <span class="tech-badge">Network Design</span>
+                <span class="tech-badge">VLAN Segmentation</span>
+                <span class="tech-badge">PPPoE Deployment</span>
+                <span class="tech-badge">Hotspot Config</span>
+                <span class="tech-badge">Firewall Hardening</span>
+                <span class="tech-badge">Load Balancing</span>
+                <span class="tech-badge">Network Monitoring</span>
               </div>
             </div>
           </div>
 
-          <!-- Experience #1: Ministry of Industry & Trade -->
-          <div class="timeline-item timeline-item--left reveal fade-in-up reveal--delay-1">
-            <div class="timeline-node timeline-node--green">
-              <div class="node-pulse"></div>
+          <!-- Milestone 2 -->
+          <div class="career-item reveal fade-in-up reveal--delay-1">
+            <div class="career-node">
+              <div class="career-node-dot"></div>
             </div>
-            <div class="timeline-date-wrapper">
-              <span class="timeline-date text-mono">2023</span>
-            </div>
-            <div class="timeline-card">
-              <div class="card-header-main">
-                <span class="card-badge card-badge--green text-mono">GOVERNMENT ROLE</span>
-                <h3 class="experience-title">Ministry of Industry & Trade</h3>
-                <h4 class="experience-role text-mono">Data Entry & Database Assistant</h4>
-              </div>
-              <div class="card-body-main">
-                <p class="experience-desc">
-                  Supported database organization initiatives and administrative data processing tasks. Improved data
-                  consistency, record organization, and spreadsheet management workflows using Microsoft Excel.
-                </p>
-                <div class="experience-responsibilities">
-                  <h5 class="responsibilities-title text-mono">KEY RESPONSIBILITIES</h5>
-                  <ul class="responsibilities-list">
-                    <li>Data Entry Operations</li>
-                    <li>Database Reorganization</li>
-                    <li>Excel Data Management</li>
-                    <li>Data Validation & Cleanup</li>
-                    <li>Digital Records Management</li>
-                    <li>Information Accuracy Verification</li>
-                  </ul>
-                </div>
-                <div class="experience-tech">
-                  <span class="tech-badge">Data Entry Operations</span>
-                  <span class="tech-badge">Database Reorganization</span>
-                  <span class="tech-badge">Excel Data Management</span>
-                  <span class="tech-badge">Data Validation & Cleanup</span>
-                  <span class="tech-badge">Digital Records Management</span>
-                  <span class="tech-badge">Information Accuracy Verification</span>
-                </div>
+            <div class="career-content">
+              <span class="career-date text-mono">2023</span>
+              <span class="career-badge text-mono">GOVERNMENT ROLE</span>
+              <h3 class="career-role">Ministry of Industry &amp; Trade</h3>
+              <h4 class="career-position text-mono">Data Entry &amp; Database Assistant</h4>
+              <p class="career-desc">
+                Supported database organization initiatives and administrative data processing tasks. Improved data
+                consistency, record organization, and spreadsheet management workflows.
+              </p>
+              <div class="career-responsibilities">
+                <span class="tech-badge">Data Entry</span>
+                <span class="tech-badge">Database Reorganization</span>
+                <span class="tech-badge">Excel Management</span>
+                <span class="tech-badge">Data Validation</span>
+                <span class="tech-badge">Digital Records</span>
               </div>
             </div>
           </div>
 
-        </div>
+        </div><!-- /.career-track -->
       </div>
     </section>
 
-    <!-- ──────────────────────────────────────────
-         SECTION 8 — CERTIFICATES
-         Professional certifications
-         Data sourced from data/certificates.json
-         ────────────────────────────────────────── -->
-    <section id="certificates" class="section section--certificates" aria-label="Certifications">
-      <div class="container">
-        <h2 class="section-title reveal fade-in-up">Certifications</h2>
-        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Professional certifications and technical training
-          supporting my expertise in networking, systems administration, and IT infrastructure.</p>
-        <!-- Certificate cards will be rendered by main.js from certificates.json -->
-        <div id="certificates-grid" class="certificates-grid" aria-live="polite">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────────
-         SECTION 9 — CONTACT
-         Premium Recruiter-Focused Contact Cards & CTA Block
-         ────────────────────────────────────────── -->
+    <!-- Direct Contact Hub -->
     <section id="contact" class="section section--contact" aria-label="Contact">
       <div class="container">
-        <h2 class="section-title reveal fade-in-up">Contact</h2>
-        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Let’s connect and discuss networking,
-          cybersecurity, infrastructure, or technical opportunities.</p>
+        <h2 class="section-title reveal fade-in-up">Direct Uplink</h2>
+        <p class="section-subtitle reveal fade-in-up reveal--delay-1">Connect directly — verified channels for professional inquiries and collaboration.</p>
 
-        <!-- Premium Contact Grid -->
-        <div class="contact-grid reveal fade-in-up reveal--delay-2">
+        <div class="contact-hub reveal fade-in-up reveal--delay-2">
 
-          <!-- Card 1: Email -->
-          <div class="contact-card">
-            <div class="contact-card-icon-container">
+          <!-- Email Card -->
+          <div class="contact-card" id="contact-email">
+            <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-svg" aria-hidden="true">
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </div>
-            <div class="contact-card-header">
-              <h3 class="contact-card-title">Email</h3>
-            </div>
-            <div class="contact-card-body">
-              <p class="contact-card-desc">Reach me directly for opportunities, collaboration, or technical discussions.
-              </p>
-            </div>
-            <div class="contact-card-footer">
-              <a href="mailto:mohalmohjany@gmail.com" class="contact-card-action text-mono"
-                aria-label="Send email to mohalmohjany@gmail.com">
-                <span>mohalmohjany@gmail.com</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="external-icon" aria-hidden="true">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 2 22 9"></polygon>
-                </svg>
-              </a>
-            </div>
+            <h3 class="contact-card-title">Email</h3>
+            <p class="contact-card-desc">Reach me for opportunities or technical discussions.</p>
+            <button class="contact-copy-btn text-mono" id="copy-email-btn" data-email="mohalmohjany@gmail.com" aria-label="Copy email address">
+              <span class="copy-text">mohalmohjany@gmail.com</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
           </div>
 
-          <!-- Card 2: GitHub -->
+          <!-- GitHub Card -->
           <div class="contact-card">
-            <div class="contact-card-icon-container">
+            <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-svg" aria-hidden="true">
-                <path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                </path>
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
             </div>
-            <div class="contact-card-header">
-              <h3 class="contact-card-title">GitHub</h3>
-            </div>
-            <div class="contact-card-body">
-              <p class="contact-card-desc">Explore my projects, network labs, and technical documentation.</p>
-            </div>
-            <div class="contact-card-footer">
-              <a href="https://github.com/mohammed-almahjani" target="_blank" rel="noopener noreferrer"
-                class="contact-card-action text-mono" aria-label="Visit Mohammed's GitHub profile (opens in a new tab)">
-                <span>GitHub Profile</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="external-icon" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
+            <h3 class="contact-card-title">GitHub</h3>
+            <p class="contact-card-desc">Explore my projects and technical documentation.</p>
+            <a href="https://github.com/mohammed-almahjani" target="_blank" rel="noopener noreferrer"
+              class="contact-link text-mono" aria-label="Visit GitHub Profile">
+              <span>GitHub Profile</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
           </div>
 
-          <!-- Card 3: LinkedIn -->
+          <!-- LinkedIn Card -->
           <div class="contact-card">
-            <div class="contact-card-icon-container">
+            <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-svg" aria-hidden="true">
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                 <rect x="2" y="9" width="4" height="12"></rect>
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </div>
-            <div class="contact-card-header">
-              <h3 class="contact-card-title">LinkedIn</h3>
-            </div>
-            <div class="contact-card-body">
-              <p class="contact-card-desc">Connect with me professionally and view my career profile.</p>
-            </div>
-            <div class="contact-card-footer">
-              <a href="https://www.linkedin.com/in/mohammed-al-mohjani/" target="_blank" rel="noopener noreferrer"
-                class="contact-card-action text-mono"
-                aria-label="Visit Mohammed's LinkedIn profile (opens in a new tab)">
-                <span>LinkedIn Profile</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="external-icon" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
+            <h3 class="contact-card-title">LinkedIn</h3>
+            <p class="contact-card-desc">Connect professionally and view my career profile.</p>
+            <a href="https://www.linkedin.com/in/mohammed-al-mohjani/" target="_blank" rel="noopener noreferrer"
+              class="contact-link text-mono" aria-label="Visit LinkedIn Profile">
+              <span>LinkedIn Profile</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
           </div>
 
-          <!-- Card 4: Download CV -->
+          <!-- Download CV Card -->
           <div class="contact-card">
-            <div class="contact-card-icon-container">
+            <div class="contact-card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-svg" aria-hidden="true">
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
                 <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -977,76 +678,29 @@
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
             </div>
-            <div class="contact-card-header">
-              <h3 class="contact-card-title">Download CV</h3>
-            </div>
-            <div class="contact-card-body">
-              <p class="contact-card-desc">Download my latest professional resume.</p>
-            </div>
-            <div class="contact-card-footer">
-              <a href="assets/cv/resume.pdf" download class="contact-card-action text-mono"
-                aria-label="Download Mohammed's CV (PDF)">
-                <span>Download CV</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="external-icon" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-              </a>
-            </div>
+            <h3 class="contact-card-title">Download CV</h3>
+            <p class="contact-card-desc">Get my latest professional resume.</p>
+            <a href="assets/cv/resume.pdf" download class="contact-link text-mono" aria-label="Download CV (PDF)">
+              <span>Download Resume</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </a>
           </div>
 
-          <!-- Card 5: Portfolio -->
-          <div class="contact-card">
-            <div class="contact-card-icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-svg" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                </path>
-              </svg>
-            </div>
-            <div class="contact-card-header">
-              <h3 class="contact-card-title">Portfolio</h3>
-            </div>
-            <div class="contact-card-body">
-              <p class="contact-card-desc">You are viewing my live professional portfolio website.</p>
-            </div>
-            <div class="contact-card-footer">
-              <a href="#" class="contact-card-action text-mono" id="portfolio-site-link"
-                aria-label="Live Portfolio Website">
-                <span>Live Portfolio Website</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="external-icon" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
-          </div>
+        </div><!-- /.contact-hub -->
 
-        </div>
-
-        <!-- Professional Final CTA Block -->
-        <div class="contact-cta-block reveal fade-in-up reveal--delay-3">
-          <div class="cta-cyber-decor flex-center text-mono">
-            <span class="cta-decor-line"></span>
-            <span class="cta-decor-status">// CAREER_STATUS: ACTIVE_SEEKING</span>
-            <span class="cta-decor-line"></span>
+        <!-- Career Status CTA -->
+        <div class="contact-cta reveal fade-in-up reveal--delay-3">
+          <div class="cta-divider">
+            <span class="cta-line"></span>
+            <span class="cta-status text-mono">CAREER_STATUS: ACTIVE_SEEKING</span>
+            <span class="cta-line"></span>
           </div>
-          <h3 class="contact-cta-title">Available for IT, Network Engineering, and Cybersecurity Opportunities</h3>
-          <p class="contact-cta-text">I am open to entry-level and junior roles in network engineering, IT support,
-            infrastructure operations, and cybersecurity-focused environments.</p>
-          <div class="contact-cta-buttons">
-            <a href="assets/cv/resume.pdf" download class="btn btn--primary" aria-label="Download Mohammed's CV (PDF)">
+          <h3 class="cta-heading">Available for Network Engineering &amp; Cybersecurity Opportunities</h3>
+          <p class="cta-text">I am open to entry-level and junior roles in network engineering, IT support, infrastructure operations, and cybersecurity-focused environments.</p>
+          <div class="cta-actions">
+            <a href="assets/cv/resume.pdf" download class="btn btn--primary" aria-label="Download CV">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"
-                aria-hidden="true">
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon" aria-hidden="true">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1054,18 +708,16 @@
               <span>Download CV</span>
             </a>
             <a href="https://github.com/mohammed-almahjani" target="_blank" rel="noopener noreferrer"
-              class="btn btn--secondary" aria-label="View Mohammed's GitHub profile (opens in a new tab)">
+              class="btn btn--secondary" aria-label="View GitHub">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"
-                aria-hidden="true">
-                <path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                </path>
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
               <span>View GitHub</span>
             </a>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -1073,7 +725,6 @@
 
   <!-- ============================================================
        FOOTER
-       Copyright + back-to-top
        ============================================================ -->
   <footer id="site-footer" role="contentinfo">
     <div class="container">
@@ -1097,7 +748,6 @@
   <!-- ============================================================
        JAVASCRIPT
        Load order: data globals → main logic
-       data scripts must come BEFORE main.js so globals are defined
        ============================================================ -->
   <script src="data/skills-data.js"></script>
   <script src="data/projects-data.js"></script>
