@@ -9,30 +9,40 @@
 
 A one-page professional portfolio website for a Network & Cybersecurity Engineer.
 Theme: Luxury Industrial Tech — Warm Obsidian, Muted Amber Gold, and Editorial Warm Beige.
-Architecture: 4-Zone Adaptive Bento Grid Dashboard.
+Architecture: Floating Presentation Deck (Viewport Stage Showcase) inspired by keynote presentations.
 Owner: Mohammed Al-Mahjani.
 
 ---
 
 # Current Development Phase
 
-**Current Phase**: Phase 5 — Bento Grid Architecture Complete
-Complete structural overhaul from 9-section long-scroll to 4-zone Bento Grid dashboard.
+**Current Phase**: Phase 6 — Floating Presentation Deck Architecture Complete
+Complete structural transformation into a sequence of cinematic, high-density floating cards (`.deck-card`) that snap smoothly into the viewport center over the living ambient network background.
 
-**Previous Phase Completed**: Luxury Industrial Tech Theme Overhaul (Warm Obsidian palette applied).
+**Previous Phase Completed**: Bento Grid Architecture (Phase 5).
 
-**Next Phase**: Visual polish, testing, and deployment optimization.
+**Next Phase**: Production deployment and live hosting verification.
 
 ---
 
-# Architecture: 4-Zone Layout
+# Architecture: 5-Card Floating Presentation Deck
 
-| Zone | Section ID | Purpose |
-|------|-----------|---------|
-| Zone 1 | `#home` | Executive Split Hero — name, title, availability badge, portrait, CTA group, Focus Strip |
-| Zone 2 | `#dashboard` | Bento Core Dashboard — skills chip matrix, executive profile, key metrics, certifications, competencies |
-| Zone 3 | `#vault` | Unified Engineering Vault — tabbed filtering: All, Cyber & Security, Network Infrastructure, Software & Tools |
-| Zone 4 | `#experience` + `#contact` | Career Track (single-spine timeline) + Direct Contact Hub with email copy mechanism |
+| Card # | Slide Target | Focus | Left Column (Visual Canvas) | Right Column (Narrative & Action) |
+|--------|--------------|-------|------------------------------|-----------------------------------|
+| Card 1 | `#identity` | Executive Identity & Positioning | Framed portrait with gold accent corners, pulsing sage-green availability badge, telemetry strip | Authoritative headline, bio, primary CTA ("Explore Engineering Work"), CV download, GitHub trigger |
+| Card 2 | `#arsenal` | Technical Arsenal & Domain Matrix | 4-tile telemetry metrics (5+ Certs, 100+ Lab Hours, 15+ Topologies, 5+ Audits) + Focus domain strip | Domain-grouped interactive skill chips (Network, Defense, Systems, Cloud, Tools) with filter tabs |
+| Card 3 | `#vault` | The Engineering Vault (Projects) | High-res browser frame mockup with URL/security badges, lightbox zoom trigger | Interactive project switcher (Sam-Smart, Grocery Cards, OSPF Lab, VLAN Lab, MikroTik Lab), problem statement, tech stack, GitHub links |
+| Card 4 | `#credentials` | Verified Credentials & Network Labs | Interactive SVG topology schematics (OSPF Area 0, 802.1Q VLANs, MikroTik Firewall) + configuration takeaways | Verified credentials deck (CCNA, MikroTik, MCSA, CompTIA A+, ICDL) + 100+ user production deployment milestone |
+| Card 5 | `#contact` | Direct Uplink & Secure Contact | Availability scope, transport security statement, instant PDF CV download card | One-click email copy with animated "COPIED!" feedback, verified LinkedIn & GitHub links, direct mailto launcher |
+
+---
+
+# Navigation & Motion Dynamics
+
+- **CSS Scroll-Snap**: `scroll-snap-type: y mandatory` on desktop (`scroll-snap-align: center`), with soft proximity on mobile.
+- **Floating Deck HUD Indicator**: Slim glass pill fixed on right rail featuring 5 navigation dots with tooltips and digital slide counter (`01 / 05`) with next/prev stepper arrows.
+- **Sticky Mini-Nav**: Header bar with quick jump links (`Identity`, `Arsenal`, `Vault`, `Credentials`, `Uplink`), theme toggle, and mobile hamburger menu.
+- **Keyboard Navigation**: `ArrowDown`, `ArrowUp`, `PageDown`, `PageUp`, `Home`, and `End` support.
 
 ---
 
@@ -41,7 +51,7 @@ Complete structural overhaul from 9-section long-scroll to 4-zone Bento Grid das
 ```
 portfolio-website/
 ├── PROJECT_CONTEXT.md              ← permanent project memory (this file)
-├── index.html                      ← 4-zone single-page HTML (Bento Grid Architecture)
+├── index.html                      ← 5-card presentation deck HTML (Viewport Stage Showcase)
 ├── README.md                       ← project documentation
 ├── .gitignore
 ├── .editorconfig
@@ -55,34 +65,22 @@ portfolio-website/
 │   └── screenshots/                ← Sam-Smart login, Grocery Cards dashboard
 │
 ├── css/
-│   ├── style.css                   ← main styles: design tokens, Bento Grid, Vault cards, Career Track
-│   ├── responsive.css              ← mobile-first media queries for all breakpoints
+│   ├── style.css                   ← presentation deck styles: design tokens, 50/50 split cards, HUD rail
+│   ├── responsive.css              ← single-column mobile adaptations and compact laptop breakpoints
 │   └── animations.css              ← keyframe animations & scroll-reveal transitions
 │
 ├── data/
 │   ├── skills-data.js              ← SKILLS_DATA — domain-grouped skill chip matrix (no percentage bars)
-│   ├── projects-data.js            ← PROJECTS_DATA — project metadata (used by vault cards)
+│   ├── projects-data.js            ← PROJECTS_DATA — project metadata
 │   ├── projects.json               ← JSON mirror of projects data
 │   ├── skills.json                 ← JSON mirror of skills data
 │   └── certificates.json           ← Certificate data with SVG icons
 │
 ├── js/
-│   └── main.js                     ← Core logic: vault tabs, skill chips, cert deck, email copy, canvas, theme
+│   └── main.js                     ← Core logic: slide observer, HUD sync, vault switcher, topology tabs, email copy, theme toggle, canvas
 │
 └── docs/
 ```
-
----
-
-# Navigation Links
-
-| Nav Label | Target | Zone |
-|-----------|--------|------|
-| Overview | `#home` | Zone 1 |
-| Skills | `#dashboard` | Zone 2 |
-| Vault | `#vault` | Zone 3 |
-| Experience | `#experience` | Zone 4 |
-| Contact | `#contact` | Zone 4 |
 
 ---
 
@@ -104,35 +102,10 @@ portfolio-website/
 | Token | Value | Role |
 |-------|-------|------|
 | `--color-bg-primary` | `#F5F0E6` | Warm Editorial Ivory |
+| `--color-bg-secondary` | `#EBE4D6` | Sand Card Surface |
 | `--color-accent-cyan` | `#9B6514` | Rich Bronze |
 | `--color-status-online` | `#467B54` | Subtle Olive Green |
 | `--color-text-primary` | `#181715` | Deep Espresso Charcoal |
-
----
-
-# Key Components
-
-## Skills Matrix (Zone 2)
-- **Architecture**: Domain-grouped chip/badge clusters (no percentage bars)
-- **Domains**: Network & Infrastructure, Defensive Security, Systems & Server Admin, Cloud & Virtualization, Tools & Platforms, Development & Scripting
-- **Data Source**: `data/skills-data.js` → `SKILLS_DATA` global
-- **Renderer**: `renderSkillsMatrix()` in `js/main.js`
-
-## Engineering Vault (Zone 3)
-- **Architecture**: Unified hub merging Projects + Sam-Smart + Network Labs
-- **Filtering**: Client-side tab filtering via `data-category` and `data-category-alt` attributes
-- **Tabs**: All, Cyber & Security (`cyber`), Network Infrastructure (`network`), Software & Tools (`software`)
-- **Cards**: Sam-Smart (featured, cyber+software), Grocery Cards (software), OSPF Lab (network), VLAN Lab (network+cyber), MikroTik Lab (network)
-- **Handler**: `initVaultTabs()` in `js/main.js`
-
-## Career Track (Zone 4)
-- **Architecture**: Single-spine vertical timeline (replaces zigzag)
-- **Milestones**: Enterprise Network Deployment (2023), Ministry of Industry & Trade (2023)
-
-## Contact Hub (Zone 4)
-- **Email Copy**: One-click clipboard copy with visual "Copied!" feedback
-- **Cards**: Email, GitHub, LinkedIn, Download CV
-- **Handler**: `initEmailCopy()` in `js/main.js`
 
 ---
 
@@ -141,7 +114,7 @@ portfolio-website/
 | Resource | URL | Purpose |
 |----------|-----|---------|
 | Google Fonts | `fonts.googleapis.com` | Inter + JetBrains Mono |
-| No JS frameworks | — | Pure Vanilla JS |
+| No JS frameworks | — | Pure Vanilla JS (100% file:// compatible) |
 | No CSS frameworks | — | Pure Vanilla CSS |
 
 ---
@@ -151,12 +124,19 @@ portfolio-website/
 | Date | Tag | Description |
 |------|-----|-------------|
 | 2026-10-17 | `THEME_OVERHAUL` | Replaced Neon Cyan/Green Cyber palette with Luxury Industrial Tech (Warm Obsidian, Muted Amber Gold) |
-| 2026-10-18 | `BENTO_ARCHITECTURE` | Complete structural overhaul: 9-section scroll → 4-zone Bento Grid. Skills chips replace progress bars. Unified Engineering Vault with tab filtering. Single-spine career timeline. Email copy mechanism. |
+| 2026-10-18 | `BENTO_ARCHITECTURE` | 9-section scroll → 4-zone Bento Grid. |
+| 2026-10-18 | `PRESENTATION_DECK_OVERHAUL` | Re-architected portfolio into ultra-modern Floating Presentation Deck (Viewport Stage Showcase): 5 centered 50/50 split cards (`.deck-card`), CSS scroll-snap, right HUD navigation rail with digital counter, interactive project switcher, interactive topology schematics, and one-click email copy. |
+| 2026-10-18 | `DECK_VISIBILITY_FIX` | Resolved card stage visibility: eliminated `.reveal` opacity:0 gating on `.deck-card`, set explicit stacking context (`z-index: 10`) on `.deck-stage`, configured viewport 100vh scroll-snap container, and guaranteed `.deck-card--active` injection on load. |
+| 2026-10-18 | `TELEMETRY_CLIP_FIX` | Resolved telemetry pill text clipping on Card 1: expanded container to 370px, implemented 3-column grid layout, reduced padding, calibrated typography, and streamlined text strings to prevent truncation. |
+| 2026-10-19 | `COMMAND_GATEWAY_V2` | Designed and implemented "The Morphing Command Gateway": luxury Raycast/Spotlight entrance panel (`#intro-gateway`), realistic typewriter authorization sequence, micro-status verification, graceful scale exit, sessionStorage persistence, and crisp focus snap into Card 1. |
 
 ---
 
 # Last Action Performed
 
-**Action**: Bento Grid Architecture Restructuring
-**Files Modified**: `index.html`, `css/style.css`, `css/responsive.css`, `css/animations.css`, `js/main.js`, `data/skills-data.js`
-**Verification**: JS syntax validated (exit 0), zero legacy neon colors remaining, git diff: 2,089 insertions, 5,414 deletions across 6 files.
+**Action**: Morphing Command Gateway Implementation (`#intro-gateway`)
+**Files Modified**: `index.html`, `css/style.css`, `css/responsive.css`, `js/main.js`, `PROJECT_CONTEXT.md`
+**Verification**: Verified vanilla JS syntax (`node -c js/main.js`), zero-dependency execution, session persistence logic, responsive mobile styling, and transition timing.
+
+
+
